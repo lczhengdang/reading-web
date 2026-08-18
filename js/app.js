@@ -729,6 +729,56 @@
       UIi.toast('云端配置已保存');
     });
 
+    /* --- 大模型查词（OpenAI 兼容接口，可选） --- */
+    var cLlm = UIi.el('div', 'set-card');
+    cLlm.innerHTML = '<h2>大模型查词</h2><div class="hint">配置后查词与释义翻译优先走大模型，失败自动回退在线词典。API Key 仅保存在本机浏览器 localStorage，不会上传。</div>';
+    var llmBox = UIi.el('div');
+    llmBox.innerHTML =
+      '<div class="hint warn">注意：浏览器直连部分服务可能被跨域(CORS)拦截，若保存后查词仍失败请更换支持 CORS 的接口或留空回退。</div>' +
+      '<input class="field" type="password" id="f-llmkey" placeholder="API Key" value="' + esc(settings.llmApiKey) + '">' +
+      '<input class="field" type="text" id="f-llmurl" placeholder="Base URL（不含 /chat/completions）" value="' + esc(settings.llmBaseUrl) + '">' +
+      '<div class="set-row"><button class="btn btn-tonal" id="f-llm-fetch" style="margin-top:12px">获取模型列表</button></div>' +
+      '<select class="field" id="f-llm-model" style="display:none"></select>' +
+      '<input class="field" type="text" id="f-llm-model-manual" placeholder="模型名称（如列表获取失败可手动输入）" value="' + esc(settings.llmModel) + '">' +
+      '<div class="set-row"><button class="btn btn-tonal" id="f-llm-save" style="margin-top:12px">保存大模型配置</button></div>';
+    cLlm.appendChild(llmBox);
+    body.appendChild(cLlm);
+    var llmSel = b('f-llm-model');
+    var llmManual = b('f-llm-model-manual');
+    b('f-llm-fetch').addEventListener('click', function () {
+      var key = b('f-llmkey').value.trim();
+      var url = b('f-llmurl').value.trim().replace(/\/+$/, '');
+      if (!key || !url) { UIi.toast('请先填写 API Key 与 Base URL'); return; }
+      UIi.toast('正在获取模型列表…');
+      var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 8000);
+      fetch(url + '/models', { headers: { 'Authorization': 'Bearer ' + key }, signal: ctrl ? ctrl.signal : undefined })
+        .then(function (r) { clearTimeout(timer); if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+        .then(function (j) {
+          var ids = ((j && j.data) || []).map(function (m) { return m && m.id; }).filter(Boolean).sort();
+          if (!ids.length) throw new Error('empty');
+          llmSel.innerHTML = '';
+          ids.forEach(function (id) { llmSel.appendChild(new Option(id, id)); });
+          if (ids.indexOf(settings.llmModel) >= 0) llmSel.value = settings.llmModel;
+          llmSel.style.display = '';
+          llmManual.style.display = 'none';
+          UIi.toast('已获取 ' + ids.length + ' 个模型，请选择后保存');
+        })
+        .catch(function () {
+          clearTimeout(timer);
+          llmSel.style.display = 'none';
+          llmManual.style.display = '';
+          UIi.toast('模型列表获取失败（可能是 CORS 拦截或 Key 无效），请手动输入模型名', 4000);
+        });
+    });
+    b('f-llm-save').addEventListener('click', function () {
+      settings.llmApiKey = b('f-llmkey').value.trim();
+      settings.llmBaseUrl = b('f-llmurl').value.trim().replace(/\/+$/, '');
+      settings.llmModel = (llmSel.style.display !== 'none' && llmSel.value) ? llmSel.value : llmManual.value.trim();
+      Store.saveSettings();
+      UIi.toast(settings.llmApiKey && settings.llmBaseUrl && settings.llmModel ? '大模型查词已启用' : '配置不完整，将继续使用在线词典链路');
+    });
+
     /* --- 语音与阅读 --- */
     var c2 = UIi.el('div', 'set-card');
     c2.innerHTML = '<h2>语音与阅读</h2>';
@@ -806,7 +856,8 @@
 
     /* --- 数据管理 --- */
     var c3 = UIi.el('div', 'set-card');
-    c3.innerHTML = '<h2>数据管理</h2><div class="hint">生词 ' + wordbook.length + ' 个 · 收藏 ' + favorites.size + ' 篇 · 阅读进度 ' + Object.keys(progress).length + ' 篇 · 译文缓存 ' + Store.transCount() + ' 条</div>';
+    var llmState = (settings.llmApiKey && settings.llmBaseUrl && settings.llmModel) ? '已配置' : '未配置';
+    c3.innerHTML = '<h2>数据管理</h2><div class="hint">生词 ' + wordbook.length + ' 个 · 收藏 ' + favorites.size + ' 篇 · 阅读进度 ' + Object.keys(progress).length + ' 篇 · 译文缓存 ' + Store.transCount() + ' 条 · 大模型查词：' + llmState + '</div>';
     var r5 = UIi.el('div', 'set-row');
     var bw = UIi.el('button', 'btn btn-text', '清空生词本');
     bw.addEventListener('click', async function () {

@@ -32,6 +32,10 @@
     apiKey: '', endpoint: 'https://ark.cn-beijing.volces.com/api/v3/tts',
     model: 'doubao-tts-0001', cloudVoiceId: 'zh_female_cancan_mars_bigtts'
   };
+  /* 大模型查词配置（OpenAI 兼容协议，与 TTS 密钥相互独立） */
+  if (settings.llmApiKey === undefined) settings.llmApiKey = '';
+  if (settings.llmBaseUrl === undefined) settings.llmBaseUrl = 'https://ark.cn-beijing.volces.com/api/v3';
+  if (settings.llmModel === undefined) settings.llmModel = '';
   var favorites = new Set(rawGet('favorites', []));
   var wordbook = rawGet('wordbook', []);
   var progress = rawGet('progress', {});

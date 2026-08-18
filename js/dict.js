@@ -74,12 +74,10 @@
     });
   }
 
-  /* ---- 中文释义并发回填（限流 3 并发 + 9s 兜底） ---- */
+  /* ---- 中文释义回填：LLM 批量优先，失败回退逐条并发（3 并发）+ 兜底超时 ---- */
   function fillTranslations(word, entry, cb) {
-    var remaining = entry.items.slice();
-    var done = 0;
+    var pending = entry.items.filter(function (it) { return it.zh === it.en; });
     var finished = false;
-    var CONCURRENCY = 3;
     function finish(final) {
       if (finished) return;
       finished = true;
@@ -87,23 +85,42 @@
       if (final) Store.dictPut(word, entry);
       cb(entry, final);
     }
-    var safety = setTimeout(function () { finish(true); }, 9000);
-    function work() {
-      var it = remaining.shift();
-      if (!it) {
+    if (!pending.length) { finish(true); return; }
+    var safety = setTimeout(function () { finish(true); }, llmConfigured() ? 25000 : 9000);
+    function afterAll() { clearTimeout(safety); finish(true); }
+
+    /* 逐条并发回退链（MyMemory -> Google） */
+    function perItem() {
+      var remaining = pending.slice();
+      var done = 0;
+      var CONCURRENCY = 3;
+      function maybeFinish() {
         done++;
-        if (done === CONCURRENCY) { clearTimeout(safety); finish(true); }
-        return;
+        if (done === CONCURRENCY) afterAll();
       }
-      translateText(it.en).then(function (zh) {
-        it.zh = zh;
-        if (!finished) cb(entry, false);
-      }, function () { }).then(work);
+      function work() {
+        var it = remaining.shift();
+        if (!it) { maybeFinish(); return; }
+        translateText(it.en).then(function (zh) {
+          it.zh = zh;
+          if (!finished) cb(entry, false);
+        }, function () { }).then(work);
+      }
+      for (var i = 0; i < CONCURRENCY; i++) work();
     }
-    for (var i = 0; i < CONCURRENCY; i++) work();
+
+    if (llmConfigured()) {
+      translateBatchLLM(pending.map(function (it) { return it.en; })).then(function (arr) {
+        pending.forEach(function (it, i) { it.zh = arr[i] || it.en; });
+        if (!finished) cb(entry, false);
+        afterAll();
+      }, function () { perItem(); });
+    } else {
+      perItem();
+    }
   }
 
-  /* ---- 在线查词：多源降级链（dictionaryapi.dev -> Wiktionary） ----
+  /* ---- 在线查词：多源降级链（LLM(可选) -> dictionaryapi.dev -> Datamuse -> Wiktionary） ----
      cb(entry, final)：entry 更新（final=true 表示翻译全部完成）
      onNotFound()：所有源均未收录该词
      onError()：所有源均网络/接口错误（可提示重试） */
@@ -112,8 +129,84 @@
   function buildEntry(phonetic, defs) {
     return {
       phonetic: String(phonetic || '').replace(/^\/|\/$/g, ''),
-      items: defs.map(function (it) { return { pos: it.pos, zh: it.en, en: it.en }; })
+      items: defs.map(function (it) { return { pos: it.pos, zh: it.zh || it.en, en: it.en }; })
     };
+  }
+
+  /* ---- 大模型查词（OpenAI 兼容协议，可选；配置于设置页） ---- */
+  function llmConfigured() {
+    return !!(Store.settings.llmApiKey && Store.settings.llmBaseUrl && Store.settings.llmModel);
+  }
+  function llmBaseUrl() {
+    return String(Store.settings.llmBaseUrl).replace(/\/+$/, '');
+  }
+  function callLLMChat(messages, timeoutMs) {
+    if (!llmConfigured()) return Promise.reject(new Error('llm not configured'));
+    var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, timeoutMs);
+    return fetch(llmBaseUrl() + '/chat/completions', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + Store.settings.llmApiKey, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: Store.settings.llmModel, messages: messages, temperature: 0.3 }),
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function (r) {
+      clearTimeout(timer);
+      if (!r.ok) throw new Error('llm http ' + r.status);
+      return r.json();
+    }).then(function (j) {
+      var content = j && j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
+      if (!content) throw new Error('llm empty response');
+      return String(content);
+    }).catch(function (e) { clearTimeout(timer); throw e; });
+  }
+  /* 从模型返回文本中提取首个完整的 JSON 对象（容忍 markdown 包裹/前后多余文字） */
+  function extractJsonObject(text) {
+    var start = text.indexOf('{');
+    if (start === -1) return null;
+    var depth = 0;
+    for (var i = start; i < text.length; i++) {
+      if (text[i] === '{') depth++;
+      else if (text[i] === '}') { depth--; if (depth === 0) return text.slice(start, i + 1); }
+    }
+    return null;
+  }
+  function dictLLM(word) {
+    var prompt = '你是英语词典。查询单词 "' + word + '"，只输出 JSON，不要任何其他文字：' +
+      '{"phonetic":"国际音标，不含斜杠，未知则为空字符串","items":[{"pos":"词性缩写如 n. v. adj. adv.","zh":"中文释义","en":"简短英文释义"}]}' +
+      '，items 最多 6 条，覆盖主要词性。若该词不存在，输出 {"phonetic":"","items":[]}';
+    return callLLMChat([{ role: 'user', content: prompt }], 20000).then(function (content) {
+      var jsonStr = extractJsonObject(content);
+      if (!jsonStr) throw new Error('llm bad json');
+      var data;
+      try { data = JSON.parse(jsonStr); } catch (e) { throw new Error('llm bad json'); }
+      if (!data || !Array.isArray(data.items) || !data.items.length) return NOT_FOUND;
+      var defs = [];
+      data.items.slice(0, 8).forEach(function (it) {
+        var en = String(it.en || '').trim();
+        var zh = String(it.zh || '').trim();
+        if (!en && !zh) return;
+        defs.push({ pos: String(it.pos || ''), zh: zh || en, en: en || zh });
+      });
+      if (!defs.length) return NOT_FOUND;
+      return buildEntry(String(data.phonetic || ''), defs);
+    });
+  }
+  /* LLM 批量翻译：一次请求翻译全部条目，返回与输入同序的中文数组 */
+  function translateBatchLLM(texts) {
+    var prompt = '把下列英文词典释义翻译成中文，只输出 JSON 数组（与输入同序、等长，元素为中文翻译字符串），不要任何其他文字：\n' + JSON.stringify(texts);
+    return callLLMChat([{ role: 'user', content: prompt }], 15000).then(function (content) {
+      var start = content.indexOf('[');
+      if (start === -1) throw new Error('llm bad json');
+      var depth = 0; var end = -1;
+      for (var i = start; i < content.length; i++) {
+        if (content[i] === '[') depth++;
+        else if (content[i] === ']') { depth--; if (depth === 0) { end = i + 1; break; } }
+      }
+      if (end === -1) throw new Error('llm bad json');
+      var arr = JSON.parse(content.slice(start, end));
+      if (!Array.isArray(arr) || arr.length !== texts.length) throw new Error('llm length mismatch');
+      return arr.map(function (s) { return String(s).trim(); });
+    });
   }
 
   /* 源 1：Free Dictionary API（404 表示未收录） */
@@ -245,7 +338,12 @@
       });
   }
 
-  var DICT_PROVIDERS = [dictFreeDict, dictDatamuse, dictWiktionary];
+  /* 降级链：已配置时 LLM 为首选源；依次尝试各源，任一源成功即返回 */
+  function dictProviders() {
+    var list = [];
+    if (llmConfigured()) list.push(dictLLM);
+    return list.concat([dictFreeDict, dictDatamuse, dictWiktionary]);
+  }
 
   /* 单源：非 NOT_FOUND 错误自动重试 1 次（间隔 800ms） */
   function tryDictSource(provider, word, retried) {
@@ -260,22 +358,21 @@
     });
   }
 
-  /* 降级链：依次尝试各源；任一源成功即返回，否则汇总结果决定 notfound/error */
-  function nextDictSource(word, i, sawNotFound) {
-    if (i >= DICT_PROVIDERS.length) {
+  function nextDictSource(providers, word, i, sawNotFound) {
+    if (i >= providers.length) {
       return sawNotFound ? Promise.resolve(NOT_FOUND) : Promise.reject(new Error('all dict sources failed'));
     }
-    return tryDictSource(DICT_PROVIDERS[i], word, false).then(function (entry) {
-      if (entry === NOT_FOUND) return nextDictSource(word, i + 1, true);
+    return tryDictSource(providers[i], word, false).then(function (entry) {
+      if (entry === NOT_FOUND) return nextDictSource(providers, word, i + 1, true);
       return entry;
     }, function (err) {
-      if (err === NOT_FOUND) return nextDictSource(word, i + 1, true);
-      return nextDictSource(word, i + 1, sawNotFound);
+      if (err === NOT_FOUND) return nextDictSource(providers, word, i + 1, true);
+      return nextDictSource(providers, word, i + 1, sawNotFound);
     });
   }
 
   function fetchOnlineDict(word, cb, onNotFound, onError) {
-    nextDictSource(word, 0, false).then(function (entry) {
+    nextDictSource(dictProviders(), word, 0, false).then(function (entry) {
       if (entry === NOT_FOUND) { onNotFound(); return; }
       /* 先用英文释义立即出结果，中文翻译并发回填 */
       cb(entry, false);
