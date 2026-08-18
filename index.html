@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FAFAFA" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0A0A0B" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="考研英语同源外刊阅读：双语对照 · 语音朗读 · 生词本">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="考研阅读">
+  <title>考研阅读</title>
+  <link rel="dns-prefetch" href="https://api.dictionaryapi.dev">
+  <link rel="dns-prefetch" href="https://api.mymemory.translated.net">
+  <link rel="dns-prefetch" href="https://translate.googleapis.com">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#view">跳到正文</a>
+  <header id="topnav" class="topnav">
+    <div class="topnav-inner">
+      <a class="brand" href="#/library">考研阅读<span class="brand-en">Kaoyan Reading</span></a>
+      <nav class="topnav-links" aria-label="主导航">
+        <a href="#/library" data-nav="library">文章库</a>
+        <a href="#/wordbook" data-nav="wordbook">生词本</a>
+        <a href="#/settings" data-nav="settings">设置</a>
+      </nav>
+    </div>
+  </header>
+  <div id="app">
+    <main id="view" class="view"></main>
+    <nav id="bottomnav" class="bottomnav" aria-label="底部导航"></nav>
+  </div>
+  <div id="overlay-root"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="data/index.js"></script>
+  <script src="data/dict.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/tts.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/dict.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

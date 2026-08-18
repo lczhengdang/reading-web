@@ -1,0 +1,36 @@
+{
+  "id": "gua-2026-mark-zuckerberg-superintelligent-ai-essay-meta",
+  "title": "Zuckerberg pushes ‘superintelligent’ AI for all as Meta releases open-weight model",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 936,
+  "paragraphs": [
+    {
+      "en": "Mark Zuckerberg published a lengthy essay on Monday detailing his views on artificial intelligence and announced several plans for how Meta would develop the technology in the future. The CEO’s essay went online the same day as Meta released a new, open-weight AI model that seeks to rival Anthropic and OpenAI’s products called Muse Glimmer."
+    },
+    {
+      "en": "Over the course of more than 6,000 words in a post titled The Future is for Everyone, Zuckerberg addressed a range of topics related to AI that included datacenters, government regulation, cybersecurity, the creation of bioweapons, labor market disruption, surveillance powers and more. The essay presented a utopian vision of AI as a personalized “superintelligence” – using the word 60 times."
+    },
+    {
+      "en": "“Some argue that superintelligence itself or a small set of experts who control it should decide what is best for humanity. We disagree,” Zuckerberg wrote."
+    },
+    {
+      "en": "Central to Zuckerberg’s post was an argument for free-to-download, open-weight AI models – like the kind Meta develops – and a lack of government regulation of artificial intelligence. Zuckerberg’s stance sets him and Meta apart from industry leaders OpenAI and Anthropic, which have argued that open-source AI is dangerous. The two frontier labs have released proprietary AI products and argued that cutting-edge models should remain tightly controlled by the companies that build them."
+    },
+    {
+      "en": "Related: Crew of Zuckerberg yacht did not hear radio call to assist boat, Meta says"
+    },
+    {
+      "en": "Zuckerberg’s post comes as Silicon Valley is engaged in a heated debate over how to regulate AI development, which has involved the creation of a secret White House framework for testing new models and an ongoing debate over whether to restrict the use of Chinese-made open-source AI. As Anthropic and OpenAI have surged ahead in the AI industry, competitors such as Meta have also grown wary of their dominance and sought to position their open models as alternatives."
+    },
+    {
+      "en": "Zuckerberg framed Meta’s pursuit of open-weight AI as a more democratic version of the technology and one that will create a “balance of power” between users, whether that involves states, companies or individuals. His plans also called for letting users decide what “values” an AI model should have, as opposed to a company encoding it with rigid guardrails and beliefs."
+    },
+    {
+      "en": "Related: An AI agent for all? Try using your brain, Mark Zuckerberg"
+    }
+  ]
+}

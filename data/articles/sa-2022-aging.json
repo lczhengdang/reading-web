@@ -1,0 +1,36 @@
+{
+  "id": "sa-2022-aging",
+  "title": "The Biology of Growing Old",
+  "source": "Scientific American",
+  "sourceZh": "《科学美国人》",
+  "topic": "科学",
+  "difficulty": 4,
+  "year": 2022,
+  "wordCount": 171,
+  "paragraphs": [
+    {
+      "en": "For centuries, aging was seen as a natural and inevitable decline. Scientists now believe that the process is not fixed, but can be slowed, and perhaps even reversed.",
+      "zh": "几个世纪以来，衰老被视为一种自然且不可避免的衰退。科学家们现在相信，这一过程并非一成不变，而是可以被延缓，甚至可能被逆转。"
+    },
+    {
+      "en": "Aging is not a single event but a collection of changes at the level of cells and molecules. Over time, damage accumulates in our DNA, and our cells lose the ability to divide and repair themselves.",
+      "zh": "衰老不是单一事件，而是细胞和分子层面一系列变化的总和。随着时间推移，损伤在我们的DNA中不断累积，细胞逐渐失去分裂和修复自身的能力。"
+    },
+    {
+      "en": "One promising line of research involves senescent cells, which stop dividing but refuse to die. These 'zombie cells' release chemicals that harm their healthy neighbours and drive inflammation.",
+      "zh": "一条有前景的研究方向涉及衰老细胞——它们停止分裂却拒绝死亡。这些\"僵尸细胞\"释放化学物质，损害健康的邻近细胞并引发炎症。"
+    },
+    {
+      "en": "In experiments with mice, drugs that clear away senescent cells have extended the animals' healthy lifespan. Whether the same approach works in humans remains an open question.",
+      "zh": "在小鼠实验中，清除衰老细胞的药物延长了这些动物的健康寿命。同样的方法是否适用于人类仍是一个悬而未决的问题。"
+    },
+    {
+      "en": "Diet and exercise remain the most reliable ways to promote healthy aging. Caloric restriction and intermittent fasting have shown benefits in many organisms, from yeast to primates.",
+      "zh": "饮食和锻炼仍然是促进健康衰老的最可靠方式。热量限制和间歇性禁食已在从酵母到灵长类的许多生物中显示出益处。"
+    },
+    {
+      "en": "Yet scientists warn against expecting a single miracle drug. The biology of aging is extraordinarily complex, and any effective treatment will probably combine several approaches.",
+      "zh": "然而科学家警告不要期待单一的灵丹妙药。衰老生物学极其复杂，任何有效的治疗方法很可能需要结合多种途径。"
+    }
+  ]
+}

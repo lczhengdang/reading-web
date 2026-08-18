@@ -1,0 +1,36 @@
+{
+  "id": "gua-2026-uk-companies-cyber-attack-third-jlr",
+  "title": "UK manufacturers face rising hacking risk as survey shows 30% were hit last year",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 461,
+  "paragraphs": [
+    {
+      "en": "Nearly a third of British manufacturers have been hit by a cyber-attack on them or a company in their supply chain, according to a survey that highlighted the growing hacking risk to companies."
+    },
+    {
+      "en": "The findings come almost a year after Britain’s largest automotive employer, JLR, was hit by an attack that forced it to halt production for weeks."
+    },
+    {
+      "en": "The report by MakeUK, a lobby group for British manufacturers, found that 30% of manufacturers had experienced a cyber-incident in the past 12 months, leading in many cases to lost production time and increased costs. However, only half had a plan in place to respond to an attack."
+    },
+    {
+      "en": "The risk of attacks has risen in recent years as hackers, often backed by hostile states , have become more numerous and more adept at penetrating company defences. Large businesses describe being under near-constant attack from people trying to access their systems, and the UK government has said cybercrime costs the economy £14.7bn a year. The rise of generative AI systems, some of which have been able to hack into other businesses autonomously , has added extra urgency to efforts to upgrade defences."
+    },
+    {
+      "en": "Manufacturers have sought to improve productivity by connecting their factories, allowing them much quicker insight into their operations. However, the larger number of links has also meant that once attackers are inside the system, the scope for harm is much larger. JLR was forced to shut down systems across all its factories, offices and retail operations after it discovered digital intruders on the last day of August last year."
+    },
+    {
+      "en": "The independent Cyber Monitoring Centre said the JLR hack cost the UK economy at least £1.9bn , probably making it the most expensive cyber incident ever in Britain, mainly because of lost output at JLR and its suppliers. The New York Times reported in June that British law enforcement had concluded that Russian hackers were behind it."
+    },
+    {
+      "en": "Other big attacks reported publicly in recent years include two FTSE 100 manufacturers who reported attacks within days of each other early in 2025: the valve maker IMI and the components maker Smiths Group. In the retail sector, Marks & Spencer , the Co-op and Harrods all suffered costly breaches last year."
+    },
+    {
+      "en": "Jonathon Ellison, director of national resilience at the National Cyber Security Centre (NCSC), which was involved in the response to the JLR attack, said: “In today’s landscape, no manufacturer can afford to treat cybersecurity as anything other than a business-critical priority. The NCSC is working to help organisations of all sizes strengthen their cyber defences.”"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-are-microsofts-ai-plans-being-held-back-by-a-shortage-of-chips",
+  "title": "Are Microsoft’s AI plans being held back by a shortage of chips?",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 1788,
+  "paragraphs": [
+    {
+      "en": "The chips are quite small and some can be held in the palm of a hand. They are fundamental to the development of artificial intelligence models – and the world’s biggest technology companies need vast numbers of them to keep ahead.",
+      "zh": "这些芯片非常小，有些可以握在手掌之中。它们对人工智能模型的发展至关重要——而全球最大的科技公司需要海量的此类芯片才能保持领先。"
+    },
+    {
+      "en": "Microsoft is one of them. And, on paper, it seems to have a problem. A Guardian investigation has found an apparent discrepancy between what the company has said about its AI capacity – and the number of advanced AI chips it has in operation.",
+      "zh": "微软就是其中之一。而且，从纸面上看，它似乎遇到了问题。《卫报》的一项调查发现，该公司就其 AI 产能所宣称的内容，与其实际在运行的先进 AI 芯片数量之间存在明显出入。"
+    },
+    {
+      "en": "It is not a small shortfall either. Microsoft reportedly targeted having 1.8m AI chips installed in its datacentres around the globe by the end of 2024. Nearly two years on, in the middle of a $280bn (£208bn) expansion, the company has 2.2m AI chips installed, according to internal documents seen by the Guardian. This is less than half the number some experts had imagined.",
+      "zh": "而且缺口并不小。据报道，微软的目标是到 2024 年底在其全球数据中心安装 180 万颗 AI 芯片。近两年过去，在耗资 2800 亿美元（2080 亿英镑）的扩张进行到中途时，根据《卫报》看到的内部文件，该公司安装了 220 万颗 AI 芯片。这还不到一些专家此前设想数量的一半。"
+    },
+    {
+      "en": "Put simply, the global AI arms race requires a massive build-out of datacentres that run on extremely expensive chips. The apparent discrepancy over the chips suggests Microsoft’s newest datacentres may not be fully operational or, if they are, they do not have the chips they need.",
+      "zh": "简而言之，全球 AI 军备竞赛需要大规模建设数据中心，而这些数据中心依赖极其昂贵的芯片运行。芯片数量上的明显出入表明，微软最新的数据中心可能并未完全投入运行，或者即使投入运行，也没有配备所需的芯片。"
+    },
+    {
+      "en": "This highlights something even more fundamental about charting the progress being made in the development of AI technologies. The chips that power AI are made by Nvidia, one of the two most valuable companies in the world . Its supply chain is one of the most tightly held secrets in the entire industry.",
+      "zh": "这凸显了一个关于衡量 AI 技术发展进程的更根本性问题。为 AI 提供算力的芯片由英伟达制造，它是全球市值最高的两家公司之一。其供应链是整个行业中最严守的秘密之一。"
+    },
+    {
+      "en": "With almost no exceptions, Nvidia does not report how many of these chips it sells or to whom. Its clients, the world’s biggest tech companies, in turn do not reveal how many they have. Without this information, it is very hard for anyone to know whether AI is booming or not.",
+      "zh": "英伟达几乎从不公布它卖出了多少这类芯片、卖给了谁。它的客户——全球最大的科技公司——反过来也不会披露自己拥有多少。没有这些信息，任何人都很难判断 AI 到底是在蓬勃发展还是并非如此。"
+    },
+    {
+      "en": "In the past two years, Microsoft says it has built AI infrastructure at breakneck speed. Its chief executive, Satya Nadella, said last year it would double its global datacentre footprint by mid-2027. Since 2022 it has ploughed roughly $280bn into the land, buildings and computational infrastructure to build AI. This includes more than $41bn in the past quarter.",
+      "zh": "在过去两年里，微软表示它以惊人的速度建设 AI 基础设施。其首席执行官萨蒂亚·纳德拉去年表示，到 2027 年年中，其全球数据中心版图将翻倍。自 2022 年以来，它已向土地、建筑和计算基础设施投入约 2800 亿美元用于建设 AI，其中仅上个季度就超过 410 亿美元。"
+    },
+    {
+      "en": "But it is difficult to estimate how many datacentres Microsoft has built with this money.",
+      "zh": "但要估算微软用这笔钱建成了多少数据中心，并非易事。"
+    }
+  ]
+}

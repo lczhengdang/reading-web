@@ -1,0 +1,36 @@
+{
+  "id": "sa-2022-attention",
+  "title": "The Science of Paying Attention",
+  "source": "Scientific American",
+  "sourceZh": "《科学美国人》",
+  "topic": "心理",
+  "difficulty": 3,
+  "year": 2022,
+  "wordCount": 170,
+  "paragraphs": [
+    {
+      "en": "Attention is the gate through which all learning must pass. Yet in an age of constant notifications, psychologists report that our ability to focus on one thing is under unprecedented assault.",
+      "zh": "注意力是所有学习必经之门。然而在一个通知不断的时代，心理学家报告说，我们专注于一件事的能力正遭受前所未有的冲击。"
+    },
+    {
+      "en": "Contrary to popular belief, the brain cannot truly multitask. When we attempt it, we really switch rapidly between tasks, paying a cost in speed, accuracy and memory each time.",
+      "zh": "与普遍的看法相反，大脑并不能真正做到多任务处理。当我们尝试这样做时，实际上是在任务之间快速切换，每一次切换都会在速度、准确性和记忆方面付出代价。"
+    },
+    {
+      "en": "Each interruption leaves a residue. After checking a message, it can take minutes for the mind to fully return to a demanding task, and deeper reasoning is the first casualty.",
+      "zh": "每一次打断都会留下残余。查看一条消息之后，大脑可能需要好几分钟才能完全回到一项高要求的任务上，而深度思考是第一个牺牲品。"
+    },
+    {
+      "en": "The good news is that attention can be trained. Practices that cultivate sustained focus, such as reading long texts and deliberate meditation, measurably strengthen the brain's concentration networks.",
+      "zh": "好消息是注意力可以被训练。培养持续专注力的练习——例如阅读长篇文章和刻意冥想——能够可测量地强化大脑的专注网络。"
+    },
+    {
+      "en": "Environment matters as much as willpower. Removing visible phones, silencing alerts and scheduling unbroken blocks of time work better than heroic self-discipline.",
+      "zh": "环境与意志力同样重要。把手机移出视线、关闭通知、安排不受打扰的时间块，这些做法比硬撑式的自律更有效。"
+    },
+    {
+      "en": "In the end, what we attend to is what we become. Guarding our attention is not a luxury but one of the most practical investments a person can make.",
+      "zh": "归根结底，我们关注什么，就会成为什么。守护我们的注意力不是奢侈品，而是一个人能够做出的最务实的投资之一。"
+    }
+  ]
+}

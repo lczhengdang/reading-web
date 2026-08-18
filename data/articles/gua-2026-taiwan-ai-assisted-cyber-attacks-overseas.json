@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-taiwan-ai-assisted-cyber-attacks-overseas",
+  "title": "Taiwan says it was hit by ‘abnormal’ AI-assisted cyber-attack",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 608,
+  "paragraphs": [
+    {
+      "en": "Taiwan says it detected AI-assisted cyber-attacks on government agencies that came from overseas last month, a new kind of threat that has been reported as “first-of-a-kind breach”.",
+      "zh": "台湾方面表示，上个月检测到来自海外的、针对政府机构的 AI 辅助网络攻击，这种新威胁被称为“首次出现的此类入侵”。"
+    },
+    {
+      "en": "The Ministry of Digital Affairs (MDA) said its cybersecurity monitoring units ‌detected the “abnormal attack” targeting government agencies, which began on 20 July. The National Institute of Cyber Security issued a series of warning alerts while it investigated.",
+      "zh": "数字发展部（MDA）表示，其网络安全监控部门检测到针对政府机构的“异常攻击”，攻击始于 7 月 20 日。国家资通安全研究院在调查期间发布了一系列警告。"
+    },
+    {
+      "en": "The Financial Times quoted Dream – an Israeli AI company that detected the intrusion – as saying the attackers used open-source AI agents to build an autonomous hacking tool that behaved like a coordinated cyber team, describing it as a first-of-a-kind breach.",
+      "zh": "《金融时报》援引检测到这次入侵的以色列 AI 公司 Dream 的话说，攻击者利用开源 AI 智能体构建了一个自主黑客工具，其行为像一个协同运作的网络团队，并将此描述为一次史无前例的入侵。"
+    },
+    {
+      "en": "Related: ‘A statement of freedom’: T-shirt slogan goes viral and book sales rocket in Taiwan after Hong Kong raids",
+      "zh": "相关报道：\"自由的宣言\"：香港遭搜查后，T 恤标语在台湾走红，图书销量飙升"
+    },
+    {
+      "en": "Dream was reported as saying that the tool compromised “at least 85 government user accounts, extracting more than 2,500 personnel records before expanding the attack to Taiwan’s nuclear safety agency and at least seven energy companies”.",
+      "zh": "据报道，Dream 表示，该工具攻破了“至少 85 个政府用户账号，窃取了 2500 多条人事记录，随后将攻击扩大到台湾的核安全机构以及至少七家能源公司”。"
+    },
+    {
+      "en": "Taiwan has in recent years complained about what it sees as China’s “hybrid warfare” – from daily military drills near the island to disinformation campaigns and cyber-attacks – as Beijing ramps up military and political pressure ⁠on the democratically governed island to force Taipei to accept its claims of sovereignty.",
+      "zh": "近年来，台湾一直抱怨它眼中的中国“混合战”——从岛附近的日常军事演习，到虚假信息宣传活动和网络攻击——因为北京正加大对这座实行民主治理岛屿的军事和政治压力，迫使台北接受其主权主张。"
+    },
+    {
+      "en": "Though Taiwanese officials did not direct accusations at China, the FT on Wednesday reported that China-linked hackers were suspected. Dream did not attribute the attack to a specific group, but said the use of Simplified Chinese in internal communications linked to the hack meant there was a high probability the operator was connected to China, the FT reported.",
+      "zh": "尽管台湾官员没有把矛头直指中国，但《金融时报》周三报道称，人们怀疑攻击与中国有关联的黑客有关。据《金融时报》报道，Dream 没有将这起攻击归咎于特定组织，但表示，与这次黑客攻击相关的内部通讯使用了简体中文，这意味着操作者与中国有关联的可能性很高。"
+    },
+    {
+      "en": "Chinese cyber-attacks on Taiwan’s key infrastructure, from hospitals to banks, rose 6% in 2025 from the previous year to an average of 2.63m attacks a ⁠day, the island’s National Security Bureau said in January, adding some hacks were synchronised with military drills in “hybrid threats” to paralyse the island.",
+      "zh": "台湾的“国家安全局”1 月表示，2025 年，中国对台湾关键基础设施（从医院到银行）的网络攻击比上年上升了 6%，达到平均每天 263 万次；该局补充说，一些黑客攻击与军事演习同步进行，构成旨在瘫痪这座岛屿的“混合威胁”。"
+    }
+  ]
+}

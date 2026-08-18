@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-uk-companies-cyber-attack-third-jlr",
+  "title": "UK manufacturers face rising hacking risk as survey shows 30% were hit last year",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 461,
+  "paragraphs": [
+    {
+      "en": "Nearly a third of British manufacturers have been hit by a cyber-attack on them or a company in their supply chain, according to a survey that highlighted the growing hacking risk to companies.",
+      "zh": "一项调查显示，近三分之一的英国制造商曾遭受过网络攻击，或受到其供应链中某家公司网络攻击的波及，该调查凸显了企业日益面临的被黑风险。"
+    },
+    {
+      "en": "The findings come almost a year after Britain’s largest automotive employer, JLR, was hit by an attack that forced it to halt production for weeks.",
+      "zh": "这一调查结果出炉之际，距离英国最大汽车雇主 JLR 遭攻击、被迫停产数周已将近一年。"
+    },
+    {
+      "en": "The report by MakeUK, a lobby group for British manufacturers, found that 30% of manufacturers had experienced a cyber-incident in the past 12 months, leading in many cases to lost production time and increased costs. However, only half had a plan in place to respond to an attack.",
+      "zh": "英国制造商游说团体 MakeUK 的报告发现，30% 的制造商在过去 12 个月中经历过网络事件，其中许多事件导致了生产时间损失和成本上升。然而，只有一半企业制定了应对攻击的预案。"
+    },
+    {
+      "en": "The risk of attacks has risen in recent years as hackers, often backed by hostile states , have become more numerous and more adept at penetrating company defences. Large businesses describe being under near-constant attack from people trying to access their systems, and the UK government has said cybercrime costs the economy £14.7bn a year. The rise of generative AI systems, some of which have been able to hack into other businesses autonomously , has added extra urgency to efforts to upgrade defences.",
+      "zh": "近年来，随着黑客（往往由敌对政府支持）的数量增多、渗透公司防线的能力增强，攻击风险有所上升。大型企业称自己几乎不断遭到试图访问其系统的人的侵扰，而英国政府表示，网络犯罪每年给经济造成 147 亿英镑的损失。生成式 AI 系统的兴起——其中一些已能自主入侵其他企业——为升级防御的努力增添了额外的紧迫性。"
+    },
+    {
+      "en": "Manufacturers have sought to improve productivity by connecting their factories, allowing them much quicker insight into their operations. However, the larger number of links has also meant that once attackers are inside the system, the scope for harm is much larger. JLR was forced to shut down systems across all its factories, offices and retail operations after it discovered digital intruders on the last day of August last year.",
+      "zh": "制造商们一直在通过连接自己的工厂来提高生产率，从而更快速地洞察自身运营。然而，更多的连接也意味着，一旦攻击者进入系统，可能造成的破坏范围要大得多。JLR 在去年 8 月的最后一天发现数字入侵者后，被迫关闭了其所有工厂、办公室和零售业务的系统。"
+    },
+    {
+      "en": "The independent Cyber Monitoring Centre said the JLR hack cost the UK economy at least £1.9bn , probably making it the most expensive cyber incident ever in Britain, mainly because of lost output at JLR and its suppliers. The New York Times reported in June that British law enforcement had concluded that Russian hackers were behind it.",
+      "zh": "独立的网络监控中心表示，JLR 黑客事件给英国经济造成了至少 19 亿英镑的损失，很可能使其成为英国有史以来代价最昂贵的网络事件，这主要是因为 JLR 及其供应商的产出损失。《纽约时报》6 月报道称，英国执法部门已得出结论，这起事件是俄罗斯黑客所为。"
+    },
+    {
+      "en": "Other big attacks reported publicly in recent years include two FTSE 100 manufacturers who reported attacks within days of each other early in 2025: the valve maker IMI and the components maker Smiths Group. In the retail sector, Marks & Spencer , the Co-op and Harrods all suffered costly breaches last year.",
+      "zh": "近年来公开报道的其他重大攻击还包括两家富时 100 指数制造商，它们在 2025 年初相隔数天报告遭到攻击：阀门制造商 IMI 和零部件制造商史密斯集团。在零售领域，玛莎百货、Co-op 和哈罗德去年都遭受了代价高昂的数据泄露。"
+    },
+    {
+      "en": "Jonathon Ellison, director of national resilience at the National Cyber Security Centre (NCSC), which was involved in the response to the JLR attack, said: “In today’s landscape, no manufacturer can afford to treat cybersecurity as anything other than a business-critical priority. The NCSC is working to help organisations of all sizes strengthen their cyber defences.”",
+      "zh": "参与了 JLR 攻击事件应对的国家网络安全中心（NCSC）国家韧性主管乔纳森·埃利森说：“在当今的环境下，没有哪家制造商承受得起不把网络安全当作关乎业务存亡的头等大事。NCSC 正在努力帮助各种规模的组织加强网络防御。”"
+    }
+  ]
+}

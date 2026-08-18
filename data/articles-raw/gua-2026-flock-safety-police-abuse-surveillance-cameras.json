@@ -1,0 +1,36 @@
+{
+  "id": "gua-2026-flock-safety-police-abuse-surveillance-cameras",
+  "title": "Flock Safety tries to curb police abuse of its surveillance cameras after scandals",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 748,
+  "paragraphs": [
+    {
+      "en": "For nearly a decade, the company Flock Safety has gradually built out a network of cameras across the US that allows law enforcement officials to conduct about 20bn license plate scans every month."
+    },
+    {
+      "en": "In that time, the company had largely left the decision to turn on safety measures up to its customers. Many of those organizations did not turn them on."
+    },
+    {
+      "en": "Now, the company is doing damage control. Garrett Langley, Flock’s CEO, announced on Thursday that the company would begin mandating that law enforcement agencies switch on features that could help audit the way individual officers use its tracking capabilities. It had been reported that more than 50 law enforcement officers were accused of or charged with abusing Flock’s camera system, including to stalk ex-partners."
+    },
+    {
+      "en": "“These changes reflect years of work and deliberation,” Langley wrote in a blogpost announcing the new guardrails. “They are not the end of that work, but simply the continuation of our commitment to both safety and privacy.”"
+    },
+    {
+      "en": "Four months ago, the company introduced a voluntary feature called Audit Assistance, which flags “abnormal activity” for administrative review. Langley said on Thursday that about a third of its customers turned it on. Now, the rest of its customers, which include law enforcement agencies, retailers , universities , and homeowner associations , have until the end of the year to activate it. Under the new system, when the system flagged behavior as “abnormal”, the user would be automatically suspended, pending a review. The announcement did not include details about what qualified as “abnormal”."
+    },
+    {
+      "en": "The company will also now allow law enforcement agencies to restrict the information offered to other agencies on specific offenses rather than giving free rein to the agencies that they partner with to access all of their license plate scans. Now, the company wrote, agencies can limit the scans they share with other cities or states to specific types of investigations like stolen vehicle or missing persons cases."
+    },
+    {
+      "en": "The feature in part addresses years of reports that the company’s system had been used to target immigrants or people seeking out-of-state abortions, at times in violation of state or local laws."
+    },
+    {
+      "en": "In addition, Flock will now automatically set its license plate scan retention time to seven days, down from its existing default of 30 days. However, agencies can identify certain scans as part of a longer-term investigation if they want to maintain that data for longer, the company said, and can continue to choose “the retention period that fits its public safety strategy”."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-spotify-label-ai-artists-block-them-from-some-playlists",
+  "title": "Spotify to distinguish AI artists from real people – and stop recommending them",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 432,
+  "paragraphs": [
+    {
+      "en": "Spotify is to label AI artists and exclude them from algorithm recommendations as part of a crackdown on fake performers.",
+      "zh": "作为打击假表演者行动的一部分，Spotify 将为 AI 艺术家贴标签，并将其排除在算法推荐之外。"
+    },
+    {
+      "en": "The world’s largest music streaming platform is creating a label for AI-generated artist identities called “AI personas” that will appear on the artist profile and on track listings on playlists.",
+      "zh": "这家全球最大的音乐流媒体平台正在为 AI 生成的艺术家身份创建一个名为“AI 人设”的标签，该标签将出现在艺术家主页以及播放列表的曲目列表上。"
+    },
+    {
+      "en": "It means that from September AI-generated artists such as the Velvet Sundown will carry the persona label and will be blocked from personalised recommendations by default. The aim is to differentiate these deepfake artists from real performers who might lose out on streams to artificial rivals.",
+      "zh": "这意味着从 9 月起，像 Velvet Sundown 这样的 AI 生成艺术家将携带人设标签，并被默认排除在个性化推荐之外。其目的是将这些深度伪造艺术家与真实表演者区分开来——真实表演者可能会因与这些人工对手竞争而流失播放量。"
+    },
+    {
+      "en": "Spotify said: “True artist-fan connection can only be built on a foundation of trust and authenticity. In music, that means listeners need to be able to trust that the artist behind the music is who they say they are. That’s more essential than ever in the age of generative AI.”",
+      "zh": "Spotify 表示：“真正的艺术家与粉丝之间的连接，只能建立在信任和真实的基础上。在音乐领域，这意味着听众需要能够相信，音乐背后的艺术家就是其自称的那个人。在生成式 AI 的时代，这一点比以往任何时候都更加重要。”"
+    },
+    {
+      "en": "Last year Spotify revealed it had removed 75m spam tracks from its platform over a 12-month period as AI tools created a flood of fake music. Spotify’s legitimate catalogue stands at 100m tracks.",
+      "zh": "去年，Spotify 透露，由于 AI 工具制造了大量虚假音乐，它在 12 个月内从其平台移除了 7500 万条垃圾音轨。Spotify 的合法曲库有 1 亿条曲目。"
+    },
+    {
+      "en": "Spotify will allow music creators to reveal if their identities are AI-created – and will then label them as an AI persona – but it will not rely on self-disclosure alone. The company said it would use human review and AI investigative tools to determine if artists were fake. Although the new rule technically applies to AI “identities”, Spotify says AI-generated profiles are invariably a front for AI-made tracks as well.",
+      "zh": "Spotify 将允许音乐创作者自行披露其身份是否为 AI 创建的——随后会将其标记为 AI 人设——但它不会只依赖自我披露。该公司表示，它将通过人工审查和 AI 调查工具来确定艺术家是否为假冒的。尽管新规在技术上适用于 AI“身份”，但 Spotify 表示，AI 生成的个人主页无一例外地也是 AI 制作歌曲的门面。"
+    },
+    {
+      "en": "The company said: “Listeners have been clear in telling us that they don’t like seeing an artist profile that seems human, only to find out that the persona is AI-generated.”",
+      "zh": "该公司表示：“听众已经明确告诉我们，他们不喜欢看到一个看似人类的艺术家主页，结果却发现这个人设是 AI 生成的。”"
+    },
+    {
+      "en": "Last year there was debate about the origins of the Velvet Sundown – a 70s-style US rock band – before the band’s social media channels confirmed the subterfuge. A statement described the group as an AI creation that was “somewhere in between” human and machine.",
+      "zh": "去年，围绕 Velvet Sundown——一支 70 年代风格的美国摇滚乐队——的起源曾有过争论，之后该乐队的社交媒体账号证实了这场骗局。一份声明将该乐队描述为一个“介于”人类与机器之间的 AI 创作。"
+    }
+  ]
+}

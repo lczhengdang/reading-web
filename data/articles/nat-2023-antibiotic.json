@@ -1,0 +1,36 @@
+{
+  "id": "nat-2023-antibiotic",
+  "title": "The Quiet Crisis of Antibiotic Resistance",
+  "source": "Nature",
+  "sourceZh": "《自然》",
+  "topic": "医学",
+  "difficulty": 5,
+  "year": 2023,
+  "wordCount": 149,
+  "paragraphs": [
+    {
+      "en": "Antibiotics once seemed like a permanent triumph over bacterial infection. Decades of use and misuse have now produced bacteria that resist almost every drug we have.",
+      "zh": "抗生素曾一度看起来是对细菌感染的永久胜利。数十年的使用和滥用如今已催生出几乎对所有现有药物都具有耐药性的细菌。"
+    },
+    {
+      "en": "Resistance spreads when bacteria evolve in response to the drugs used against them. Overuse in medicine, and especially in agriculture, accelerates the process.",
+      "zh": "耐药性在细菌针对所使用的药物进行进化时传播开来。医学中的过度使用，尤其是农业中的滥用，加速了这一过程。"
+    },
+    {
+      "en": "The pipeline for new antibiotics has largely dried up. Because the drugs are used only briefly and must be held in reserve, they are not attractive to pharmaceutical companies.",
+      "zh": "新抗生素的研发管线已基本枯竭。由于这些药物使用时间短且必须作为储备保留，它们对制药公司缺乏吸引力。"
+    },
+    {
+      "en": "The consequences are already visible. Common infections that were once easy to treat are becoming dangerous again, and routine surgery carries new risks.",
+      "zh": "后果已经显现。曾经易于治疗的常见感染正重新变得危险，常规手术也带来了新的风险。"
+    },
+    {
+      "en": "Researchers are exploring alternatives, from vaccines that prevent infection to therapies that attack resistance itself. None is ready to replace antibiotics soon.",
+      "zh": "研究人员正在探索替代方案，从预防感染的疫苗到针对耐药性本身的疗法。但没有一种能在短期内取代抗生素。"
+    },
+    {
+      "en": "Most public-health experts agree that the crisis demands not only new science but new behaviour: using existing drugs more wisely, in both hospitals and farms.",
+      "zh": "大多数公共卫生专家认为，这场危机不仅需要新科学，还需要新行为：在医院和农场都更明智地使用现有药物。"
+    }
+  ]
+}

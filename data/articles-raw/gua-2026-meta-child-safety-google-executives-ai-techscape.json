@@ -1,0 +1,36 @@
+{
+  "id": "gua-2026-meta-child-safety-google-executives-ai-techscape",
+  "title": "Meta faces expensive child safety reckoning",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 1265,
+  "paragraphs": [
+    {
+      "en": "Hello, TechScape readers! Danielle Abril, editor of the Guardian’s Reworked series on AI and the future of work, filling in for Blake Montgomery this week. Major legal battles against Meta over child safety are playing out in courts across the US – and the tech giant is losing. Recent rulings raise big questions about social media companies’ responsibility to their youngest users. Meanwhile, more key executives have jumped ship from Google as it battles OpenAI and Anthropic in the race for AI dominance, and Meta’s smartglasses face a fearsome backlash. Let’s dig in!"
+    },
+    {
+      "en": "The pressure on social media giants including Meta is mounting, as courts work through a growing pile of cases and deliver devastating, expensive rulings, one after another. Meta’s repeated losses underscore how serious the child safety crisis has become for social media companies and may force them to change how they operate to avoid further costly legal exposure."
+    },
+    {
+      "en": "The latest blow came last week, after a New Mexico court hit Meta with an order to pay $567m into a teen mental health fund to remediate the harm its platforms have caused children. The penalty adds to the $375m fine already on the court’s books after a jury determined in March that Meta negligently permitted damage to children’s mental health and hid what it knew about child sexual exploitation on its platforms. In a Los Angeles court, also in March, Meta was held liable for $4.2m in damages for designing platforms that addict and hurt children. The California case paved the way for hundreds of plaintiffs who have filed similar cases, which could cost Meta billions and force major changes to its products."
+    },
+    {
+      "en": "But New Mexico is just the latest of many headaches in store for social media companies including Meta. The company is facing 42 lawsuits filed by states across the US , plus thousands more, along with YouTube, TikTok and Snap, brought by state attorneys general, school districts and individual families."
+    },
+    {
+      "en": "At the center of the battle is the growing concern that social media companies harm its youngest users with addictive features that propel issues such as depression, anxiety and suicidal thoughts. The plaintiffs’ goal is to hold companies accountable and enjoin them to change their products – everything from stricter age verification to usage limits and safety banners promoting protection features."
+    },
+    {
+      "en": "“This is a cautionary tale of hubris,” said Karen North, a professor at University of Southern California who studies social media. Tech companies “seemed to believe they had safe harbor, and this wasn’t their problem”."
+    },
+    {
+      "en": "Government-ordered remedies are a partial fix at best. For example, the New Mexico court ordered Meta to improve its age verification tools, which use artificial intelligence to analyze signals such as the ages of users’ friends and the content users post and consume. It also asked Meta to develop a prediction model that could determine if users were under the age of 13. These measures will probably flag more underage users for better protection."
+    },
+    {
+      "en": "But broadly, AI has a track record of misprofiling people , which will probably leave some underage users undetected. Meanwhile, inadequate age verification checks have left Australia’s ban on social media for children under 16 largely ineffective, according to recent research . Only a small percentage of those surveyed were required to provide official ID, and a significant portion said they bypassed the restrictions by using a fake account or a VPN."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "eco-2022-housing",
+  "title": "Why Housing Became Unaffordable",
+  "source": "The Economist",
+  "sourceZh": "《经济学人》",
+  "topic": "经济",
+  "difficulty": 3,
+  "year": 2022,
+  "wordCount": 156,
+  "paragraphs": [
+    {
+      "en": "In city after city, the price of a home has risen far faster than incomes. Young people are finding it ever harder to buy their first property.",
+      "zh": "在一个又一个城市，房价的上涨速度远超收入。年轻人发现自己越来越难以购买第一套房产。"
+    },
+    {
+      "en": "The most common explanation is simple supply and demand. In attractive cities, the number of people wanting to live there keeps growing, while the number of new homes is held back by planning rules.",
+      "zh": "最常见的解释就是简单的供需关系。在有吸引力的城市，想要居住在那里的人数不断增长，而新住房的数量却受到规划法规的制约。"
+    },
+    {
+      "en": "Zoning regulations often restrict where apartments can be built, limiting density and keeping prices high. Some economists argue that relaxing these rules would do more for affordability than any subsidy.",
+      "zh": "分区法规往往限制公寓的建造地点，制约了密度并推高了价格。一些经济学家认为，放宽这些规则比任何补贴更能改善可负担性。"
+    },
+    {
+      "en": "Others point to the role of investors, who buy homes as assets rather than places to live. In some markets, a large share of new housing is snapped up by wealthy buyers from abroad.",
+      "zh": "另一些人则指出投资者的作用——他们把住房当作资产而非居住之所来购买。在一些市场，大量新住房被来自国外的富裕买家抢购一空。"
+    },
+    {
+      "en": "There is no single remedy. Most experts agree that a combination of more construction, smarter planning and curbs on speculative buying would help, even if it cannot solve the problem overnight.",
+      "zh": "没有单一的解决办法。大多数专家认为，增加建设、更明智的规划以及抑制投机性购买的组合拳会有所帮助，即便无法一夜之间解决问题。"
+    }
+  ]
+}

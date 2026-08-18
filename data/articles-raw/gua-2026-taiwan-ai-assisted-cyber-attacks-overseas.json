@@ -1,0 +1,36 @@
+{
+  "id": "gua-2026-taiwan-ai-assisted-cyber-attacks-overseas",
+  "title": "Taiwan says it was hit by ‘abnormal’ AI-assisted cyber-attack",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 608,
+  "paragraphs": [
+    {
+      "en": "Taiwan says it detected AI-assisted cyber-attacks on government agencies that came from overseas last month, a new kind of threat that has been reported as “first-of-a-kind breach”."
+    },
+    {
+      "en": "The Ministry of Digital Affairs (MDA) said its cybersecurity monitoring units ‌detected the “abnormal attack” targeting government agencies, which began on 20 July. The National Institute of Cyber Security issued a series of warning alerts while it investigated."
+    },
+    {
+      "en": "The Financial Times quoted Dream – an Israeli AI company that detected the intrusion – as saying the attackers used open-source AI agents to build an autonomous hacking tool that behaved like a coordinated cyber team, describing it as a first-of-a-kind breach."
+    },
+    {
+      "en": "Related: ‘A statement of freedom’: T-shirt slogan goes viral and book sales rocket in Taiwan after Hong Kong raids"
+    },
+    {
+      "en": "Dream was reported as saying that the tool compromised “at least 85 government user accounts, extracting more than 2,500 personnel records before expanding the attack to Taiwan’s nuclear safety agency and at least seven energy companies”."
+    },
+    {
+      "en": "Taiwan has in recent years complained about what it sees as China’s “hybrid warfare” – from daily military drills near the island to disinformation campaigns and cyber-attacks – as Beijing ramps up military and political pressure ⁠on the democratically governed island to force Taipei to accept its claims of sovereignty."
+    },
+    {
+      "en": "Though Taiwanese officials did not direct accusations at China, the FT on Wednesday reported that China-linked hackers were suspected. Dream did not attribute the attack to a specific group, but said the use of Simplified Chinese in internal communications linked to the hack meant there was a high probability the operator was connected to China, the FT reported."
+    },
+    {
+      "en": "Chinese cyber-attacks on Taiwan’s key infrastructure, from hospitals to banks, rose 6% in 2025 from the previous year to an average of 2.63m attacks a ⁠day, the island’s National Security Bureau said in January, adding some hacks were synchronised with military drills in “hybrid threats” to paralyse the island."
+    }
+  ]
+}

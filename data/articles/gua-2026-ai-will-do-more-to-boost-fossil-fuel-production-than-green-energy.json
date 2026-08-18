@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-ai-will-do-more-to-boost-fossil-fuel-production-than-green-energy",
+  "title": "AI’s potential climate benefits outweighed by role in boosting fossil fuels, study finds",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 374,
+  "paragraphs": [
+    {
+      "en": "AI-driven productivity gains enable more planet-heating pollution from fossil fuels than they avoid from renewables, a study has found.",
+      "zh": "一项研究发现，AI 带来的生产力提升所助长的化石燃料污染，比它通过可再生能源所避免的污染还要多。"
+    },
+    {
+      "en": "Researchers modelled the technical potential for AI to boost clean power generation along with projections for how it can help produce coal, oil and gas. Across 64 scenarios, they found net yearly carbon pollution rose by 0.47-1.8 gigatonnes, or about 1-5% of the energy sector’s annual emissions.",
+      "zh": "研究人员对 AI 提升清洁发电的技术潜力，以及它可能如何帮助开采煤、石油和天然气进行了建模。在 64 种情景中，他们发现每年的净碳污染增加了 0.47 至 1.8 吉吨，约占能源部门年排放量的 1% 至 5%。"
+    },
+    {
+      "en": "The study is the first to quantify the climate impact of AI across the full power sector. Previous research has explored its indirect climate benefits – such as reducing renewable downtime and optimising electricity grids – while ignoring the extra pollution from increasing productivity in drilling oil wells and extracting gas.",
+      "zh": "这是首个量化 AI 对整个电力部门气候影响的研究。此前的研究探讨过它的间接气候效益——例如减少可再生能源的停机时间和优化电网——却忽略了提高油井钻探和天然气开采生产率所带来的额外污染。"
+    },
+    {
+      "en": "“What most studies have done so far … is compare the datacentre energy use with the emissions savings AI has,” said Lynn Kaack, an assistant professor of computer science and public policy at the Hertie School who provided feedback on a draft of the research. “They completely omit this picture of AI causing increases in emissions.”",
+      "zh": "“迄今大多数研究所做的……就是把数据中心能耗与 AI 节省的排放量进行比较，”赫蒂学院的计算机科学与公共政策助理教授林恩·卡克说，她为该研究草案提供了反馈。“他们完全忽略了 AI 导致排放增加这一层面。”"
+    },
+    {
+      "en": "The researchers found net emissions only fell in scenarios where AI did not increase productivity in the fossil fuel sector. If clean and dirty energy facilities were to adopt AI at similar rates, they found, the productivity gains for renewables would have to outpace those for fossil fuels by at least four times for emissions to break even.",
+      "zh": "研究人员发现，只有在 AI 不提高化石燃料部门生产率的那些情景中，净排放才会下降。他们发现，如果清洁与污染能源设施以相似的速度采用 AI，那么可再生能源的生产率提升必须至少是化石燃料的四倍，排放才能达到盈亏平衡。"
+    },
+    {
+      "en": "Holly Alpine, a co-author of the study and a former Microsoft employee who left to co-found the Enabled Emissions campaign group, said the research team used a conservative assumption that AI adoption would happen at the same rate for fossil fuels and renewables.",
+      "zh": "该研究合著者之一霍莉·阿尔派恩曾供职于微软，后来离职与他人共同创立了 Enabled Emissions 倡导组织。她说，研究团队采用了一个保守假设，即化石燃料和可再生能源采用 AI 的速度相同。"
+    },
+    {
+      "en": "“Fossil fuel applications are already happening at scale today – real contracts, real deployment, with evidence from industry operators and financial analysts,” she said. “Renewables applications are still largely at the pilot or academic-study stage – more speculative, more dependent on deployment barriers like permitting and interconnection getting resolved.”",
+      "zh": "“化石燃料的应用如今已经在规模化推进——有真实的合同、真实的部署，有来自行业运营商和金融分析师的证据，”她说，“可再生能源的应用大多仍停留在试点或学术研究阶段——更具投机性，更依赖于许可证和并网等部署障碍得到解决。”"
+    },
+    {
+      "en": "The International Energy Agency estimates that AI could boost technically recoverable oil and gas reserves by 5% and cut the cost of deepwater offshore projects by 10%. Oil and gas executives have been enthusiastic about the extra fuel that AI has allowed them to find, and celebrated its emerging impact as “the next fracking boom”.",
+      "zh": "国际能源署估计，AI 可以使技术上可开采的石油和天然气储量提高 5%，并将深海离岸项目的成本降低 10%。石油和天然气高管们对 AI 帮助他们找到的额外燃料热情高涨，并将其初步影响誉为“下一个压裂热潮”。"
+    }
+  ]
+}

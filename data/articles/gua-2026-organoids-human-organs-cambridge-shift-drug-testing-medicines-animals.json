@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-organoids-human-organs-cambridge-shift-drug-testing-medicines-animals",
+  "title": "‘A mouse can’t tell us what works’: UK scientists to grow miniature human organs for drug testing",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科学",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 685,
+  "paragraphs": [
+    {
+      "en": "Miniature human organs and other tissues are to be grown from NHS patients’ cells in a drive to improve medicine testing and reduce the number of animals used in drug development.",
+      "zh": "为改进药物测试并减少药物研发中使用的动物数量，英国科学家将利用NHS患者的细胞培育微型人类器官及其他组织。"
+    },
+    {
+      "en": "Scientists will use the clumps of tissue to learn how diseases vary between patients, helping them identify which treatments are best for different people based on the particular pathology underlying their condition.",
+      "zh": "科学家将利用这些组织团块来了解疾病在不同患者之间的差异，帮助他们根据不同病症背后的特定病理学，为不同人群确定最合适的治疗方法。"
+    },
+    {
+      "en": "The move marks a shift away from the traditional use of animals as models for human disease, towards what researchers believe will be more accurate and reliable tests based directly on human tissues.",
+      "zh": "此举标志着从传统上把动物用作人类疾病模型，转向研究人员认为更准确、更可靠的、直接基于人类组织的测试。"
+    },
+    {
+      "en": "“It’s going to have a major impact on the numbers of animals used and the way we develop new drugs in the future,” said Matthias Zilbauer, a clinical professor of paediatric gastroenterology at the Cambridge Stem Cell Institute. “We’re not saying there won’t be any animal use in the near or foreseeable future, because there are still certain issues that cannot be tested in these new models, but the reduction is very real.”",
+      "zh": "“这将对使用的动物数量以及我们未来研发新药的方式产生重大影响。”剑桥干细胞研究所小儿胃肠病学临床教授马蒂亚斯·齐尔鲍尔说，“我们并不是说在近期或可预见的将来不会再有动物使用，因为仍有一些问题无法在这些新模型中测试，但减少是实实在在的。”"
+    },
+    {
+      "en": "Researchers have been growing tiny clumps of human organs, known as organoids, for more than a decade. Tests show that pieces smaller than a millimetre can mirror key features of full-scale organs and tissues, including how they falter with disease and respond to drugs.",
+      "zh": "十多年来，研究人员一直在培育被称为类器官的微型人类器官团块。测试表明，不足一毫米的组织块能够再现完整器官和组织的关键特征，包括它们在疾病中的衰退方式以及对药物的反应。"
+    },
+    {
+      "en": "Armed with organoids grown from diseased human tissues, scientists can investigate whether new drug candidates reverse pathological changes in all or a subset of patients, and quickly identify ineffective drugs early in the process.",
+      "zh": "借助由患病人类组织培育的类器官，科学家可以研究新药候选物是否能逆转全部或部分患者的病理改变，并在研发早期迅速识别出无效药物。"
+    },
+    {
+      "en": "Historically, more than 90% of drugs that clear animal testing go on to fail in human trials, raising questions about the value of the tests. US and European medicines regulators now encourage other approaches if available.",
+      "zh": "从历史上看，通过动物试验的药物有90%以上会在人体试验中失败，这使人们对这些试验的价值产生了质疑。美国和欧洲的药品监管机构如今鼓励在可能的情况下采用其他方法。"
+    },
+    {
+      "en": "“A lot of human diseases either do not occur in animals or occur in a different way because they’re not human,” said Zilbauer. “We want tests and models that can tell us which treatments work, and in what patients, and a mouse cannot tell us that.”",
+      "zh": "“很多人类疾病要么不会在动物身上发生，要么因为动物不是人类而以不同方式发生。”齐尔鲍尔说，“我们需要能够告诉我们哪些疗法有效、对哪些患者有效的测试和模型，而一只老鼠无法告诉我们这些。”"
+    }
+  ]
+}

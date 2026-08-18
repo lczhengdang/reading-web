@@ -1,0 +1,36 @@
+{
+  "id": "eco-2021-ai",
+  "title": "Artificial Intelligence at Work",
+  "source": "The Economist",
+  "sourceZh": "《经济学人》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2021,
+  "wordCount": 149,
+  "paragraphs": [
+    {
+      "en": "Artificial intelligence has moved from the laboratory into the workplace, and its arrival has reignited an old debate about machines and jobs.",
+      "zh": "人工智能已从实验室进入工作场所，它的到来重新点燃了关于机器与就业的古老争论。"
+    },
+    {
+      "en": "In the past, machines replaced human muscles. Today's AI, by contrast, is beginning to take on tasks that were thought to require human judgement.",
+      "zh": "过去，机器取代的是人类的肌肉。相比之下，今天的人工智能开始承担那些被认为需要人类判断力的任务。"
+    },
+    {
+      "en": "Automation can destroy jobs, but it can also create them. When machines take over routine work, workers are freed to focus on more complex and creative activities.",
+      "zh": "自动化可以摧毁工作岗位，也可以创造工作岗位。当机器接管日常事务时，工人得以解放出来，专注于更复杂和更具创造性的活动。"
+    },
+    {
+      "en": "The question is whether the transition will be smooth. History suggests that new technologies can cause painful disruption before their benefits spread widely.",
+      "zh": "问题在于这一转变是否顺利。历史表明，新技术在其益处广泛传播之前，可能先造成痛苦的冲击。"
+    },
+    {
+      "en": "Education will be crucial. Workers whose skills become obsolete need the chance to learn new ones, and schools must adapt to teach the abilities machines cannot easily copy.",
+      "zh": "教育将至关重要。技能过时的工人需要学习新技能的机会，学校也必须调整，以教授机器难以复制的本领。"
+    },
+    {
+      "en": "Whether AI proves to be a blessing or a burden will depend less on the technology itself than on the choices societies make about it.",
+      "zh": "人工智能最终是福音还是负担，与其说取决于技术本身，不如说取决于社会围绕它所做出的选择。"
+    }
+  ]
+}

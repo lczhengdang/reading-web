@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-claude-watermark-ai-text-quality-worse",
+  "title": "Claude to start watermarking AI-generated text – but will it make quality worse?",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 642,
+  "paragraphs": [
+    {
+      "en": "The world is familiar by now with the usual tropes of machine-generated text: overuse of the word “delve”, an excess of em dashes, and the chirpy, relentless construction of “it’s not X but Y” .",
+      "zh": "如今，世界已经熟悉了机器生成文本的常见套路：过度使用“delve”一词、滥用破折号，以及那乐呵呵、没完没了的“这不是 X，而是 Y”句式。"
+    },
+    {
+      "en": "But is it about to get even worse?",
+      "zh": "但情况是不是要变得更糟了？"
+    },
+    {
+      "en": "Over the weekend, Anthropic released an update saying it would change how its Claude AI model generated prose. This is to comply with an EU regulation that requires all AI-generated text to be watermarked starting in December.",
+      "zh": "上周末，Anthropic 发布了一项更新，称将改变其 Claude AI 模型生成散文的方式。这是为了遵守一项欧盟法规，该法规要求从 12 月起所有 AI 生成的文本都必须加水印。"
+    },
+    {
+      "en": "Anthropic said the changes would be made at the granular, random level at which its models generated text and would be undetectable to the average reader.",
+      "zh": "Anthropic 表示，这些改动将在其模型生成文本的细粒度、随机层面进行，普通读者无法察觉。"
+    },
+    {
+      "en": "But at least one commentator thinks otherwise. “This entire endeavour is a perverse adulteration of what it means to write,” wrote John Gruber , a veteran tech blogger. He argued the watermark would constrain Claude, forcing it to make worse, less precise word choices overall. While it may not make the model’s writing less accurate, he suggested these limits would make it worse.",
+      "zh": "但至少有一位评论者不这么看。“这整件事是对‘写作’含义的变态掺假，”资深科技博主约翰·格鲁伯写道。他认为水印会束缚 Claude，迫使它在整体上做出更差、更不精准的用词选择。虽然这可能不会让模型的写作在准确性上打折扣，但他认为这些限制会让质量变得更糟。"
+    },
+    {
+      "en": "Related: Are Microsoft’s AI plans being held back by a shortage of chips?",
+      "zh": "相关报道：微软的 AI 计划是否正被芯片短缺所拖累？"
+    },
+    {
+      "en": "There is a stochastic element in the small choices that an AI model makes in framing a sentence: whether it chooses to call a day “grey” or “overcast” , for example, or refers to a running water as a “stream” or a “brook”.",
+      "zh": "AI 模型在组织句子时会做出一些细小的随机选择：例如，它会把一天形容为“灰蒙蒙的”还是“阴沉的”，会把流动的水称为“溪流”还是“小溪”。"
+    },
+    {
+      "en": "Anthropic’s new watermark will alter these random choices, it said, leaving a pattern that will be detectable to Anthropic itself, and to those who have a key to decode it.",
+      "zh": "Anthropic 表示，新的水印将改变这些随机选择，留下一种可以被 Anthropic 自身以及持有解码密钥的人检测到的模式。"
+    }
+  ]
+}

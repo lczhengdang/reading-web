@@ -1,0 +1,36 @@
+{
+  "id": "gua-2026-ai-will-do-more-to-boost-fossil-fuel-production-than-green-energy",
+  "title": "AI’s potential climate benefits outweighed by role in boosting fossil fuels, study finds",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 722,
+  "paragraphs": [
+    {
+      "en": "AI-driven productivity gains enable more planet-heating pollution from fossil fuels than they avoid from renewables, a study has found."
+    },
+    {
+      "en": "Researchers modelled the technical potential for AI to boost clean power generation along with projections for how it can help produce coal, oil and gas. Across 64 scenarios, they found net yearly carbon pollution rose by 0.47-1.8 gigatonnes, or about 1-5% of the energy sector’s annual emissions."
+    },
+    {
+      "en": "The study is the first to quantify the climate impact of AI across the full power sector. Previous research has explored its indirect climate benefits – such as reducing renewable downtime and optimising electricity grids – while ignoring the extra pollution from increasing productivity in drilling oil wells and extracting gas."
+    },
+    {
+      "en": "“What most studies have done so far … is compare the datacentre energy use with the emissions savings AI has,” said Lynn Kaack, an assistant professor of computer science and public policy at the Hertie School who provided feedback on a draft of the research. “They completely omit this picture of AI causing increases in emissions.”"
+    },
+    {
+      "en": "The researchers found net emissions only fell in scenarios where AI did not increase productivity in the fossil fuel sector. If clean and dirty energy facilities were to adopt AI at similar rates, they found, the productivity gains for renewables would have to outpace those for fossil fuels by at least four times for emissions to break even."
+    },
+    {
+      "en": "Holly Alpine, a co-author of the study and a former Microsoft employee who left to co-found the Enabled Emissions campaign group, said the research team used a conservative assumption that AI adoption would happen at the same rate for fossil fuels and renewables."
+    },
+    {
+      "en": "“Fossil fuel applications are already happening at scale today – real contracts, real deployment, with evidence from industry operators and financial analysts,” she said. “Renewables applications are still largely at the pilot or academic-study stage – more speculative, more dependent on deployment barriers like permitting and interconnection getting resolved.”"
+    },
+    {
+      "en": "The International Energy Agency estimates that AI could boost technically recoverable oil and gas reserves by 5% and cut the cost of deepwater offshore projects by 10%. Oil and gas executives have been enthusiastic about the extra fuel that AI has allowed them to find, and celebrated its emerging impact as “the next fracking boom”."
+    }
+  ]
+}

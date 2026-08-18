@@ -1,0 +1,36 @@
+{
+  "id": "gua-2026-claude-watermark-ai-text-quality-worse",
+  "title": "Claude to start watermarking AI-generated text – but will it make quality worse?",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 642,
+  "paragraphs": [
+    {
+      "en": "The world is familiar by now with the usual tropes of machine-generated text: overuse of the word “delve”, an excess of em dashes, and the chirpy, relentless construction of “it’s not X but Y” ."
+    },
+    {
+      "en": "But is it about to get even worse?"
+    },
+    {
+      "en": "Over the weekend, Anthropic released an update saying it would change how its Claude AI model generated prose. This is to comply with an EU regulation that requires all AI-generated text to be watermarked starting in December."
+    },
+    {
+      "en": "Anthropic said the changes would be made at the granular, random level at which its models generated text and would be undetectable to the average reader."
+    },
+    {
+      "en": "But at least one commentator thinks otherwise. “This entire endeavour is a perverse adulteration of what it means to write,” wrote John Gruber , a veteran tech blogger. He argued the watermark would constrain Claude, forcing it to make worse, less precise word choices overall. While it may not make the model’s writing less accurate, he suggested these limits would make it worse."
+    },
+    {
+      "en": "Related: Are Microsoft’s AI plans being held back by a shortage of chips?"
+    },
+    {
+      "en": "There is a stochastic element in the small choices that an AI model makes in framing a sentence: whether it chooses to call a day “grey” or “overcast” , for example, or refers to a running water as a “stream” or a “brook”."
+    },
+    {
+      "en": "Anthropic’s new watermark will alter these random choices, it said, leaving a pattern that will be detectable to Anthropic itself, and to those who have a key to decode it."
+    }
+  ]
+}

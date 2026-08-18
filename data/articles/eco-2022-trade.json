@@ -1,0 +1,36 @@
+{
+  "id": "eco-2022-trade",
+  "title": "The Unravelling of Global Trade",
+  "source": "The Economist",
+  "sourceZh": "《经济学人》",
+  "topic": "经济",
+  "difficulty": 4,
+  "year": 2022,
+  "wordCount": 199,
+  "paragraphs": [
+    {
+      "en": "For decades, world trade grew twice as fast as world output. That era appears to be ending. Governments now speak of resilience, security and self-sufficiency more often than of efficiency and open markets.",
+      "zh": "数十年来，世界贸易的增速是全球产出的两倍。那个时代似乎正在走向终结。各国政府如今谈论韧性、安全和自给自足的频率，已超过了对效率和开放市场的讨论。"
+    },
+    {
+      "en": "The causes are familiar: a pandemic that exposed fragile supply chains, a war that revealed the dangers of depending on rivals for energy and food, and a rising suspicion that trade creates losers as well as winners.",
+      "zh": "原因并不陌生：一场疫情暴露了供应链的脆弱，一场战争揭示了在能源和粮食上依赖对手的危险，以及一种日益加深的怀疑——贸易在创造赢家的同时也制造了输家。"
+    },
+    {
+      "en": "The response has been a wave of subsidies and restrictions. Governments pour money into domestic chip factories, batteries and critical minerals, hoping to move production closer to home and away from unfriendly states.",
+      "zh": "应对措施是一波补贴与管制浪潮。各国政府向本国芯片工厂、电池和关键矿产大量注资，希望把生产迁回国内、远离不友好的国家。"
+    },
+    {
+      "en": "Some of this caution is sensible. No country should rely entirely on rivals for the materials its industries need. But blanket self-sufficiency is an expensive illusion: no nation can produce everything it uses.",
+      "zh": "其中一些谨慎是合理的。任何国家都不应在其产业所需的材料上完全依赖对手。但全面自给自足是一种昂贵的幻想：没有一个国家能够生产它所用的一切。"
+    },
+    {
+      "en": "The cost of fragmentation will be borne unevenly. Poor countries, which gained employment and technology through trade, have the most to lose. Rich ones will pay higher prices for less variety.",
+      "zh": "碎片化的代价将被不均匀地承担。通过贸易获得就业和技术的贫穷国家将受损最大。富裕国家则将为更少的商品种类支付更高的价格。"
+    },
+    {
+      "en": "Trade made nations richer precisely because it let them specialize. The challenge for policymakers is to rebuild trust around that idea, not to dismantle the machine that still delivers prosperity.",
+      "zh": "贸易之所以让各国变得更富裕，正是因为它让各国能够专业化分工。决策者的挑战在于围绕这个理念重建信任，而不是去拆毁这台仍在创造繁荣的机器。"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-meta-child-safety-google-executives-ai-techscape",
+  "title": "Meta faces expensive child safety reckoning",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 1265,
+  "paragraphs": [
+    {
+      "en": "Hello, TechScape readers! Danielle Abril, editor of the Guardian’s Reworked series on AI and the future of work, filling in for Blake Montgomery this week. Major legal battles against Meta over child safety are playing out in courts across the US – and the tech giant is losing. Recent rulings raise big questions about social media companies’ responsibility to their youngest users. Meanwhile, more key executives have jumped ship from Google as it battles OpenAI and Anthropic in the race for AI dominance, and Meta’s smartglasses face a fearsome backlash. Let’s dig in!",
+      "zh": "各位 TechScape 读者，大家好！我是《卫报》关于 AI 与未来工作的 Reworked 系列的编辑丹妮尔·阿布里尔，本周代替布莱克·蒙哥马利主持本栏目。针对 Meta 的儿童安全重大法律诉讼正在美国各地的法院展开——而这科技巨头正在节节败退。最近的裁决引发了对社交媒体公司对最年轻用户责任的重大质疑。与此同时，在争夺 AI 主导权的竞赛中与 OpenAI 和 Anthropic 角力的谷歌，又有更多关键高管出走；而 Meta 的智能眼镜正面临强烈的抵制。让我们开始吧！"
+    },
+    {
+      "en": "The pressure on social media giants including Meta is mounting, as courts work through a growing pile of cases and deliver devastating, expensive rulings, one after another. Meta’s repeated losses underscore how serious the child safety crisis has become for social media companies and may force them to change how they operate to avoid further costly legal exposure.",
+      "zh": "随着法院处理越来越多的案件，并一项接一项地作出毁灭性、代价高昂的裁决，包括 Meta 在内的社交媒体巨头面临的压力正不断加大。Meta 屡屡败诉，凸显出儿童安全危机对社交媒体公司而言已变得多么严重，并可能迫使它们改变运营方式，以避免进一步付出高昂的法律代价。"
+    },
+    {
+      "en": "The latest blow came last week, after a New Mexico court hit Meta with an order to pay $567m into a teen mental health fund to remediate the harm its platforms have caused children. The penalty adds to the $375m fine already on the court’s books after a jury determined in March that Meta negligently permitted damage to children’s mental health and hid what it knew about child sexual exploitation on its platforms. In a Los Angeles court, also in March, Meta was held liable for $4.2m in damages for designing platforms that addict and hurt children. The California case paved the way for hundreds of plaintiffs who have filed similar cases, which could cost Meta billions and force major changes to its products.",
+      "zh": "最新一击发生在上周，新墨西哥州一家法院命令 Meta 向一个青少年心理健康基金支付 5.67 亿美元，以修复其平台对儿童造成的伤害。此前，陪审团于今年 3 月裁定 Meta 因疏忽而纵容其平台损害儿童心理健康，并隐瞒其所知的平台上儿童性剥削情况，法院因此已对其处以 3.75 亿美元罚款。同在 3 月，洛杉矶一家法院认定 Meta 因设计令儿童上瘾并伤害他们的平台而须赔偿 420 万美元。加州这起案件为数百名提起类似诉讼的原告铺平了道路，这些诉讼可能让 Meta 付出数十亿美元的代价，并迫使其对产品做出重大改变。"
+    },
+    {
+      "en": "But New Mexico is just the latest of many headaches in store for social media companies including Meta. The company is facing 42 lawsuits filed by states across the US , plus thousands more, along with YouTube, TikTok and Snap, brought by state attorneys general, school districts and individual families.",
+      "zh": "但新墨西哥州只是包括 Meta 在内的社交媒体公司未来要面对的众多麻烦中最新的一个。该公司正面临美国各州提起的 42 起诉讼，此外还有各州总检察长、学区和个人家庭针对其及 YouTube、TikTok 和 Snap 提起的数千起诉讼。"
+    },
+    {
+      "en": "At the center of the battle is the growing concern that social media companies harm its youngest users with addictive features that propel issues such as depression, anxiety and suicidal thoughts. The plaintiffs’ goal is to hold companies accountable and enjoin them to change their products – everything from stricter age verification to usage limits and safety banners promoting protection features.",
+      "zh": "这场斗争的核心，是人们对社交媒体公司通过令人上瘾的功能伤害最年轻用户的担忧日益加剧，这些功能会加剧抑郁、焦虑和自杀念头等问题。原告的目标是追究这些公司的责任，并强制它们改变产品——从更严格的年龄验证，到使用时限，再到推广保护功能的安全横幅。"
+    },
+    {
+      "en": "“This is a cautionary tale of hubris,” said Karen North, a professor at University of Southern California who studies social media. Tech companies “seemed to believe they had safe harbor, and this wasn’t their problem”.",
+      "zh": "“这是一个关于狂妄自大的警示故事，”研究社交媒体的南加州大学教授凯伦·诺斯说。科技公司“似乎相信自己享有安全港，认为这不是它们的问题”。"
+    },
+    {
+      "en": "Government-ordered remedies are a partial fix at best. For example, the New Mexico court ordered Meta to improve its age verification tools, which use artificial intelligence to analyze signals such as the ages of users’ friends and the content users post and consume. It also asked Meta to develop a prediction model that could determine if users were under the age of 13. These measures will probably flag more underage users for better protection.",
+      "zh": "政府下令的补救措施充其量只是部分解决。例如，新墨西哥州法院命令 Meta 改进其年龄验证工具，这些工具使用人工智能来分析各种信号，例如用户朋友的年龄以及用户发布和消费的内容。法院还要求 Meta 开发一个预测模型，以判断用户是否未满 13 岁。这些措施可能会识别出更多未成年用户，以便更好地保护他们。"
+    },
+    {
+      "en": "But broadly, AI has a track record of misprofiling people , which will probably leave some underage users undetected. Meanwhile, inadequate age verification checks have left Australia’s ban on social media for children under 16 largely ineffective, according to recent research . Only a small percentage of those surveyed were required to provide official ID, and a significant portion said they bypassed the restrictions by using a fake account or a VPN.",
+      "zh": "但总体而言，AI 在给人错误画像方面劣迹斑斑，这可能会让一些未成年用户漏网。与此同时，根据最近的研究，不充分的年龄验证核查已使澳大利亚禁止 16 岁以下儿童使用社交媒体的禁令基本形同虚设。在接受调查的人中，只有一小部分被要求提供官方身份证明，还有相当一部分人表示，他们通过使用假账号或 VPN 绕过了限制。"
+    }
+  ]
+}

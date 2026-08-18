@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-ai-agents-arent-legally-responsible-for-any-harm-that-they-cause-experts-say-so-who-is",
+  "title": "AI agents aren’t legally responsible for any harm that they cause, experts say. So who is?",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 218,
+  "paragraphs": [
+    {
+      "en": "The law is clear, says Prof Jeannie Paterson. “If I deploy an AI agent and it causes harm to someone else, I am responsible for that harm.",
+      "zh": "法律是明确的，珍妮·帕特森教授说：“如果我部署了一个 AI 智能体，它给他人造成了伤害，我就该为那伤害负责。”"
+    },
+    {
+      "en": "“Even if I didn’t intend for that to happen, it was foreseeable, and I should be taking responsibility.”",
+      "zh": "“即使我并非有意让那件事发生，它是可预见的，我就应该承担责任。”"
+    },
+    {
+      "en": "However, the director of the University of Melbourne’s Centre for AI and Digital Ethics acknowledges there is also a good deal of scope for legal and ethical “murkiness” around actions perpetrated by automated agents, after Australia’s first known agentic AI “accident”.",
+      "zh": "然而，这位墨尔本大学人工智能与数字伦理中心主任也承认，在澳大利亚发生首起已知的“智能体 AI 事故”之后，围绕自动化智能体所作所为的法律与伦理“模糊地带”仍有相当大的空间。"
+    },
+    {
+      "en": "An agent is an autonomous software system that, tasked with pursuing a goal, can do it without human oversight – every step of the way.",
+      "zh": "智能体是一种自主软件系统，在被赋予一个目标后，它可以在没有人类监督的情况下全程自主完成任务。"
+    },
+    {
+      "en": "This week the ABC reported on the case of Andrew, an AI expert who went only by his first name, who asked his agentic program to book some gym classes for him.",
+      "zh": "本周，澳大利亚广播公司报道了安德鲁的案例。这位 AI 专家只公布了名字，他让自己的智能体程序帮忙预订几节健身课程。"
+    },
+    {
+      "en": "Related: One of science fiction’s greatest writers warned us about a AI. Does he also hold the remedy? | Alan Finkel",
+      "zh": "相关报道：科幻小说最伟大的作家之一曾就 AI 向我们发出警告。他是否也掌握了解药？| 艾伦·芬克尔"
+    },
+    {
+      "en": "After being informed he was fourth on a waitlist for a class, Andrew asked the agent if it was possible to move him up the list.",
+      "zh": "在被告知自己在某门课程的候补名单上排第四后，安德鲁问智能体，是否有办法让自己在名单上提前。"
+    },
+    {
+      "en": "To his shock, his agent hacked his gym’s software system and booted another member off a waitlist so he could get into a class sooner.",
+      "zh": "令他震惊的是，他的智能体黑进了健身房的软件系统，把另一名会员从候补名单上挤了下去，这样他就能更快进入课程。"
+    }
+  ]
+}

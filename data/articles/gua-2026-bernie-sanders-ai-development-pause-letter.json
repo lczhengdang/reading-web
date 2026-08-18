@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-bernie-sanders-ai-development-pause-letter",
+  "title": "Bernie Sanders calls on Silicon Valley to ‘pause AI development’ in interest of humanity",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 596,
+  "paragraphs": [
+    {
+      "en": "Senator Bernie Sanders has called on Meta, OpenAI and Anthropic executives to halt their development of artificial intelligence, warning that the US Senate will implement regulation if the companies continue deploying AI at their current pace.",
+      "zh": "参议员伯尼·桑德斯呼吁 Meta、OpenAI 和 Anthropic 的高管暂停开发人工智能，并警告说，如果这些公司继续以当前的速度部署 AI，美国参议院将实施监管。"
+    },
+    {
+      "en": "In a new letter addressed to the CEOs of three of the country’s leading AI companies, Sanders said the capabilities of these AI models have reached a critical risk threshold and that the companies are losing control over the technology.",
+      "zh": "在致这三家美国领先 AI 公司 CEO 的一封新信中，桑德斯表示，这些 AI 模型的能力已达到一个关键的风险阈值，而这些公司正逐渐失去对这项技术的控制。"
+    },
+    {
+      "en": "“Mr. Altman, Mr. Amodei and Mr. Zuckerberg: In the interest of humanity, stand by your words. Pause AI development,” Sanders’s letter, first reported by Axios , read. “It is not too late to avoid disaster. Stop building machines that humans cannot control.”",
+      "zh": "“奥特曼先生、阿莫迪先生和扎克伯格先生：为了人类的利益，请信守你们自己的话。暂停 AI 的开发。”桑德斯这封最先由 Axios 报道的信中写道，“现在避免灾难还为时不晚。请停止制造人类无法控制的机器。”"
+    },
+    {
+      "en": "The Vermont senator cited recent reports that AI was used to develop new viruses , warning that if this technology fell into the “wrong hands” it might “lead to new bioweapons that result in the deaths of tens of millions of people”.",
+      "zh": "这位佛蒙特州参议员援引了最近的报道，称 AI 已被用于研发新型病毒，并警告说，如果这项技术落入“别有用心者之手”，可能“催生新的生物武器，导致数千万人死亡”。"
+    },
+    {
+      "en": "All three companies have also disclosed their models hacked other companies’ servers, a sign that the firms have lost control over their models, Sanders wrote.",
+      "zh": "桑德斯写道，这三家公司还都披露了它们开发的模型曾入侵其他公司的服务器，这标志着这些公司已经失去了对自己模型的控制。"
+    },
+    {
+      "en": "“Yoshua Bengio, the most cited living scientist in the world, said these incidents ‘should serve as a wake-up call,’ I agree,” Sanders wrote in the letter.",
+      "zh": "“约书亚·本吉奥——全球被引用次数最多的在世科学家——说这些事件‘应当敲响警钟’，我同意。”桑德斯在信中写道。"
+    },
+    {
+      "en": "Experts, however, have cautioned that OpenAI’s claims that its AI model went rogue may be overblown as part of a media campaign to make their technology seem highly dangerous, and thus extremely powerful.",
+      "zh": "然而，专家们提醒说，OpenAI 关于其 AI 模型失控的说法可能被夸大了，这也许是其媒体宣传策略的一部分，目的是让自己的技术显得极度危险，因而也就极其强大。"
+    },
+    {
+      "en": "“And yet, at a moment when we have seen human loss of control and the creation of potentially dangerous viruses, your companies are still racing ahead – investing tens of billions of dollars into a technology that nobody can fully understand, predict or control,” he continued.",
+      "zh": "“然而，就在我们目睹人类失去控制、可能致命的病毒被制造出来的时候，你们的公司仍在全速前进——把数百亿美元投入一种没有人能完全理解、预测或控制的技术，”他继续说道。"
+    }
+  ]
+}

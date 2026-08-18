@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-nvidia-wall-street-finance-ai-infrastructure",
+  "title": "Nvidia links with Wall Street firms for $500bn AI financing deal",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 553,
+  "paragraphs": [
+    {
+      "en": "Nvidia ⁠has struck a deal with six large Wall Street firms to raise ⁠more than $500bn (£370bn) to fund the datacentres, chip factories and power stations needed to fuel the artificial intelligence boom.",
+      "zh": "英伟达已与华尔街六大巨头达成协议，筹集超过 5000 亿美元（3700 亿英镑），为驱动人工智能繁荣所需的数据中心、芯片工厂和发电厂提供资金。"
+    },
+    {
+      "en": "The Nvidia chief executive, Jensen Huang, said on X that it marked “a major milestone for Nvidia and the AI industry”, as he posted a photo of himself smiling and giving a thumbs up alongside finance bosses involved in the deal, including the head of Goldman Sachs, David Solomon.",
+      "zh": "英伟达首席执行官黄仁勋在 X 平台上表示，这标志着“英伟达和 AI 行业的一个重大里程碑”，他还发布了一张自己与参与该交易的多位金融高管合影、微笑竖大拇指的照片，其中包括高盛负责人戴维·所罗门。"
+    },
+    {
+      "en": "He confirmed that Nvidia, which has a market value of $5.3tn, had signed memorandums of understanding with Goldman, Apollo, BlackRock, Blackstone, Brookfield and KKR to offer funding for what the industry calls “compute”, referring to hardware such as datacentres and chips that are used to run train and build AI.",
+      "zh": "他证实，市值 5.3 万亿美元的英伟达已与高盛、阿波罗、贝莱德、黑石、布鲁克菲尔德和 KKR 签署谅解备忘录，为业界所称的“算力”提供资金——算力指用于运行、训练和构建 AI 的数据中心和芯片等硬件。"
+    },
+    {
+      "en": "“Many great AI companies, enterprises and AI clouds have demand for compute but do not yet have access to financing at the scale or cost required to build quickly,” Huang said, adding that the funding “will make AI factories more accessible to the companies, industries and nations building the future”.",
+      "zh": "“许多优秀的 AI 公司、企业和 AI 云都有算力需求，但目前还无法获得以所需规模和成本快速建设所需的融资，”黄仁勋说，并补充道，这笔资金“将使 AI 工厂对正在构建未来的公司、行业和国家更加触手可及”。"
+    },
+    {
+      "en": "The move highlights how rising demand ⁠for AI computing capacity is drawing institutional investors, as governments, companies and ​startups race to build out ‌datacentres. Big tech companies have signalled that spending on AI ‌was likely to surpass $730bn this year. However, there have been concerns over the link between high valuations of tech companies and the need for vast investments to support their ambitions .",
+      "zh": "这一举措凸显出，随着政府、企业和初创公司竞相建设数据中心，对 AI 计算能力日益增长的需求正在吸引机构投资者。大型科技公司已发出信号，今年在 AI 上的支出可能超过 7300 亿美元。然而，人们一直担忧科技公司的高估值与支撑其雄心所需的巨额投资之间的联系。"
+    },
+    {
+      "en": "Last month, the Bank of England warned that AI developments could pose a risk to financial stability, particularly if the companies who take on debt fail to deliver sustainable profits, or face big disruptions.",
+      "zh": "上个月，英格兰银行警告说，AI 的发展可能对金融稳定构成风险，尤其是当承担债务的公司未能实现可持续利润，或遭遇重大冲击时。"
+    },
+    {
+      "en": "“The pace of investment is unprecedented historically,” the Bank of England said in its financial stability report in July, noting that AI companies were increasingly taking on debt “to support investment in infrastructure”.",
+      "zh": "“投资的步伐在历史上是前所未有的，”英格兰银行在 7 月的金融稳定报告中表示，并指出 AI 公司越来越多地举债“为基础设施投资提供支持”。"
+    },
+    {
+      "en": "“If the scale of AI debt financing grows as expected over the coming years, an adverse shock to AI companies that results in losses or affects their ability to service debt could more materially affect global financing conditions,” it said, suggesting that it could lead to a credit crunch in which it would be harder and more expensive for businesses and households to secure loans.",
+      "zh": "“如果未来几年 AI 债务融资的规模如预期那样增长，那么对 AI 公司的不利冲击——导致亏损或影响其偿债能力——可能对全球融资环境造成更实质性的影响，”它说，并暗示这可能导致信贷紧缩，企业和家庭获得贷款将更加困难、成本更高。"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-mark-zuckerberg-superintelligent-ai-essay-meta",
+  "title": "Zuckerberg pushes ‘superintelligent’ AI for all as Meta releases open-weight model",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 936,
+  "paragraphs": [
+    {
+      "en": "Mark Zuckerberg published a lengthy essay on Monday detailing his views on artificial intelligence and announced several plans for how Meta would develop the technology in the future. The CEO’s essay went online the same day as Meta released a new, open-weight AI model that seeks to rival Anthropic and OpenAI’s products called Muse Glimmer.",
+      "zh": "马克·扎克伯格周一发表了一篇长篇随笔，阐述了他对人工智能的看法，并宣布了 Meta 未来将如何开发这项技术的多项计划。这位 CEO 的随笔上线当天，Meta 也发布了一款新的开源权重 AI 模型，名为 Muse Glimmer，试图与 Anthropic 和 OpenAI 的产品一较高下。"
+    },
+    {
+      "en": "Over the course of more than 6,000 words in a post titled The Future is for Everyone, Zuckerberg addressed a range of topics related to AI that included datacenters, government regulation, cybersecurity, the creation of bioweapons, labor market disruption, surveillance powers and more. The essay presented a utopian vision of AI as a personalized “superintelligence” – using the word 60 times.",
+      "zh": "在这篇题为《未来属于每个人》的超过 6000 字的文章中，扎克伯格谈到了与 AI 相关的一系列话题，包括数据中心、政府监管、网络安全、生物武器的制造、劳动力市场颠覆、监控权力等等。这篇随笔描绘了一种乌托邦式的愿景，把 AI 视为个性化的“超级智能”——这个词被使用了 60 次。"
+    },
+    {
+      "en": "“Some argue that superintelligence itself or a small set of experts who control it should decide what is best for humanity. We disagree,” Zuckerberg wrote.",
+      "zh": "“有人认为，超级智能本身，或掌控它的少数专家，应该决定什么对人类最有利。我们不同意。”扎克伯格写道。"
+    },
+    {
+      "en": "Central to Zuckerberg’s post was an argument for free-to-download, open-weight AI models – like the kind Meta develops – and a lack of government regulation of artificial intelligence. Zuckerberg’s stance sets him and Meta apart from industry leaders OpenAI and Anthropic, which have argued that open-source AI is dangerous. The two frontier labs have released proprietary AI products and argued that cutting-edge models should remain tightly controlled by the companies that build them.",
+      "zh": "扎克伯格这篇文章的核心，是为免费下载的开源权重 AI 模型（例如 Meta 开发的那种）辩护，并主张政府不应监管人工智能。扎克伯格的立场使他与 Meta 站在了行业领头羊 OpenAI 和 Anthropic 的对立面，后者认为开源 AI 是危险的。这两家前沿实验室推出了专有的 AI 产品，并主张尖端模型应当由制造它们的公司牢牢掌控。"
+    },
+    {
+      "en": "Related: Crew of Zuckerberg yacht did not hear radio call to assist boat, Meta says",
+      "zh": "相关报道：Meta 称扎克伯格游艇上的船员没有听到要求协助救援的无线电呼叫"
+    },
+    {
+      "en": "Zuckerberg’s post comes as Silicon Valley is engaged in a heated debate over how to regulate AI development, which has involved the creation of a secret White House framework for testing new models and an ongoing debate over whether to restrict the use of Chinese-made open-source AI. As Anthropic and OpenAI have surged ahead in the AI industry, competitors such as Meta have also grown wary of their dominance and sought to position their open models as alternatives.",
+      "zh": "扎克伯格发文之际，硅谷正就如何监管 AI 发展展开激烈辩论，其间涉及制定一个秘密的白宫新模型测试框架，以及一场关于是否应限制使用中国制造的开源 AI 的持续争论。随着 Anthropic 和 OpenAI 在 AI 行业中突飞猛进，Meta 等竞争对手也越来越警惕它们的主导地位，并力图将自己开放模型定位为替代选择。"
+    },
+    {
+      "en": "Zuckerberg framed Meta’s pursuit of open-weight AI as a more democratic version of the technology and one that will create a “balance of power” between users, whether that involves states, companies or individuals. His plans also called for letting users decide what “values” an AI model should have, as opposed to a company encoding it with rigid guardrails and beliefs.",
+      "zh": "扎克伯格将 Meta 对开源权重 AI 的追求描述为一种更具民主色彩的技术形态，并称它将在用户之间——无论是国家、公司还是个人——营造一种“权力平衡”。他的计划还主张让用户决定 AI 模型应当具备什么样的“价值观”，而不是由公司用僵化的护栏和信念去编码。"
+    },
+    {
+      "en": "Related: An AI agent for all? Try using your brain, Mark Zuckerberg",
+      "zh": "相关报道：人人都有 AI 智能体？马克·扎克伯格，还是先动动脑子吧"
+    }
+  ]
+}

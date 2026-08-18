@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-plymouth-university-spinout-water-quality-app-uk-us-waters-molendotech-e-coli",
+  "title": "University spinout to launch water quality app for UK and US waters",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "经济",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 734,
+  "paragraphs": [
+    {
+      "en": "A UK university spinout behind a rapid bacterial water testing kit is planning to launch live water quality maps, as scores of beachgoers report falling ill after swimming.",
+      "zh": "在众多海滩游客报告游泳后生病之际，一家推出快速细菌水质检测试剂盒的英国大学衍生公司正计划发布实时水质地图。"
+    },
+    {
+      "en": "Molendotech, a spinout from the University of Plymouth, sells a portable test that detects E coli and other bacteria in water and delivers results on the spot, without waiting for days to get laboratory results.",
+      "zh": "普利茅斯大学（University of Plymouth）的衍生公司Molendotech销售一种便携式检测工具，可检测水中的大肠杆菌和其他细菌，并当场得出结果，无需等待数天拿到实验室报告。"
+    },
+    {
+      "en": "Molendotech is now working on an app that will map water quality across Britain and the US, collating data from daily water tests with rain flow and tidal flows and using artificial intelligence to create predictive models. A launch is planned in the UK and US in October.",
+      "zh": "Molendotech目前正在开发一款应用，将把英国和美国的水质情况绘制成地图，把每日水质检测数据与降雨径流和潮汐流动数据整合起来，并利用人工智能创建预测模型。计划于10月在英美两国推出。"
+    },
+    {
+      "en": "There have been increasing calls for the government to step up water testing, amid numerous incidents of water pollution and sewage spills in recent years that have contaminated rivers and sea waters in popular locations.",
+      "zh": "近年来，水污染和污水泄漏事件频发，污染了热门景点的河流和海水，要求政府加强水质检测的呼声日益高涨。"
+    },
+    {
+      "en": "The campaign group Surfers Against Sewage has received 164 reports of sickness so far this year from beachgoers, mostly gastroenteritis but also ear and skin infections and other health problems.",
+      "zh": "活动组织“冲浪者反污水”（Surfers Against Sewage）今年迄今已收到164份海滩游客生病的报告，其中多数是肠胃炎，也有耳部感染、皮肤感染和其他健康问题。"
+    },
+    {
+      "en": "“Rivers are probably worse in the UK than in Europe,” said Simon Jackson, professor of environment and human health at Plymouth University and chief scientific officer of Molendotech.",
+      "zh": "“英国的河流状况可能比欧洲更糟，”普利茅斯大学环境与人类健康教授、Molendotech首席科学官西蒙·杰克逊（Simon Jackson）说。"
+    },
+    {
+      "en": "He founded the company in 2018 when he and his team developed a first version of the test, partly prompted by his stepdaughter getting conjunctivitis and a throat infection, requiring antibiotics, after swimming in the sea.",
+      "zh": "他于2018年创立这家公司，当时他和团队开发出第一版检测工具，部分原因是他的继女在海里游泳后患了结膜炎和咽喉感染，需要服用抗生素。"
+    },
+    {
+      "en": "“What we’re providing is a tool to enable companies or individuals or groups to test the water because it’s easy to use and portable,” he said. “You can test the water repeatedly on the same day. You get a result in real time, whereas currently you’re having to wait one or two days to get a result.”",
+      "zh": "“我们提供的是一个工具，让公司、个人或团体都能检测水质，因为它易于使用、便于携带，”他说，“你可以在同一天反复检测。你能实时得到结果，而目前你需要等上一两天才能拿到结果。”"
+    }
+  ]
+}

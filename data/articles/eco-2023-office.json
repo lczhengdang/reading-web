@@ -1,0 +1,40 @@
+{
+  "id": "eco-2023-office",
+  "title": "The Return of the Office",
+  "source": "The Economist",
+  "sourceZh": "《经济学人》",
+  "topic": "社会",
+  "difficulty": 3,
+  "year": 2023,
+  "wordCount": 211,
+  "paragraphs": [
+    {
+      "en": "After more than two years of remote work, many companies are asking their employees to come back to the office. The change has not been welcomed by everyone.",
+      "zh": "在远程工作超过两年之后，许多公司正在要求员工回到办公室。这一变化并非受到所有人的欢迎。"
+    },
+    {
+      "en": "Some workers argue that remote work made them more productive. Without the daily commute, they saved time and money, and they could focus on tasks without interruptions from colleagues.",
+      "zh": "一些员工认为远程工作让他们效率更高。没有了日常通勤，他们节省了时间和金钱，并且可以不受同事干扰地专注于任务。"
+    },
+    {
+      "en": "Managers, however, worry that working from home weakens the bonds that hold teams together. New ideas often emerge from casual conversations by the coffee machine, not from scheduled video calls.",
+      "zh": "然而，管理者担心在家工作会削弱维系团队的纽带。新想法往往产生于咖啡机旁的随意交谈，而非事先安排的视频会议。"
+    },
+    {
+      "en": "Research offers a mixed picture. Studies of large technology firms found that fully remote workers were slightly less productive, but that the effect was small and varied across tasks.",
+      "zh": "研究呈现的结果好坏参半。针对大型科技公司的研究发现，完全远程的员工效率略低，但影响很小，且因任务类型而异。"
+    },
+    {
+      "en": "Perhaps the answer is not a simple choice between office and home. Many firms are adopting a hybrid model, in which employees come in a few days a week and work from home on the rest.",
+      "zh": "也许答案并不是在办公室与家庭之间做简单选择。许多公司正在采用混合模式，员工每周来办公室几天，其余时间在家工作。"
+    },
+    {
+      "en": "Hybrid work requires careful planning. If most employees choose the same days, desks become crowded; if they scatter, the office feels empty and the commute seems wasteful.",
+      "zh": "混合办公需要精心规划。如果大多数员工选择相同的日子，办公桌会变得拥挤；如果他们分散，办公室又会显得空旷，通勤似乎也变得浪费。"
+    },
+    {
+      "en": "Whatever the arrangement, the debate reflects a deeper question about the purpose of the workplace. Is it merely a place to produce output, or a community where people learn from one another?",
+      "zh": "无论采取何种安排，这场争论都反映出一个更深层的问题，即工作场所的意义所在。它仅仅是一个产出成果的地方，还是一个人们互相学习的社区？"
+    }
+  ]
+}

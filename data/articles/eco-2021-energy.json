@@ -1,0 +1,36 @@
+{
+  "id": "eco-2021-energy",
+  "title": "The Price of Going Green",
+  "source": "The Economist",
+  "sourceZh": "《经济学人》",
+  "topic": "经济",
+  "difficulty": 4,
+  "year": 2021,
+  "wordCount": 213,
+  "paragraphs": [
+    {
+      "en": "The shift from fossil fuels to clean energy is now underway, but it is proving expensive, uneven and politically uncomfortable. Electricity bills have risen sharply in many countries, and voters are beginning to notice.",
+      "zh": "从化石燃料向清洁能源的转型已经在进行中，但事实证明它代价高昂、进展失衡，而且在政治上令人不安。许多国家的电费大幅上涨，选民们开始有所察觉。"
+    },
+    {
+      "en": "Part of the problem is timing. Investment in coal, oil and gas has fallen faster than demand, while wind and solar power, though growing quickly, cannot yet fill the gap when the sun does not shine and the wind does not blow.",
+      "zh": "问题部分出在时间差上。对煤炭、石油和天然气的投资下降速度快于需求下降速度，而风能和太阳能虽然增长迅速，但在无阳光、无风的时段仍无法填补缺口。"
+    },
+    {
+      "en": "Governments face a dilemma. If energy prices rise too fast, households will resist and green policies will be blamed; if prices stay too low, nobody will invest in the new infrastructure that the transition requires.",
+      "zh": "政府面临两难困境。如果能源价格上涨过快，民众将会抵制，环保政策会遭到指责；如果价格保持过低，就没有人愿意投资于这场转型所需的新基础设施。"
+    },
+    {
+      "en": "One answer lies in better grids and better storage. Electricity networks built for a different century must be rebuilt to carry power from windy coasts and sunny deserts to the cities that need it.",
+      "zh": "一个解决之道在于更好的电网和更好的储能设施。为另一个世纪建造的电力网络必须加以重建，以便把电力从多风的海岸和阳光充足的沙漠输送到需要电力的城市。"
+    },
+    {
+      "en": "Another lies in fairness. The costs of going green fall hardest on poorer households, who spend a larger share of their income on energy and heat and are least able to afford electric cars or rooftop panels.",
+      "zh": "另一个解决之道在于公平。绿色转型的成本最沉重地落在较贫困的家庭身上，他们在能源和取暖上的支出占收入比例更高，也最无力购买电动汽车或屋顶太阳能板。"
+    },
+    {
+      "en": "A green transition that feels unjust will not survive contact with reality. The price of going green must be shared widely, or the whole project risks being abandoned half way through.",
+      "zh": "一场让人感到不公正的绿色转型，经不起现实的考验。绿色转型的代价必须被广泛分担，否则整个事业就有可能半途而废。"
+    }
+  ]
+}

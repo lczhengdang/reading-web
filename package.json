@@ -1,0 +1,17 @@
+{
+  "name": "kaoyan-reading-web",
+  "version": "2.1.0",
+  "private": true,
+  "description": "考研阅读 · Web 版 —— 外刊双语对照阅读（纯静态站点，Node 仅用于数据构建工具）",
+  "scripts": {
+    "build": "node tools/build-data.js",
+    "fix-wordcount": "node tools/fix-wordcount.js",
+    "fetch-fonts": "node tools/fetch-fonts.js",
+    "fetch-guardian": "node tools/fetch-guardian.js",
+    "clean-raw": "node tools/clean-raw.js",
+    "curate-raw": "node tools/curate-raw.js",
+    "apply-zh": "node tools/apply-zh.js",
+    "apply-dict-fix": "node tools/apply-dict-fix.js",
+    "update-guardian": "node tools/fetch-guardian.js && node tools/clean-raw.js && node tools/curate-raw.js && node tools/apply-zh.js && node tools/fix-wordcount.js && node tools/build-data.js"
+  }
+}

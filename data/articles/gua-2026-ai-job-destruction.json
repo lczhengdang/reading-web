@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-ai-job-destruction",
+  "title": "AI was supposed to destroy jobs. Where’s the carnage?",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 408,
+  "paragraphs": [
+    {
+      "en": "The prediction was stark: artificial intelligence advancements would wipe out jobs en masse. “Half” of all entry-level white collar jobs would vanish, Anthropic’s CEO, Dario Amodei, said in May 2025. A month later, OpenAI’s CEO, Sam Altman , went further, foreseeing the end of “certain job categories”. Companies began citing AI in their layoffs. Workers organized. And students reconsidered their future careers .",
+      "zh": "那个预测曾十分严峻：人工智能的发展将大规模摧毁工作岗位。2025 年 5 月，Anthropic 首席执行官达里奥·阿莫迪表示，所有入门级白领岗位中将有“一半”消失。一个月后，OpenAI 首席执行官山姆·奥特曼更进一步，预言某些“职业类别”将走向终结。公司开始以 AI 为由裁员。工人们组织起来。学生们也开始重新考虑自己未来的职业道路。"
+    },
+    {
+      "en": "But a year later, the mass carnage hasn’t shown up.",
+      "zh": "但一年过去，大规模裁员并没有出现。"
+    },
+    {
+      "en": "Even as AI capabilities have rapidly advanced and AI companies have hurtled towards trillion-dollar stock market debuts, economic transformation hasn’t kept pace, similar to previous tech revolutions, economists say. As a result, CEOs are reframing and softening their stances, suggesting AI augments workers rather than replaces them.",
+      "zh": "经济学家表示，即便 AI 能力飞速发展、AI 公司以万亿美元市值上市的气势一路狂奔，经济转型的步伐却并未跟上，这与以往几次技术革命的情形类似。正因如此，CEO 们正在重新表述并软化立场，暗示 AI 是增强工人而非取代工人。"
+    },
+    {
+      "en": "Despite the lack of mass job devastation, a shift is still under way: AI is changing the nature of work, with employers increasingly expecting job seekers to have AI skills. And over the long term, AI could shift more jobs to freelance and contract work as companies figure out which skills they do need, some economists predict.",
+      "zh": "尽管没有出现大规模岗位毁灭，转变仍在发生：AI 正在改变工作的性质，雇主越来越期待求职者具备 AI 技能。一些经济学家预测，从长远看，随着公司厘清自己真正需要哪些技能，AI 可能会把更多工作岗位转向自由职业和合同制工作。"
+    },
+    {
+      "en": "Related: ‘Everything about me is good in his eyes’: the women in China choosing AI boyfriends over human men",
+      "zh": "相关报道：\"在他眼里我的一切都是好的\"：选择 AI 男友而非人类男友的中国女性"
+    },
+    {
+      "en": "Data from a recent Stanford Institute for Economic Policy Research analysis shows that AI hasn’t yet caused major job displacement. Since 2022, the year ChatGPT launched, the unemployment rate for the 20% of workers most exposed to AI rose by 0.77 percentage points, less than the 0.85 percentage-point increase for the least-exposed workers, the report showed. AI could be a factor in recent graduates’ rising unemployment, which hit 5.6% compared with the national average of 4.2% earlier this year. But factors including remote work and the unwinding of pandemic-era overhiring probably also played roles, the report states.",
+      "zh": "斯坦福经济政策研究所最近一份分析报告的数据显示，AI 尚未造成大规模岗位置换。报告显示，自 2022 年（ChatGPT 发布的那一年）以来，最容易受 AI 冲击的 20% 工人的失业率上升了 0.77 个百分点，低于最不易受冲击工人的 0.85 个百分点增幅。AI 可能是近期毕业生失业率上升的一个因素——今年早些时候，他们的失业率达到了 5.6%，而全国平均水平为 4.2%。但报告指出，远程工作以及疫情时期过度招聘的消退等因素可能也发挥了作用。"
+    },
+    {
+      "en": "“Employment trends in the occupations [where] we would expect to see the impacts first are largely stable,” said Erika McEntarfer, fellow at the Stanford Institute and co-author of the report. “It took decades for the computer revolution to fully transform labor markets in the workforce, and what we’re seeing right now looks a lot like that.”",
+      "zh": "“我们预计会首先看到影响的那些职业的就业趋势大体上保持稳定，”斯坦福研究所研究员、该报告合著者埃里卡·麦肯塔夫说，“计算机革命花了几十年才彻底改变劳动力市场的就业格局，而我们眼前所见与当年十分相似。”"
+    },
+    {
+      "en": "But accurately measuring AI’s impact on employment is a challenge. Government statistics are dated by nature and don’t track the impact of specific technologies, while private industry figures, though more current, are less comprehensive. So even though economists generally agree that AI will have an impact, they struggle to predict how big and when.",
+      "zh": "但准确衡量 AI 对就业的影响是一项挑战。政府统计数据本质上存在滞后，且不追踪特定技术的影响；私营行业的数据虽然更新，却不够全面。因此，尽管经济学家普遍认同 AI 会产生影响，但他们难以预测影响有多大、何时显现。"
+    }
+  ]
+}

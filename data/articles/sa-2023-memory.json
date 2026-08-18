@@ -1,0 +1,36 @@
+{
+  "id": "sa-2023-memory",
+  "title": "Why We Forget",
+  "source": "Scientific American",
+  "sourceZh": "《科学美国人》",
+  "topic": "心理",
+  "difficulty": 3,
+  "year": 2023,
+  "wordCount": 157,
+  "paragraphs": [
+    {
+      "en": "Forgetting is often seen as a failure of the mind, a flaw we would all like to correct. Yet psychologists argue that forgetting is not a bug but a feature.",
+      "zh": "遗忘常常被视为心智的失败，是大家都想修正的缺陷。然而心理学家认为，遗忘不是缺陷，而是特性。"
+    },
+    {
+      "en": "Memory is not a recording but a reconstruction. Every time we recall an event, we rebuild it from fragments, and each reconstruction can change the original.",
+      "zh": "记忆不是录像，而是重建。每次我们回忆某件事，都是从碎片中重建它，而每一次重建都可能改变原貌。"
+    },
+    {
+      "en": "Forgetting the unimportant helps us remember what matters. A mind that stored everything would be overwhelmed, unable to find the information it needs.",
+      "zh": "遗忘不重要的事物有助于我们记住重要的东西。一个存储一切的大脑会被淹没，无法找到所需的信息。"
+    },
+    {
+      "en": "Emotion plays a central role. People tend to remember events that are linked to strong feelings, whether pleasant or unpleasant, and to forget the neutral ones.",
+      "zh": "情感起着核心作用。人们倾向于记住与强烈情感相关联的事件，无论是愉快的还是不愉快的，而遗忘那些平淡无奇的事。"
+    },
+    {
+      "en": "Sleep, too, shapes memory. Studies show that memories are strengthened during deep sleep, which is why students are often advised to sleep well before an exam.",
+      "zh": "睡眠同样塑造记忆。研究表明，记忆在深度睡眠中得到巩固，这也是为什么学生常被建议在考试前好好睡觉。"
+    },
+    {
+      "en": "Understanding how memory works can change how we learn. Spacing out study sessions and testing ourselves, rather than rereading, turn out to be far more effective.",
+      "zh": "理解记忆的工作原理可以改变我们的学习方式。间隔学习时间并自我测试，而不是反复阅读，被证明要有效得多。"
+    }
+  ]
+}

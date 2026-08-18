@@ -1,0 +1,36 @@
+{
+  "id": "gua-2026-are-microsofts-ai-plans-being-held-back-by-a-shortage-of-chips",
+  "title": "Are Microsoft’s AI plans being held back by a shortage of chips?",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 1788,
+  "paragraphs": [
+    {
+      "en": "The chips are quite small and some can be held in the palm of a hand. They are fundamental to the development of artificial intelligence models – and the world’s biggest technology companies need vast numbers of them to keep ahead."
+    },
+    {
+      "en": "Microsoft is one of them. And, on paper, it seems to have a problem. A Guardian investigation has found an apparent discrepancy between what the company has said about its AI capacity – and the number of advanced AI chips it has in operation."
+    },
+    {
+      "en": "It is not a small shortfall either. Microsoft reportedly targeted having 1.8m AI chips installed in its datacentres around the globe by the end of 2024. Nearly two years on, in the middle of a $280bn (£208bn) expansion, the company has 2.2m AI chips installed, according to internal documents seen by the Guardian. This is less than half the number some experts had imagined."
+    },
+    {
+      "en": "Put simply, the global AI arms race requires a massive build-out of datacentres that run on extremely expensive chips. The apparent discrepancy over the chips suggests Microsoft’s newest datacentres may not be fully operational or, if they are, they do not have the chips they need."
+    },
+    {
+      "en": "This highlights something even more fundamental about charting the progress being made in the development of AI technologies. The chips that power AI are made by Nvidia, one of the two most valuable companies in the world . Its supply chain is one of the most tightly held secrets in the entire industry."
+    },
+    {
+      "en": "With almost no exceptions, Nvidia does not report how many of these chips it sells or to whom. Its clients, the world’s biggest tech companies, in turn do not reveal how many they have. Without this information, it is very hard for anyone to know whether AI is booming or not."
+    },
+    {
+      "en": "In the past two years, Microsoft says it has built AI infrastructure at breakneck speed. Its chief executive, Satya Nadella, said last year it would double its global datacentre footprint by mid-2027. Since 2022 it has ploughed roughly $280bn into the land, buildings and computational infrastructure to build AI. This includes more than $41bn in the past quarter."
+    },
+    {
+      "en": "But it is difficult to estimate how many datacentres Microsoft has built with this money."
+    }
+  ]
+}

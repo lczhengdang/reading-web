@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-scientists-young-universe-moon-dark-side-cosmocube-satellite-radio-signal-21cm-line",
+  "title": "Scientists hope to shed light on young universe by using far side of the moon",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科学",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 601,
+  "paragraphs": [
+    {
+      "en": "Little is known about what was happening shortly after the big bang, but now researchers are hoping to shed fresh light on the matter by harnessing the far side of the moon.",
+      "zh": "关于大爆炸之后不久发生了什么，人类知之甚少，但如今研究人员希望能借助月球背面为这一问题带来新的认识。"
+    },
+    {
+      "en": "Scientists plan to put a suitcase-sized satellite into orbit around the moon, using the data it collects as it passes the far side to search for a radio frequency signal emitted by neutral hydrogen atoms in the early universe.",
+      "zh": "科学家计划把一颗公文包大小的卫星送入绕月轨道，利用它在经过月球背面时收集的数据，搜寻早期宇宙中性氢原子发出的射电频率信号。"
+    },
+    {
+      "en": "More specifically, the satellite, nicknamed CosmoCube, will be looking for what is known as the 21cm line. Crucially, the older the signal, the more its wavelength has been stretched, or redshifted, to longer wavelengths, providing a way for its strength to be tracked over time relative to the cosmic microwave background radiation.",
+      "zh": "更具体地说，这颗昵称为“CosmoCube”的卫星将寻找所谓的21厘米谱线。关键在于，信号越古老，其波长被拉伸（即红移）到更长波长的程度就越大，从而提供了一种相对宇宙微波背景辐射追踪其强度随时间变化的方法。"
+    },
+    {
+      "en": "“The main thing we track by looking at this signal is what’s the physical temperature of the gas during the early universe,” said Prof Eloy de Lera Acedo, the lead author from the University of Cambridge’s Cavendish Laboratory.",
+      "zh": "“我们通过观测这一信号追踪的主要内容，是早期宇宙中气体的物理温度。”该论文的第一作者、剑桥大学卡文迪什实验室的埃洛伊·德莱拉·阿塞多教授说。"
+    },
+    {
+      "en": "With the 21cm signal acting a bit like a thermometer, the team are hoping to study events from the start of the so-called “dark ages”, about 380,000 years after the big bang, through the cosmic dawn, when the first stars and galaxies emerged, to the end of what is known as the epoch of reionization, approximately 1bn years after the big bang.",
+      "zh": "21厘米信号的作用有点像温度计，团队希望借此研究从所谓“黑暗时代”开始（大爆炸后约38万年）、经由第一批恒星和星系诞生的宇宙黎明，再到所谓再电离时代结束（大爆炸后约10亿年）期间的事件。"
+    },
+    {
+      "en": "“The temperature of the gas is affected by the things happening in the universe at the time,” said de Lera Acedo. In addition he noted the amplitude and shape of the 21cm signal was expected to be influenced by dark matter, offering a way for experts to investigate the nature of this mysterious component of the universe.",
+      "zh": "“气体的温度会受到当时宇宙中发生之事的影响。”德莱拉·阿塞多说。此外他指出，21厘米信号的振幅和形状预计也会受到暗物质的影响，这为专家们研究宇宙这一神秘组成部分的性质提供了途径。"
+    },
+    {
+      "en": "Researchers have attempted to detect the 21cm line before but it is difficult to do using Earth-based instruments. Not only is the signal weak but human-made technology – from FM radios to plane communication – can cause interference. Writing in the journal Nature Astronomy , de Lera Acedo and his colleagues said other challenges included disturbances created by the Earth’s ionosphere.",
+      "zh": "研究人员此前曾尝试探测21厘米谱线，但用地面仪器很难做到。不仅信号微弱，人类制造的技术——从调频收音机到飞机通信——都可能造成干扰。德莱拉·阿塞多及其同事在《自然·天文学》杂志上撰文表示，其他挑战还包括地球电离层造成的扰动。"
+    },
+    {
+      "en": "While experts at the Edges (Experiment to Detect the Global EoR Signature) radio telescope in Australia claim to have found the 21cm line, questions have been raised over the results .",
+      "zh": "尽管澳大利亚“边缘”射电望远镜（探测全球再电离特征实验）的专家们声称已经发现了21厘米谱线，但这些结果一直受到质疑。"
+    }
+  ]
+}

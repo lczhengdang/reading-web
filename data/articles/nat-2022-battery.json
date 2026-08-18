@@ -1,0 +1,36 @@
+{
+  "id": "nat-2022-battery",
+  "title": "The Race to Store the Sun",
+  "source": "Nature",
+  "sourceZh": "《自然》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2022,
+  "wordCount": 186,
+  "paragraphs": [
+    {
+      "en": "The sun and the wind offer limitless clean energy, but they deliver it on their own schedule. The central problem of the energy transition is therefore not generating power but storing it for when it is needed.",
+      "zh": "太阳和风能提供了近乎无限的清洁能源，但它们按自己的时间表供能。因此，能源转型的核心问题不在于发电，而在于把电储存起来以备不时之需。"
+    },
+    {
+      "en": "Lithium-ion batteries, the technology behind phones and electric cars, have fallen dramatically in price. Yet they rely on scarce minerals and struggle to store energy for days or weeks at a time.",
+      "zh": "锂离子电池是手机和电动汽车背后的技术，其价格已大幅下降。然而它们依赖稀缺矿物，并且难以将能量储存数日乃至数周之久。"
+    },
+    {
+      "en": "Researchers are exploring striking alternatives. Some pump water uphill when power is cheap; others store energy in spinning flywheels, compressed air, or molten salt heated to extreme temperatures.",
+      "zh": "研究人员正在探索一些引人注目的替代方案。有些方案在电力便宜时把水抽到山上；另一些则用旋转的飞轮、压缩空气或被加热到极高温度的熔融盐来储存能量。"
+    },
+    {
+      "en": "Chemistry, too, holds promise. New battery designs using sodium, iron or flow-cell systems promise cheaper storage from more abundant materials, though scaling them up remains an engineering challenge.",
+      "zh": "化学领域同样大有可为。使用钠、铁或液流电池体系的新电池设计，有望用更丰富的材料实现更便宜的储能，不过要将其大规模推广仍是一个工程挑战。"
+    },
+    {
+      "en": "The stakes are high. A reliable grid-scale battery would let clean power supply cities around the clock, reducing dependence on fossil fuels that now step in when renewables fall short.",
+      "zh": "利害攸关。可靠的电网级储能电池将让清洁电力能够全天候为城市供电，减少对那些目前在可再生能源不足时顶上的化石燃料的依赖。"
+    },
+    {
+      "en": "Whichever technology wins, the direction is clear. The twenty-first century's most important energy breakthrough may not generate a single watt; it will simply hold on to them.",
+      "zh": "无论哪种技术胜出，方向都很明确。二十一世纪最重要的能源突破可能一瓦电都不发；它只是把电留住而已。"
+    }
+  ]
+}

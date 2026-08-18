@@ -1,0 +1,44 @@
+{
+  "id": "gua-2026-flock-safety-police-abuse-surveillance-cameras",
+  "title": "Flock Safety tries to curb police abuse of its surveillance cameras after scandals",
+  "source": "The Guardian",
+  "sourceZh": "《卫报》",
+  "topic": "科技",
+  "difficulty": 4,
+  "year": 2026,
+  "wordCount": 748,
+  "paragraphs": [
+    {
+      "en": "For nearly a decade, the company Flock Safety has gradually built out a network of cameras across the US that allows law enforcement officials to conduct about 20bn license plate scans every month.",
+      "zh": "近十年来，Flock Safety 公司已在美国逐步建立起一个摄像头网络，使执法部门每月能够进行约 200 亿次车牌扫描。"
+    },
+    {
+      "en": "In that time, the company had largely left the decision to turn on safety measures up to its customers. Many of those organizations did not turn them on.",
+      "zh": "在那段时间里，这家公司基本上把是否开启安全措施的决策留给了客户。其中许多机构并没有开启这些措施。"
+    },
+    {
+      "en": "Now, the company is doing damage control. Garrett Langley, Flock’s CEO, announced on Thursday that the company would begin mandating that law enforcement agencies switch on features that could help audit the way individual officers use its tracking capabilities. It had been reported that more than 50 law enforcement officers were accused of or charged with abusing Flock’s camera system, including to stalk ex-partners.",
+      "zh": "现在，这家公司正在亡羊补牢。Flock 首席执行官加勒特·兰利周四宣布，该公司将开始强制执法机构开启一些功能，这些功能有助于审计个别警员如何使用其追踪能力。据报道，已有超过 50 名执法官员被指控滥用 Flock 的摄像头系统，其中包括跟踪前任伴侣的行为。"
+    },
+    {
+      "en": "“These changes reflect years of work and deliberation,” Langley wrote in a blogpost announcing the new guardrails. “They are not the end of that work, but simply the continuation of our commitment to both safety and privacy.”",
+      "zh": "“这些变化反映了多年的工作和深思熟虑，”兰利在宣布新护栏的博客文章中写道，“它们不是这项工作的终点，而只是我们致力于安全与隐私的延续。”"
+    },
+    {
+      "en": "Four months ago, the company introduced a voluntary feature called Audit Assistance, which flags “abnormal activity” for administrative review. Langley said on Thursday that about a third of its customers turned it on. Now, the rest of its customers, which include law enforcement agencies, retailers , universities , and homeowner associations , have until the end of the year to activate it. Under the new system, when the system flagged behavior as “abnormal”, the user would be automatically suspended, pending a review. The announcement did not include details about what qualified as “abnormal”.",
+      "zh": "四个月前，该公司推出了一项名为“审计协助”的自愿功能，该功能会标记“异常活动”供行政审查。兰利周四表示，约有三分之一的客户开启了该功能。现在，其余客户——包括执法机构、零售商、大学和业主协会——必须在年底前启用它。在新系统下，当系统将行为标记为“异常”时，用户将被自动停用，等待审查。该公告没有说明什么样的行为才算是“异常”。"
+    },
+    {
+      "en": "The company will also now allow law enforcement agencies to restrict the information offered to other agencies on specific offenses rather than giving free rein to the agencies that they partner with to access all of their license plate scans. Now, the company wrote, agencies can limit the scans they share with other cities or states to specific types of investigations like stolen vehicle or missing persons cases.",
+      "zh": "该公司还将允许执法机构限制向其他机构提供针对特定罪行的信息，而不是让合作伙伴机构自由访问其全部车牌扫描数据。该公司写道，现在各机构可以将其与其它城市或州共享的扫描记录限制在特定类型的调查中，例如被盗车辆或失踪人口案件。"
+    },
+    {
+      "en": "The feature in part addresses years of reports that the company’s system had been used to target immigrants or people seeking out-of-state abortions, at times in violation of state or local laws.",
+      "zh": "这项功能在一定程度上回应了多年来的报道，即该公司的系统曾被用来针对移民或前往外州堕胎的人，有时甚至违反了州或地方法律。"
+    },
+    {
+      "en": "In addition, Flock will now automatically set its license plate scan retention time to seven days, down from its existing default of 30 days. However, agencies can identify certain scans as part of a longer-term investigation if they want to maintain that data for longer, the company said, and can continue to choose “the retention period that fits its public safety strategy”.",
+      "zh": "此外，Flock 现在将自动将其车牌扫描的保留时间设为七天，低于目前默认的 30 天。该公司表示，如果各机构想将某些扫描数据保留更长时间，可以将它们标记为长期调查的一部分，并可以继续选择“符合其公共安全策略的保留期限”。"
+    }
+  ]
+}
