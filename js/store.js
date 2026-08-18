@@ -30,7 +30,7 @@
   var settings = rawGet('settings', null) || {
     engine: 'system', rate: 1.0, voice: '', fontSize: 17,
     apiKey: '', endpoint: 'https://ark.cn-beijing.volces.com/api/v3/tts',
-    model: 'doubao-tts-0001', cloudVoiceId: 'zh_female_cancan_mars_bigtts'
+    model: 'doubao-tts-0001', cloudVoiceId: 'zh_female_xiaohe_uranus_bigtts'
   };
   /* 大模型查词配置（OpenAI 兼容协议，与 TTS 密钥相互独立） */
   if (settings.llmApiKey === undefined) settings.llmApiKey = '';

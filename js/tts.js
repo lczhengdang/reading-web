@@ -174,7 +174,7 @@
       return fetch('/api/tts2', {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-        body: JSON.stringify({ text: text, apiKey: c.apiKey, speaker: c.voiceId || 'zh_female_cancan_mars_bigtts' })
+        body: JSON.stringify({ text: text, apiKey: c.apiKey, speaker: c.voiceId || 'zh_female_xiaohe_uranus_bigtts' })
       }).then(function (resp) {
         if (resp.status === 501 || resp.status === 404 || resp.status === 405) {
           throw new Error('当前服务器不支持 TTS 代理：请关闭旧服务器窗口，双击 start.bat 重新启动，并访问终端显示的端口');

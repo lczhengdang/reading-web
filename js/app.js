@@ -19,6 +19,26 @@
     'The Guardian': { cls: 'gua', zh: '卫报' }
   };
 
+  /* 豆包语音合成大模型 2.0 官方音色（seed-tts-2.0） */
+  var DOUBAO_VOICES = [
+    { id: 'zh_female_xiaohe_uranus_bigtts', name: '小何 2.0（通用女声，推荐）' },
+    { id: 'zh_female_vv_uranus_bigtts', name: 'Vivi 2.0（多语种女声）' },
+    { id: 'zh_male_m191_uranus_bigtts', name: '云舟 2.0（通用男声）' },
+    { id: 'zh_male_taocheng_uranus_bigtts', name: '小天 2.0（清爽男声）' },
+    { id: 'zh_male_liufei_uranus_bigtts', name: '刘飞 2.0（男声）' },
+    { id: 'zh_female_sophie_uranus_bigtts', name: '魅力苏菲 2.0' },
+    { id: 'zh_female_qingxinnvsheng_uranus_bigtts', name: '清新女声 2.0' },
+    { id: 'zh_female_cancan_uranus_bigtts', name: '知性灿灿 2.0' },
+    { id: 'zh_female_tianmeitaozi_uranus_bigtts', name: '甜美桃子 2.0' },
+    { id: 'zh_female_tianmeixiaoyuan_uranus_bigtts', name: '甜美小源 2.0' },
+    { id: 'zh_female_shuangkuaisisi_uranus_bigtts', name: '爽快思思 2.0' },
+    { id: 'zh_female_linjianvhai_uranus_bigtts', name: '邻家女孩 2.0' },
+    { id: 'zh_female_sajiaoxuemei_uranus_bigtts', name: '撒娇学妹 2.0' },
+    { id: 'zh_male_shaonianzixin_uranus_bigtts', name: '少年梓辛 2.0' },
+    { id: 'zh_female_yingyujiaoxue_uranus_bigtts', name: 'Tina 老师 2.0（中英双语）' },
+    { id: 'en_female_dacey_uranus_bigtts', name: 'Dacey 2.0（纯英文）' }
+  ];
+
   var settings = Store.settings;
   var favorites = Store.favorites;
   var wordbook = Store.wordbook;
@@ -764,30 +784,32 @@
     });
     var cloudBox = UIi.el('div');
     cloudBox.innerHTML =
-      '<div class="hint warn">注意：云端语音需通过本地代理服务器调用（请用 start.bat 启动）。</div>' +
-      '<select class="field" id="f-ttsapi">' +
-      '<option value="doubao2">豆包语音合成大模型 2.0（双向流式，推荐）</option>' +
-      '<option value="ark">方舟 HTTP（OpenAI 兼容）</option>' +
-      '</select>' +
-      '<input class="field" type="password" id="f-key" placeholder="API Key（方舟控制台 > API Key 管理）" value="' + esc(settings.apiKey) + '">' +
-      '<input class="field" type="text" id="f-endpoint" placeholder="TTS 端点（仅方舟 HTTP 模式使用）" value="' + esc(settings.endpoint) + '">' +
-      '<input class="field" type="text" id="f-model" placeholder="模型名称（仅方舟 HTTP 模式使用）" value="' + esc(settings.model) + '">' +
-      '<input class="field" type="text" id="f-cvoice" placeholder="音色 ID（方舟控制台 > 语音音色，豆包 2.0 需选 2.0 音色）" value="' + esc(settings.cloudVoiceId) + '">' +
-      '<div class="set-row"><button class="btn btn-tonal" id="f-save" style="margin-top:12px">保存云端配置</button></div>';
+      '<div class="hint">只需两步：① 填 API Key（方舟控制台 → API Key 管理创建）② 选音色。仅保存在本机浏览器。注意：云端语音需通过本地代理调用，请用 start.bat 启动服务。</div>' +
+      '<input class="field" type="password" id="f-key" placeholder="API Key" value="' + esc(settings.apiKey) + '">' +
+      '<select class="field" id="f-dvoice" style="margin-top:12px"></select>' +
+      '<div class="set-row"><button class="btn btn-tonal" id="f-save" style="margin-top:12px">保存并启用豆包 2.0 语音</button></div>';
     c1.appendChild(cloudBox);
     body.appendChild(c1);
     paintSeg();
     function b(id) { return document.getElementById(id); }
-    var ttsApiSel = b('f-ttsapi');
-    ttsApiSel.value = settings.ttsApi || 'doubao2';
+    /* 音色下拉：官方 2.0 音色列表 + 兼容已保存的自定义音色 */
+    var dvoiceSel = b('f-dvoice');
+    var savedVoice = settings.cloudVoiceId || '';
+    var knownIds = {};
+    DOUBAO_VOICES.forEach(function (v) {
+      knownIds[v.id] = 1;
+      dvoiceSel.appendChild(new Option(v.name, v.id));
+    });
+    if (savedVoice && !knownIds[savedVoice]) {
+      dvoiceSel.insertBefore(new Option('自定义音色：' + savedVoice, savedVoice), dvoiceSel.firstChild);
+    }
+    dvoiceSel.value = savedVoice || DOUBAO_VOICES[0].id;
     b('f-save').addEventListener('click', function () {
-      settings.ttsApi = ttsApiSel.value;
       settings.apiKey = b('f-key').value.trim();
-      settings.endpoint = b('f-endpoint').value.trim() || settings.endpoint;
-      settings.model = b('f-model').value.trim() || settings.model;
-      settings.cloudVoiceId = b('f-cvoice').value.trim();
+      settings.cloudVoiceId = dvoiceSel.value;
+      settings.ttsApi = 'doubao2';
       Store.saveSettings(); applyTtsSettings();
-      UIi.toast('云端配置已保存');
+      UIi.toast(settings.apiKey ? '豆包 2.0 语音已启用' : '已保存，但 API Key 为空，暂无法调用云端语音');
     });
 
     /* --- 大模型查词（OpenAI 兼容接口，可选） --- */
