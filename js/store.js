@@ -68,11 +68,20 @@
     progress: progress,
     saveProgress: function () { rawSet('progress', progress); },
 
-    /* 在线查词结果缓存 */
+    /* 本地词典（在线/大模型查词结果收录，离线可用） */
     dictGet: function (word) { return dictCache[word] || null; },
     dictPut: function (word, entry) {
       dictCache[word] = entry;
       trimLru(dictCache, 400);
+      rawSet('dictCache', dictCache);
+    },
+    dictWords: function () { return Object.keys(dictCache); },
+    dictRemove: function (word) {
+      delete dictCache[word];
+      rawSet('dictCache', dictCache);
+    },
+    dictClear: function () {
+      dictCache = {};
       rawSet('dictCache', dictCache);
     },
 

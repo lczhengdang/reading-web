@@ -527,7 +527,8 @@
     var llmOn = !!(settings.llmApiKey && settings.llmBaseUrl && settings.llmModel);
     var usableCache = cachedEntry && (!llmOn || cachedEntry._src === 'llm') ? cachedEntry : null;
     var entry = localEntry || usableCache;
-    var srcLabel = localEntry ? '本地词典' : (usableCache ? ((usableCache._src === 'llm' ? '大模型' : '在线词典') + ' · 已缓存') : '');
+    var srcLabel = localEntry ? '本地词典' : (usableCache ? '本地词典 · 已收录' : '');
+    var hadLocalRecord = !!entry;
 
     UIi.openSheet(function (sheet) {
       var headRow = UIi.el('div', 'sheet-head');
@@ -611,10 +612,12 @@
         body.appendChild(UIi.el('div', 'def-loading', '<span class="spinner"></span><span>' + loadingMsg + '</span>'));
         appendCommonActions(actions);
         var rendered = false;
-        Dict.fetchOnlineDict(word, function (e) {
+        Dict.fetchOnlineDict(word, function (e, final) {
           if (!sheet.isConnected) return;
-          renderEntry(e, e._src === 'llm' ? '大模型' : '在线词典', !rendered);
+          var label = final ? '本地词典 · 已收录' : (e._src === 'llm' ? '大模型' : '在线词典');
+          renderEntry(e, label, !rendered);
           rendered = true;
+          if (final && !hadLocalRecord) UIi.toast('已加入本地词典，下次可离线查询');
         }, function () {
           if (!sheet.isConnected) return;
           body.innerHTML = '';
@@ -881,8 +884,77 @@
 
     /* --- 数据管理 --- */
     var c3 = UIi.el('div', 'set-card');
-    var llmState = (settings.llmApiKey && settings.llmBaseUrl && settings.llmModel) ? '已配置' : '未配置';
-    c3.innerHTML = '<h2>数据管理</h2><div class="hint">生词 ' + wordbook.length + ' 个 · 收藏 ' + favorites.size + ' 篇 · 阅读进度 ' + Object.keys(progress).length + ' 篇 · 译文缓存 ' + Store.transCount() + ' 条 · 大模型查词：' + llmState + '</div>';
+    c3.innerHTML = '<h2>数据管理</h2>';
+    var dmHint = UIi.el('div', 'hint');
+    c3.appendChild(dmHint);
+    function paintDmHint() {
+      var llmState = (settings.llmApiKey && settings.llmBaseUrl && settings.llmModel) ? '已配置' : '未配置';
+      dmHint.textContent = '生词 ' + wordbook.length + ' 个 · 收藏 ' + favorites.size + ' 篇 · 阅读进度 ' + Object.keys(progress).length + ' 篇 · 译文缓存 ' + Store.transCount() + ' 条 · 本地词典已收录 ' + Store.dictWords().length + ' 词 · 大模型查词：' + llmState;
+    }
+    paintDmHint();
+
+    /* 本地词典收录管理 */
+    function openDictManager() {
+      UIi.openSheet(function (sheet) {
+        var headRow = UIi.el('div', 'sheet-head');
+        var headTitle = UIi.el('h3');
+        function paintHead() { headTitle.textContent = '本地词典收录（' + Store.dictWords().length + '）'; }
+        paintHead();
+        headRow.appendChild(headTitle);
+        sheet.appendChild(headRow);
+        var listWrap = UIi.el('div', 'dict-body');
+        sheet.appendChild(listWrap);
+        function renderList() {
+          listWrap.innerHTML = '';
+          var words = Store.dictWords().sort();
+          if (!words.length) {
+            listWrap.appendChild(UIi.el('div', 'def def-empty', '暂无收录词，阅读时查词会自动收录'));
+          } else {
+            words.forEach(function (w) {
+              var e = Store.dictGet(w) || {};
+              var firstDef = (e.items && e.items[0]) ? ((e.items[0].pos ? e.items[0].pos + ' ' : '') + e.items[0].zh) : '';
+              var card = UIi.el('div', 'wb-card');
+              var main = UIi.el('div', 'wb-main');
+              main.innerHTML = '<div class="wb-word"><span>' + esc(w) + '</span>' + (e.phonetic ? '<small>/' + esc(e.phonetic) + '/</small>' : '') + '</div>' +
+                (firstDef ? '<div class="wb-def">' + esc(firstDef) + '</div>' : '');
+              var acts = UIi.el('div', 'wb-actions');
+              var del = UIi.el('button', 'icon-btn', UIi.icon('close'));
+              del.setAttribute('aria-label', '删除 ' + w);
+              del.addEventListener('click', function () {
+                Store.dictRemove(w);
+                UIi.toast('已删除 ' + w);
+                paintHead(); renderList(); paintDmHint();
+              });
+              acts.appendChild(del);
+              card.appendChild(main); card.appendChild(acts);
+              listWrap.appendChild(card);
+            });
+          }
+          paintDmHint();
+        }
+        renderList();
+        var actions = UIi.el('div', 'sheet-actions');
+        var closeBtn = UIi.el('button', 'btn btn-text', '关闭');
+        closeBtn.addEventListener('click', UIi.closeSheet);
+        actions.appendChild(closeBtn);
+        sheet.appendChild(actions);
+      });
+    }
+
+    var r6 = UIi.el('div', 'set-row');
+    var bm = UIi.el('button', 'btn btn-text', '管理收录词');
+    bm.addEventListener('click', openDictManager);
+    var bcl = UIi.el('button', 'btn btn-text', '清空收录');
+    bcl.addEventListener('click', async function () {
+      if (await UIi.confirmDialog('清空本地词典收录', '确定删除全部 ' + Store.dictWords().length + ' 个收录词吗？')) {
+        Store.dictClear();
+        paintDmHint();
+        UIi.toast('已清空收录');
+      }
+    });
+    r6.appendChild(bm); r6.appendChild(bcl);
+    c3.appendChild(r6);
+
     var r5 = UIi.el('div', 'set-row');
     var bw = UIi.el('button', 'btn btn-text', '清空生词本');
     bw.addEventListener('click', async function () {
