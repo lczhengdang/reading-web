@@ -590,7 +590,6 @@
       }
 
       function appendCommonActions(actionsEl) {
-        actionsEl.innerHTML = '';
         var spk = UIi.el('button', 'btn btn-text', UIi.icon('volume', 'sm') + '<span>发音</span>');
         spk.addEventListener('click', function () { T.speak(word, { onError: function (m) { UIi.toast(m); } }); });
         actionsEl.appendChild(spk);
@@ -601,6 +600,7 @@
 
       function startOnline() {
         body.innerHTML = '';
+        actions.innerHTML = '';
         body.appendChild(UIi.el('div', 'def-loading', '<span class="spinner"></span><span>本地未收录，正在联网查询…</span>'));
         appendCommonActions(actions);
         var rendered = false;

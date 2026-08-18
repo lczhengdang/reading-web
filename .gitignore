@@ -1,6 +1,6 @@
 node_modules/
 .idea/
-.chrome-tmp/
+.chrome-tmp*/
 *.log
 .DS_Store
 Thumbs.db
