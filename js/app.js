@@ -3,7 +3,7 @@
   'use strict';
 
   /* 版本标识：构建时由 tools/build-data.js 注入，勿手改 */
-  var APP_VERSION = 'kaoyan-reader-55e06f1655';
+  var APP_VERSION = 'kaoyan-reader-7a07e3ca58';
   console.log('[考研阅读] 版本 ' + (APP_VERSION || 'dev'));
 
   var UIi = window.UI;

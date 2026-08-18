@@ -16,7 +16,7 @@ import struct
 import uuid
 import base64
 import time
-from http.server import SimpleHTTPRequestHandler, HTTPServer
+from http.server import SimpleHTTPRequestHandler, HTTPServer, ThreadingHTTPServer
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
@@ -160,8 +160,53 @@ def _wait_event(reader, expected, timeout_at):
             raise TTSProtocolError('服务端返回失败事件 %d: %s' % (event, body[:200].decode('utf-8', errors='replace')))
 
 
+def _decode_json_b64_audio(body):
+    """负载为一行或多行 JSON（JSON Lines，如 {\"code\":0,...,\"data\":\"<base64音频>\"}）：
+    逐行解析并解码 data 字段后拼接；非该格式返回 None"""
+    if not body or body[0:1] not in (b'{', b'['):
+        return None
+    audio = bytearray()
+    parsed_any = False
+    err_msg = None
+    for ln in body.split(b'\n'):
+        ln = ln.strip()
+        if not ln:
+            continue
+        try:
+            obj = json.loads(ln.decode('utf-8'))
+        except Exception:
+            if not parsed_any:
+                return None  # 首行即非 JSON：不是该格式
+            continue
+        if not isinstance(obj, dict):
+            continue
+        parsed_any = True
+        d = obj.get('data') or ''
+        if isinstance(d, str) and d:
+            try:
+                audio += base64.b64decode(d)
+            except Exception:
+                pass
+            continue
+        # 无数据的行：可能是结束/状态标记（如 code=20000000 message=OK），仅记录真正的错误
+        code = obj.get('code')
+        msg = str(obj.get('message') or '')
+        if code is not None and code != 0 and msg.lower() not in ('ok', 'success'):
+            err_msg = '上游返回错误 code=%s: %s' % (code, msg[:200])
+    if not parsed_any:
+        return None
+    if audio:
+        return bytes(audio)
+    if err_msg:
+        raise TTSProtocolError(err_msg)
+    return None
+
+
 def _extract_audio(body):
-    """从 TTSResponse 负载提取音频：兼容带 8 字节前缀与纯音频两种布局"""
+    """从 TTSResponse 负载提取音频：兼容 JSON+base64、带 8 字节前缀与纯音频三种布局"""
+    j = _decode_json_b64_audio(body)
+    if j is not None:
+        return j
     if len(body) > 8:
         seq = struct.unpack('>I', body[0:4])[0]
         size = struct.unpack('>I', body[4:8])[0]
@@ -239,7 +284,10 @@ def doubao_tts_http_fallback(text, api_key, speaker):
         'Content-Type': 'application/json',
     }, method='POST')
     with urlopen(req, timeout=60) as resp:
-        return resp.read()
+        body = resp.read()
+    # 响应可能为 JSON（base64 音频在 data 字段），也可能是纯音频流
+    audio = _decode_json_b64_audio(body)
+    return audio if audio is not None else body
 
 
 
@@ -255,7 +303,7 @@ class TTSProxyHandler(SimpleHTTPRequestHandler):
             self.send_error(404, 'Unknown POST endpoint')
 
     def _proxy_tts2(self):
-        """豆包语音合成大模型 2.0：优先双向流式 WebSocket，失败自动降级 HTTP 单向流式"""
+        """豆包语音合成大模型 2.0：优先 HTTP 单向流式（已验证可用），失败再试双向流式 WebSocket"""
         content_length = int(self.headers.get('Content-Length', 0))
         try:
             req = json.loads(self.rfile.read(content_length).decode('utf-8'))
@@ -271,24 +319,23 @@ class TTSProxyHandler(SimpleHTTPRequestHandler):
         errors = []
         audio = None
         try:
-            audio = doubao_tts_bidirection(text, api_key, speaker)
+            audio = doubao_tts_http_fallback(text, api_key, speaker)
         except HTTPError as e:
-            errors.append('WebSocket(HTTP %d): %s' % (e.code, e.read()[:200].decode(errors='replace')))
+            errors.append('HTTP %d: %s' % (e.code, e.read()[:300].decode(errors='replace')))
+        except URLError as e:
+            errors.append('HTTP unreachable: %s' % e.reason)
         except Exception as e:
-            errors.append('WebSocket: %s' % e)
+            errors.append('HTTP: %s' % e)
         if audio is None:
             try:
-                audio = doubao_tts_http_fallback(text, api_key, speaker)
+                audio = doubao_tts_bidirection(text, api_key, speaker)
             except HTTPError as e:
-                detail = e.read()[:300].decode(errors='replace')
-                self._send_json_error(e.code, 'Upstream HTTP error: %s | %s' % (detail, ' ; '.join(errors)))
-                return
-            except URLError as e:
-                self._send_json_error(502, 'Upstream unreachable: %s | %s' % (e.reason, ' ; '.join(errors)))
-                return
+                errors.append('WebSocket(HTTP %d): %s' % (e.code, e.read()[:200].decode(errors='replace')))
             except Exception as e:
-                self._send_json_error(500, 'TTS failed: %s | %s' % (e, ' ; '.join(errors)))
-                return
+                errors.append('WebSocket: %s' % e)
+        if audio is None:
+            self._send_json_error(502, 'TTS failed: %s' % ' ; '.join(errors))
+            return
         self.send_response(200)
         self.send_header('Content-Type', 'audio/mpeg')
         self.send_header('Content-Length', str(len(audio)))
@@ -397,7 +444,7 @@ def main():
             print(f'端口 {p} 已有服务器在运行（可能是未关闭的旧服务器），改用下一个端口…')
             continue
         try:
-            server = HTTPServer(('0.0.0.0', p), TTSProxyHandler)
+            server = ThreadingHTTPServer(('0.0.0.0', p), TTSProxyHandler)
             port = p
             break
         except OSError:

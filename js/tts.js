@@ -320,7 +320,14 @@
     audio.onended = function () { if (opts.onDone) opts.onDone(); };
     audio.onerror = function () { if (opts.onError) opts.onError('音频播放出错'); else if (opts.onDone) opts.onDone(); };
     var p = audio.play();
-    if (p && p.catch) p.catch(function () { if (opts.onError) opts.onError('音频播放被浏览器拦截：请按 Ctrl+F5 强制刷新后重试；若仍出现，请检查地址栏网站设置中「声音」是否被设为阻止'); });
+    if (p && p.catch) p.catch(function (err) {
+      var name = String(err && err.name || '');
+      if (name === 'NotSupportedError') {
+        if (opts.onError) opts.onError('音频解码失败：服务端返回的音频格式异常，请重启 start.bat 后重试');
+      } else if (opts.onError) {
+        opts.onError('音频播放被浏览器拦截：请按 Ctrl+F5 强制刷新后重试；若仍出现，请检查地址栏网站设置中「声音」是否被设为阻止');
+      }
+    });
     setState('playing');
   }
 

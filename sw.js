@@ -1,6 +1,6 @@
 /* 考研阅读 Web 版 - Service Worker（离线优先 + 后台更新）
    版本号由 tools/build-data.js 在构建时注入，勿手改 CACHE 行 */
-var CACHE = 'kaoyan-reader-55e06f1655';
+var CACHE = 'kaoyan-reader-7a07e3ca58';
 var RUNTIME_CACHE = CACHE + '-runtime';
 var RUNTIME_MAX = 200; /* 运行期缓存条目上限（文章正文按需缓存） */
 
