@@ -221,7 +221,7 @@
       var phoneticDone = false;
       var defs = [];
       var itemsStart = -1; var scanFrom = 0;
-      var entry = { phonetic: '', items: [], _zhDone: true };
+      var entry = { phonetic: '', items: [], _zhDone: true, _src: 'llm' };
       var emitted = 0;
       function emitPartial() {
         if (entry.items.length > emitted) {

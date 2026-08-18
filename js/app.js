@@ -523,8 +523,11 @@
     if (!word) return;
     var localEntry = DICT.get(word);
     var cachedEntry = Store.dictGet(word);
-    var entry = localEntry || cachedEntry;
-    var srcLabel = localEntry ? '本地词典' : (cachedEntry ? '在线词典 · 已缓存' : '');
+    /* 大模型已配置时，仅命中大模型缓存；旧在线词典缓存重新走大模型查询 */
+    var llmOn = !!(settings.llmApiKey && settings.llmBaseUrl && settings.llmModel);
+    var usableCache = cachedEntry && (!llmOn || cachedEntry._src === 'llm') ? cachedEntry : null;
+    var entry = localEntry || usableCache;
+    var srcLabel = localEntry ? '本地词典' : (usableCache ? ((usableCache._src === 'llm' ? '大模型' : '在线词典') + ' · 已缓存') : '');
 
     UIi.openSheet(function (sheet) {
       var headRow = UIi.el('div', 'sheet-head');
@@ -601,12 +604,12 @@
       function startOnline() {
         body.innerHTML = '';
         actions.innerHTML = '';
-        body.appendChild(UIi.el('div', 'def-loading', '<span class="spinner"></span><span>本地未收录，正在联网查询…</span>'));
+        body.appendChild(UIi.el('div', 'def-loading', '<span class="spinner"></span><span>' + (llmOn ? '大模型查询中，请稍等…' : '本地未收录，正在联网查询…') + '</span>'));
         appendCommonActions(actions);
         var rendered = false;
         Dict.fetchOnlineDict(word, function (e) {
           if (!sheet.isConnected) return;
-          renderEntry(e, '在线词典', !rendered);
+          renderEntry(e, e._src === 'llm' ? '大模型' : '在线词典', !rendered);
           rendered = true;
         }, function () {
           if (!sheet.isConnected) return;
