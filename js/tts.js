@@ -19,7 +19,15 @@
     _seqToken: 0,
     _listeners: [],
     _blobCache: new Map(),
-    _curUtter: null /* 持有引用，规避部分浏览器 utterance 被 GC 的 bug */
+    _curUtter: null, /* 持有引用，规避部分浏览器 utterance 被 GC 的 bug */
+    /* Web Audio 播放状态（绕过浏览器自动播放限制） */
+    _ctx: null,
+    _srcNode: null,
+    _buf: null,
+    _startAt: 0,
+    _offset: 0,
+    _paused: false,
+    _playOpts: null
   };
 
   function emit() {
@@ -48,15 +56,26 @@
     if (TTS.state === 'playing') { TTS.pause(); } else if (TTS.state === 'paused') { TTS.resume(); }
   };
   TTS.pause = function () {
-    if (TTS.engine === 'cloud' && TTS._audio) { TTS._audio.pause(); setState('paused'); }
+    if (TTS.engine === 'cloud' && TTS._srcNode && TTS._ctx) {
+      TTS._offset = TTS._ctx.currentTime - TTS._startAt;
+      TTS._srcNode.onended = null;
+      try { TTS._srcNode.stop(); } catch (e) { }
+      TTS._srcNode = null;
+      TTS._paused = true;
+      setState('paused');
+    } else if (TTS.engine === 'cloud' && TTS._audio) { TTS._audio.pause(); setState('paused'); }
     else if (synth && TTS.state === 'playing') { synth.pause(); setState('paused'); }
   };
   TTS.resume = function () {
-    if (TTS.engine === 'cloud' && TTS._audio) { TTS._audio.play().catch(function () { }); setState('playing'); }
+    if (TTS.engine === 'cloud' && TTS._paused && TTS._buf && TTS._ctx) {
+      TTS._paused = false;
+      startBuffer(TTS._buf, TTS._offset, TTS._playOpts || {});
+    } else if (TTS.engine === 'cloud' && TTS._audio) { TTS._audio.play().catch(function () { }); setState('playing'); }
     else if (synth) { synth.resume(); setState('playing'); }
   };
   TTS.stop = function () {
     TTS._seqToken++;
+    stopCloudPlayback();
     if (TTS._audio) { try { TTS._audio.pause(); } catch (e) { } TTS._audio = null; }
     if (synth) { try { synth.cancel(); } catch (e) { } }
     setState('idle', -1, 0);
@@ -182,9 +201,8 @@
         if (!resp.ok) return resp.text().then(function (t) { throw new Error('豆包 TTS 请求失败 HTTP ' + resp.status + '：' + t.slice(0, 200)); });
         return resp.arrayBuffer();
       }).then(function (buf) {
-        var url = URL.createObjectURL(new Blob([buf], { type: 'audio/mpeg' }));
-        TTS._blobCache.set(key, url);
-        return url;
+        TTS._blobCache.set(key, buf);
+        return buf;
       }).catch(function (err) {
         var m = String(err && err.message || err);
         if (m.indexOf('Failed to fetch') !== -1 || m.indexOf('NetworkError') !== -1 || m.indexOf('load failed') !== -1) {
@@ -206,9 +224,8 @@
       if (!resp.ok) return resp.text().then(function (t) { throw new Error('TTS 请求失败 HTTP ' + resp.status + '：' + t.slice(0, 120)); });
       return resp.arrayBuffer();
     }).then(function (buf) {
-      var url = URL.createObjectURL(new Blob([buf], { type: 'audio/mpeg' }));
-      TTS._blobCache.set(key, url);
-      return url;
+      TTS._blobCache.set(key, buf);
+      return buf;
     }).catch(function (err) {
       var m = String(err && err.message || err);
       if (m.indexOf('Failed to fetch') !== -1 || m.indexOf('NetworkError') !== -1 || m.indexOf('load failed') !== -1) {
@@ -218,17 +235,84 @@
     });
   }
 
+  /* ---- Web Audio 播放：在用户点击手势内解锁 AudioContext，之后播放不再受自动播放策略限制 ---- */
+  function ensureAudioCtx() {
+    if (!TTS._ctx) {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) { try { TTS._ctx = new AC(); } catch (e) { TTS._ctx = null; } }
+    }
+    if (TTS._ctx && TTS._ctx.state === 'suspended') { TTS._ctx.resume().catch(function () { }); }
+    return TTS._ctx;
+  }
+
+  function stopCloudPlayback() {
+    if (TTS._srcNode) {
+      TTS._srcNode.onended = null;
+      try { TTS._srcNode.stop(); } catch (e) { }
+      TTS._srcNode = null;
+    }
+    TTS._paused = false;
+    TTS._buf = null;
+    TTS._offset = 0;
+    TTS._playOpts = null;
+  }
+
+  function startBuffer(buf, offset, opts) {
+    var ctx = TTS._ctx;
+    var src = ctx.createBufferSource();
+    src.buffer = buf;
+    src.connect(ctx.destination);
+    TTS._srcNode = src;
+    TTS._buf = buf;
+    TTS._startAt = ctx.currentTime - offset;
+    TTS._offset = offset;
+    TTS._playOpts = opts;
+    src.onended = function () {
+      if (TTS._srcNode !== src || TTS._paused) return;
+      TTS._srcNode = null;
+      TTS._buf = null;
+      if (opts.onDone) opts.onDone();
+    };
+    try { src.start(0, Math.max(0, offset)); } catch (e) {
+      if (opts.onError) opts.onError('音频播放出错'); else if (opts.onDone) opts.onDone();
+      return;
+    }
+    setState('playing');
+  }
+
+  function playArrayBuffer(ab, opts) {
+    /* 健壮性：确保拿到 ArrayBuffer（兼容 Uint8Array/异常类型） */
+    if (ArrayBuffer.isView(ab)) ab = ab.buffer.slice(ab.byteOffset, ab.byteOffset + ab.byteLength);
+    if (!(ab instanceof ArrayBuffer)) { playAudioFallback(new Uint8Array(0).buffer, opts); return; }
+    var ctx = TTS._ctx;
+    if (!ctx || !ctx.decodeAudioData) { playAudioFallback(ab, opts); return; }
+    ctx.decodeAudioData(ab.slice(0)).then(function (buf) {
+      startBuffer(buf, 0, opts);
+    }).catch(function () {
+      playAudioFallback(ab, opts);
+    });
+  }
+
+  /* 兼容兜底：无 Web Audio 时用 HTMLAudioElement */
+  function playAudioFallback(ab, opts) {
+    var url = URL.createObjectURL(new Blob([ab], { type: 'audio/mpeg' }));
+    var audio = new Audio(url);
+    TTS._audio = audio;
+    audio.onended = function () { if (opts.onDone) opts.onDone(); };
+    audio.onerror = function () { if (opts.onError) opts.onError('音频播放出错'); else if (opts.onDone) opts.onDone(); };
+    var p = audio.play();
+    if (p && p.catch) p.catch(function () { if (opts.onError) opts.onError('音频播放被浏览器拦截'); });
+    setState('playing');
+  }
+
   function speakCloud(text, opts) {
     opts = opts || {};
+    ensureAudioCtx(); /* 在点击手势内解锁音频 */
+    stopCloudPlayback();
     if (TTS._audio) { try { TTS._audio.pause(); } catch (e) { } TTS._audio = null; }
-    fetchCloudAudio(text).then(function (url) {
-      var audio = new Audio(url);
-      TTS._audio = audio;
-      audio.onended = function () { if (opts.onDone) opts.onDone(); };
-      audio.onerror = function () { if (opts.onError) opts.onError('音频播放出错'); else if (opts.onDone) opts.onDone(); };
-      var p = audio.play();
-      if (p && p.catch) p.catch(function () { if (opts.onError) opts.onError('音频播放被浏览器拦截'); });
-      setState('playing');
+    setState('loading');
+    fetchCloudAudio(text).then(function (ab) {
+      playArrayBuffer(ab, opts);
     }).catch(function (err) {
       if (opts.onError) opts.onError(err.message);
     });

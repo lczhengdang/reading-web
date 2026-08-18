@@ -1,6 +1,6 @@
 node_modules/
 .idea/
-.chrome-tmp*/
+.chrome-*/
 shot-*.png
 *.log
 __pycache__/
