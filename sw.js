@@ -82,7 +82,9 @@ self.addEventListener('fetch', function (e) {
     return;
   }
 
-  /* 同源静态资源：stale-while-revalidate —— 命中缓存立即返回，后台静默更新供下次使用 */
+  /* 同源静态资源：stale-while-revalidate —— 命中缓存立即返回，后台静默更新供下次使用；
+     强制刷新（Ctrl+F5 / reload）时网络优先，确保能立即拿到新版本 */
+  var forceFresh = req.cache === 'no-cache' || req.cache === 'reload';
   e.respondWith(
     caches.match(req).then(function (cached) {
       var refresh = fetch(req).then(function (resp) {
@@ -92,9 +94,10 @@ self.addEventListener('fetch', function (e) {
         }
         return resp;
       }).catch(function () { return null; });
-      if (cached) return cached;
+      if (cached && !forceFresh) return cached;
       return refresh.then(function (resp) {
         if (resp) return resp;
+        if (cached) return cached; /* 离线时退回旧缓存 */
         throw new Error('offline and not cached');
       });
     })

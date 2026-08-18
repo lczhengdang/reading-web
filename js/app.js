@@ -604,7 +604,11 @@
       function startOnline() {
         body.innerHTML = '';
         actions.innerHTML = '';
-        body.appendChild(UIi.el('div', 'def-loading', '<span class="spinner"></span><span>' + (llmOn ? '大模型查询中，请稍等…' : '本地未收录，正在联网查询…') + '</span>'));
+        var loadingMsg;
+        if (llmOn) loadingMsg = '大模型查询中，请稍等…';
+        else if (settings.llmApiKey || settings.llmBaseUrl || settings.llmModel) loadingMsg = '大模型配置不完整，正在联网查询…';
+        else loadingMsg = '本地未收录，正在联网查询…';
+        body.appendChild(UIi.el('div', 'def-loading', '<span class="spinner"></span><span>' + loadingMsg + '</span>'));
         appendCommonActions(actions);
         var rendered = false;
         Dict.fetchOnlineDict(word, function (e) {
@@ -743,9 +747,26 @@
       '<div class="set-row"><button class="btn btn-tonal" id="f-llm-fetch" style="margin-top:12px">获取模型列表</button></div>' +
       '<select class="field" id="f-llm-model" style="display:none"></select>' +
       '<input class="field" type="text" id="f-llm-model-manual" placeholder="模型名称（如列表获取失败可手动输入）" value="' + esc(settings.llmModel) + '">' +
-      '<div class="set-row"><button class="btn btn-tonal" id="f-llm-save" style="margin-top:12px">保存大模型配置</button></div>';
+      '<div class="set-row"><button class="btn btn-tonal" id="f-llm-save" style="margin-top:12px">保存大模型配置</button></div>' +
+      '<div class="hint" id="f-llm-status"></div>';
     cLlm.appendChild(llmBox);
     body.appendChild(cLlm);
+    function paintLlmStatus() {
+      var missing = [];
+      if (!settings.llmApiKey) missing.push('API Key');
+      if (!settings.llmBaseUrl) missing.push('Base URL');
+      if (!settings.llmModel) missing.push('模型名称');
+      var el = document.getElementById('f-llm-status');
+      if (!el) return;
+      if (!missing.length) {
+        el.textContent = '当前状态：已启用，查词优先走大模型（模型 ' + settings.llmModel + '）';
+      } else if (settings.llmApiKey || settings.llmBaseUrl || settings.llmModel) {
+        el.textContent = '当前状态：配置不完整，缺 ' + missing.join('、') + ' —— 查词仍走在线词典';
+      } else {
+        el.textContent = '当前状态：未配置，查词走在线词典链路';
+      }
+    }
+    paintLlmStatus();
     var llmSel = b('f-llm-model');
     var llmManual = b('f-llm-model-manual');
     b('f-llm-fetch').addEventListener('click', function () {
@@ -779,6 +800,7 @@
       settings.llmBaseUrl = b('f-llmurl').value.trim().replace(/\/+$/, '');
       settings.llmModel = (llmSel.style.display !== 'none' && llmSel.value) ? llmSel.value : llmManual.value.trim();
       Store.saveSettings();
+      paintLlmStatus();
       UIi.toast(settings.llmApiKey && settings.llmBaseUrl && settings.llmModel ? '大模型查词已启用' : '配置不完整，将继续使用在线词典链路');
     });
 
