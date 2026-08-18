@@ -14,7 +14,7 @@
     engine: 'system',
     rate: 1.0,
     voiceURI: '',
-    cloud: { apiKey: '', endpoint: 'https://ark.cn-beijing.volces.com/api/v3/tts', model: 'doubao-tts-0001', voiceId: '' },
+    cloud: { apiKey: '', endpoint: 'https://ark.cn-beijing.volces.com/api/v3/tts', model: 'doubao-tts-0001', voiceId: '', ttsApi: 'doubao2' },
     _audio: null,
     _seqToken: 0,
     _listeners: [],
@@ -147,9 +147,9 @@
     }
   }
 
-  /* ---------- 云端引擎（火山方舟） ---------- */
+  /* ---------- 云端引擎（豆包大模型 2.0 双向流式 / 方舟 HTTP） ---------- */
   function cacheKey(text) {
-    return TTS.cloud.endpoint + '|' + TTS.cloud.model + '|' + TTS.cloud.voiceId + '|' + TTS.rate + '|' + text;
+    return (TTS.cloud.ttsApi || 'doubao2') + '|' + TTS.cloud.endpoint + '|' + TTS.cloud.model + '|' + TTS.cloud.voiceId + '|' + TTS.rate + '|' + text;
   }
 
   function buildCloudBody(text) {
@@ -169,8 +169,32 @@
     var c = TTS.cloud;
     if (!c.apiKey) return Promise.reject(new Error('未配置 API Key，请到设置中填写'));
 
-    /* 同源请求走本地代理 /api/tts（tools/serve.py），避免浏览器直连云端接口的 CORS 拦截；
-       Content-Type 用 text/plain 避免触发预检请求（代理不依赖该头） */
+    /* 豆包语音合成大模型 2.0：同源走本地代理 /api/tts2（服务端双向流式 WebSocket，无 CORS 问题） */
+    if ((c.ttsApi || 'doubao2') === 'doubao2') {
+      return fetch('/api/tts2', {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+        body: JSON.stringify({ text: text, apiKey: c.apiKey, speaker: c.voiceId || 'zh_female_cancan_mars_bigtts' })
+      }).then(function (resp) {
+        if (resp.status === 501 || resp.status === 404 || resp.status === 405) {
+          throw new Error('当前服务器不支持 TTS 代理：请关闭旧服务器窗口，双击 start.bat 重新启动，并访问终端显示的端口');
+        }
+        if (!resp.ok) return resp.text().then(function (t) { throw new Error('豆包 TTS 请求失败 HTTP ' + resp.status + '：' + t.slice(0, 200)); });
+        return resp.arrayBuffer();
+      }).then(function (buf) {
+        var url = URL.createObjectURL(new Blob([buf], { type: 'audio/mpeg' }));
+        TTS._blobCache.set(key, url);
+        return url;
+      }).catch(function (err) {
+        var m = String(err && err.message || err);
+        if (m.indexOf('Failed to fetch') !== -1 || m.indexOf('NetworkError') !== -1 || m.indexOf('load failed') !== -1) {
+          m += '（可能是浏览器跨域限制，请使用 python tools/serve.py 启动本地代理）';
+        }
+        throw new Error(m);
+      });
+    }
+
+    /* 方舟 HTTP（OpenAI 兼容）：同源请求走本地代理 /api/tts */
     return fetch('/api/tts', {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },

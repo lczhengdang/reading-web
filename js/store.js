@@ -36,6 +36,7 @@
   if (settings.llmApiKey === undefined) settings.llmApiKey = '';
   if (settings.llmBaseUrl === undefined) settings.llmBaseUrl = 'https://ark.cn-beijing.volces.com/api/v3';
   if (settings.llmModel === undefined) settings.llmModel = '';
+  if (settings.ttsApi === undefined) settings.ttsApi = 'doubao2'; /* doubao2 双向流式 | ark HTTP兼容 */
   if (settings.theme === undefined) settings.theme = 'system'; /* system | light | dark */
   var favorites = new Set(rawGet('favorites', []));
   var wordbook = rawGet('wordbook', []);

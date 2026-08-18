@@ -32,6 +32,7 @@
     T.cloud.endpoint = settings.endpoint || T.cloud.endpoint;
     T.cloud.model = settings.model || T.cloud.model;
     T.cloud.voiceId = settings.cloudVoiceId || '';
+    T.cloud.ttsApi = settings.ttsApi || 'doubao2';
     document.documentElement.style.setProperty('--reading-size', settings.fontSize + 'px');
   }
 
@@ -763,17 +764,24 @@
     });
     var cloudBox = UIi.el('div');
     cloudBox.innerHTML =
-      '<div class="hint warn">注意：浏览器直接调用云端接口可能被跨域(CORS)拦截，如请求失败请切回系统语音。</div>' +
-      '<input class="field" type="password" id="f-key" placeholder="ARK API Key" value="' + esc(settings.apiKey) + '">' +
-      '<input class="field" type="text" id="f-endpoint" placeholder="TTS 端点" value="' + esc(settings.endpoint) + '">' +
-      '<input class="field" type="text" id="f-model" placeholder="模型名称" value="' + esc(settings.model) + '">' +
-      '<input class="field" type="text" id="f-cvoice" placeholder="音色 ID" value="' + esc(settings.cloudVoiceId) + '">' +
+      '<div class="hint warn">注意：云端语音需通过本地代理服务器调用（请用 start.bat 启动）。</div>' +
+      '<select class="field" id="f-ttsapi">' +
+      '<option value="doubao2">豆包语音合成大模型 2.0（双向流式，推荐）</option>' +
+      '<option value="ark">方舟 HTTP（OpenAI 兼容）</option>' +
+      '</select>' +
+      '<input class="field" type="password" id="f-key" placeholder="API Key（方舟控制台 > API Key 管理）" value="' + esc(settings.apiKey) + '">' +
+      '<input class="field" type="text" id="f-endpoint" placeholder="TTS 端点（仅方舟 HTTP 模式使用）" value="' + esc(settings.endpoint) + '">' +
+      '<input class="field" type="text" id="f-model" placeholder="模型名称（仅方舟 HTTP 模式使用）" value="' + esc(settings.model) + '">' +
+      '<input class="field" type="text" id="f-cvoice" placeholder="音色 ID（方舟控制台 > 语音音色，豆包 2.0 需选 2.0 音色）" value="' + esc(settings.cloudVoiceId) + '">' +
       '<div class="set-row"><button class="btn btn-tonal" id="f-save" style="margin-top:12px">保存云端配置</button></div>';
     c1.appendChild(cloudBox);
     body.appendChild(c1);
     paintSeg();
     function b(id) { return document.getElementById(id); }
+    var ttsApiSel = b('f-ttsapi');
+    ttsApiSel.value = settings.ttsApi || 'doubao2';
     b('f-save').addEventListener('click', function () {
+      settings.ttsApi = ttsApiSel.value;
       settings.apiKey = b('f-key').value.trim();
       settings.endpoint = b('f-endpoint').value.trim() || settings.endpoint;
       settings.model = b('f-model').value.trim() || settings.model;
