@@ -165,12 +165,26 @@
     if (TTS._blobCache.has(key)) return Promise.resolve(TTS._blobCache.get(key));
     var c = TTS.cloud;
     if (!c.apiKey) return Promise.reject(new Error('未配置 API Key，请到设置中填写'));
-    return fetch(c.endpoint, {
+
+    // 使用本地代理端点（解决 CORS）
+    var useProxy = true;
+    var endpoint = useProxy ? '/api/tts' : c.endpoint;
+    var headers = {
+      'Content-Type': 'application/json'
+    };
+    if (useProxy) {
+      headers['X-Original-Endpoint'] = c.endpoint;
+      headers['Authorization'] = 'Bearer ' + c.apiKey;
+    } else {
+      headers['Authorization'] = 'Bearer ' + c.apiKey;
+    }
+
+    return fetch(endpoint, {
       method: 'POST',
-      headers: { 'Authorization': 'Bearer ' + c.apiKey, 'Content-Type': 'application/json' },
+      headers: headers,
       body: buildCloudBody(text)
     }).then(function (resp) {
-      if (!resp.ok) return resp.text().then(function (t) { throw new Error('TTS 请求失败 HTTP ' + resp.code + '：' + t.slice(0, 120)); });
+      if (!resp.ok) return resp.text().then(function (t) { throw new Error('TTS 请求失败 HTTP ' + resp.status + '：' + t.slice(0, 120)); });
       return resp.arrayBuffer();
     }).then(function (buf) {
       var url = URL.createObjectURL(new Blob([buf], { type: 'audio/mpeg' }));
@@ -179,7 +193,7 @@
     }).catch(function (err) {
       var m = String(err && err.message || err);
       if (m.indexOf('Failed to fetch') !== -1 || m.indexOf('NetworkError') !== -1 || m.indexOf('load failed') !== -1) {
-        m += '（可能是浏览器跨域限制）';
+        m += '（可能是浏览器跨域限制，请使用 python tools/serve.py 启动本地代理）';
       }
       throw new Error(m);
     });

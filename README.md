@@ -42,10 +42,12 @@ npm run update-guardian
 
 ```powershell
 cd D:\桌面\web
-python -m http.server 8080
+python tools/serve.py 8080
 ```
 
 保持窗口开着即可。关闭后重新启动用上面两条命令。
+
+> **注意**：必须使用 `python tools/serve.py` 启动（而非 `python -m http.server`），因为代理脚本解决了火山方舟 TTS 接口的跨域问题。
 
 ### 2. 手机访问
 
