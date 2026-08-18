@@ -76,7 +76,7 @@
 
   /* ---- 中文释义回填：LLM 批量优先，失败回退逐条并发（3 并发）+ 兜底超时 ---- */
   function fillTranslations(word, entry, cb) {
-    var pending = entry.items.filter(function (it) { return it.zh === it.en; });
+    var pending = entry._zhDone ? [] : entry.items.filter(function (it) { return it.zh === it.en; });
     var finished = false;
     function finish(final) {
       if (finished) return;
@@ -140,14 +140,16 @@
   function llmBaseUrl() {
     return String(Store.settings.llmBaseUrl).replace(/\/+$/, '');
   }
-  function callLLMChat(messages, timeoutMs) {
+  function callLLMChat(messages, timeoutMs, maxTokens) {
     if (!llmConfigured()) return Promise.reject(new Error('llm not configured'));
     var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
     var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, timeoutMs);
+    var body = { model: Store.settings.llmModel, messages: messages, temperature: 0.3 };
+    if (maxTokens) body.max_tokens = maxTokens;
     return fetch(llmBaseUrl() + '/chat/completions', {
       method: 'POST',
       headers: { 'Authorization': 'Bearer ' + Store.settings.llmApiKey, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: Store.settings.llmModel, messages: messages, temperature: 0.3 }),
+      body: JSON.stringify(body),
       signal: ctrl ? ctrl.signal : undefined
     }).then(function (r) {
       clearTimeout(timer);
@@ -159,7 +161,7 @@
       return String(content);
     }).catch(function (e) { clearTimeout(timer); throw e; });
   }
-  /* 从模型返回文本中提取首个完整的 JSON 对象（容忍 markdown 包裹/前后多余文字） */
+  /* 从模型返回文本中提取首个完整的 JSON 对象（容忍 markdown 包裹/前后多余文字，仅批量翻译等非流式路径使用） */
   function extractJsonObject(text) {
     var start = text.indexOf('{');
     if (start === -1) return null;
@@ -170,31 +172,148 @@
     }
     return null;
   }
-  function dictLLM(word) {
+  /* 增量提取累积流式文本中的完整 item 对象（字符串感知的花括号配对，跳过引号内转义字符） */
+  function scanStreamItems(acc, fromIdx) {
+    var out = [];
+    var i = fromIdx;
+    while (i < acc.length) {
+      if (acc[i] !== '{') { i++; continue; }
+      var depth = 0; var inStr = false; var esc = false; var j = i; var end = -1;
+      for (; j < acc.length; j++) {
+        var c = acc[j];
+        if (inStr) {
+          if (esc) esc = false;
+          else if (c === '\\') esc = true;
+          else if (c === '"') inStr = false;
+        } else if (c === '"') inStr = true;
+        else if (c === '{') depth++;
+        else if (c === '}') { depth--; if (depth === 0) { end = j; break; } }
+      }
+      if (end === -1) break; /* 对象尚未完整，等待后续 chunk */
+      try {
+        var obj = JSON.parse(acc.slice(i, end + 1));
+        if (obj && typeof obj === 'object') out.push(obj);
+      } catch (e) { /* 忽略非法片段 */ }
+      i = end + 1;
+    }
+    return { items: out, next: i };
+  }
+
+  /* 流式查词：SSE 增量解析，首条释义到达即渐进渲染 */
+  function streamLLMDict(word, onEntry) {
+    if (!llmConfigured()) return Promise.reject(new Error('llm not configured'));
     var prompt = '你是英语词典。查询单词 "' + word + '"，只输出 JSON，不要任何其他文字：' +
-      '{"phonetic":"国际音标，不含斜杠，未知则为空字符串","items":[{"pos":"词性缩写如 n. v. adj. adv.","zh":"中文释义","en":"简短英文释义"}]}' +
-      '，items 最多 6 条，覆盖主要词性。若该词不存在，输出 {"phonetic":"","items":[]}';
-    return callLLMChat([{ role: 'user', content: prompt }], 20000).then(function (content) {
-      var jsonStr = extractJsonObject(content);
-      if (!jsonStr) throw new Error('llm bad json');
-      var data;
-      try { data = JSON.parse(jsonStr); } catch (e) { throw new Error('llm bad json'); }
-      if (!data || !Array.isArray(data.items) || !data.items.length) return NOT_FOUND;
+      '{"phonetic":"国际音标，不含斜杠，未知则为空字符串","items":[{"pos":"词性缩写如 n. v. adj. adv.","zh":"中文释义"}]}' +
+      '，items 最多 4 条主要词性。若该词不存在，输出 {"phonetic":"","items":[]}';
+    var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
+    return fetch(llmBaseUrl() + '/chat/completions', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + Store.settings.llmApiKey, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: Store.settings.llmModel, messages: [{ role: 'user', content: prompt }], temperature: 0.3, max_tokens: 400, stream: true }),
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function (r) {
+      if (!r.ok) { clearTimeout(timer); throw new Error('llm http ' + r.status); }
+      if (!r.body || typeof r.body.getReader !== 'function') { clearTimeout(timer); throw new Error('llm no stream'); }
+      var reader = r.body.getReader();
+      var decoder = typeof TextDecoder !== 'undefined' ? new TextDecoder() : null;
+      var acc = ''; var buf = ''; var rawAll = '';
+      var phoneticDone = false;
       var defs = [];
-      data.items.slice(0, 8).forEach(function (it) {
-        var en = String(it.en || '').trim();
-        var zh = String(it.zh || '').trim();
-        if (!en && !zh) return;
-        defs.push({ pos: String(it.pos || ''), zh: zh || en, en: en || zh });
-      });
-      if (!defs.length) return NOT_FOUND;
-      return buildEntry(String(data.phonetic || ''), defs);
-    });
+      var itemsStart = -1; var scanFrom = 0;
+      var entry = { phonetic: '', items: [], _zhDone: true };
+      var emitted = 0;
+      function emitPartial() {
+        if (entry.items.length > emitted) {
+          emitted = entry.items.length;
+          if (onEntry) onEntry(entry);
+        }
+      }
+      function processAcc() {
+        if (!phoneticDone) {
+          var m = acc.match(/"phonetic"\s*:\s*"([^"\\]*)"/);
+          if (m) { entry.phonetic = m[1]; phoneticDone = true; }
+        }
+        if (itemsStart === -1) {
+          var k = acc.indexOf('"items"');
+          if (k !== -1) {
+            var b = acc.indexOf('[', k);
+            if (b !== -1) itemsStart = b + 1;
+          }
+        }
+        if (itemsStart !== -1) {
+          var res = scanStreamItems(acc, Math.max(itemsStart, scanFrom));
+          res.items.forEach(function (it) {
+            var zh = String(it.zh || '').trim();
+            if (!zh) return;
+            if (defs.length < 8) defs.push({ pos: String(it.pos || ''), zh: zh });
+          });
+          scanFrom = res.next;
+          entry.items = defs.map(function (d) { return { pos: d.pos, zh: d.zh, en: d.zh }; });
+          emitPartial();
+        }
+      }
+      function applyDictData(data) {
+        if (!data || !Array.isArray(data.items)) return false;
+        data.items.slice(0, 8).forEach(function (it) {
+          var zh = String(it.zh || '').trim();
+          if (!zh || defs.length >= 8) return;
+          defs.push({ pos: String(it.pos || ''), zh: zh });
+        });
+        if (!phoneticDone && typeof data.phonetic === 'string') { entry.phonetic = data.phonetic; phoneticDone = true; }
+        entry.items = defs.map(function (d) { return { pos: d.pos, zh: d.zh, en: d.zh }; });
+        emitPartial();
+        return true;
+      }
+      function pump() {
+        return reader.read().then(function (chunk) {
+          if (chunk.done) {
+            clearTimeout(timer);
+            if (!defs.length) {
+              /* 兼容：部分服务忽略 stream 参数，一次性返回完整 JSON */
+              try {
+                var whole = JSON.parse(rawAll.trim());
+                if (whole && whole.choices && whole.choices[0] && whole.choices[0].message && whole.choices[0].message.content) {
+                  var cs = extractJsonObject(String(whole.choices[0].message.content));
+                  if (cs && applyDictData(JSON.parse(cs))) return defs.length ? entry : NOT_FOUND;
+                } else if (whole && Array.isArray(whole.items)) {
+                  if (applyDictData(whole)) return defs.length ? entry : NOT_FOUND;
+                }
+              } catch (e) { /* 非 JSON 响应，按空结果处理 */ }
+              return NOT_FOUND;
+            }
+            return entry;
+          }
+          var text = decoder ? decoder.decode(chunk.value, { stream: true }) : String.fromCharCode.apply(null, chunk.value);
+          rawAll += text;
+          buf += text;
+          var idx;
+          while ((idx = buf.indexOf('\n')) !== -1) {
+            var line = buf.slice(0, idx).trim();
+            buf = buf.slice(idx + 1);
+            if (line.indexOf('data:') !== 0) continue;
+            var data = line.slice(5).trim();
+            if (data === '[DONE]') continue;
+            var delta;
+            try { delta = JSON.parse(data); } catch (e) { continue; }
+            var c = delta && delta.choices && delta.choices[0] && delta.choices[0].delta && delta.choices[0].delta.content;
+            if (c) acc += c;
+          }
+          processAcc();
+          return pump();
+        });
+      }
+      return pump().catch(function (e) { clearTimeout(timer); throw e; });
+    }).catch(function (e) { clearTimeout(timer); throw e; });
+  }
+
+  function dictLLM(word, onEntry) {
+    return streamLLMDict(word, onEntry);
   }
   /* LLM 批量翻译：一次请求翻译全部条目，返回与输入同序的中文数组 */
   function translateBatchLLM(texts) {
     var prompt = '把下列英文词典释义翻译成中文，只输出 JSON 数组（与输入同序、等长，元素为中文翻译字符串），不要任何其他文字：\n' + JSON.stringify(texts);
-    return callLLMChat([{ role: 'user', content: prompt }], 15000).then(function (content) {
+    return callLLMChat([{ role: 'user', content: prompt }], 15000, 300).then(function (content) {
       var start = content.indexOf('[');
       if (start === -1) throw new Error('llm bad json');
       var depth = 0; var end = -1;
@@ -345,34 +464,36 @@
     return list.concat([dictFreeDict, dictDatamuse, dictWiktionary]);
   }
 
-  /* 单源：非 NOT_FOUND 错误自动重试 1 次（间隔 800ms） */
-  function tryDictSource(provider, word, retried) {
-    return provider(word).catch(function (err) {
+  /* 单源：非 NOT_FOUND 错误自动重试 1 次（间隔 800ms）；onEntry 供流式源渐进渲染 */
+  function tryDictSource(provider, word, retried, onEntry) {
+    return provider(word, onEntry).catch(function (err) {
       if (err === NOT_FOUND) throw err;
       if (!retried) {
         return new Promise(function (res) { setTimeout(res, 800); }).then(function () {
-          return tryDictSource(provider, word, true);
+          return tryDictSource(provider, word, true, onEntry);
         });
       }
       throw err;
     });
   }
 
-  function nextDictSource(providers, word, i, sawNotFound) {
+  function nextDictSource(providers, word, i, sawNotFound, onEntry) {
     if (i >= providers.length) {
       return sawNotFound ? Promise.resolve(NOT_FOUND) : Promise.reject(new Error('all dict sources failed'));
     }
-    return tryDictSource(providers[i], word, false).then(function (entry) {
-      if (entry === NOT_FOUND) return nextDictSource(providers, word, i + 1, true);
+    return tryDictSource(providers[i], word, false, onEntry).then(function (entry) {
+      if (entry === NOT_FOUND) return nextDictSource(providers, word, i + 1, true, onEntry);
       return entry;
     }, function (err) {
-      if (err === NOT_FOUND) return nextDictSource(providers, word, i + 1, true);
-      return nextDictSource(providers, word, i + 1, sawNotFound);
+      if (err === NOT_FOUND) return nextDictSource(providers, word, i + 1, true, onEntry);
+      return nextDictSource(providers, word, i + 1, sawNotFound, onEntry);
     });
   }
 
   function fetchOnlineDict(word, cb, onNotFound, onError) {
-    nextDictSource(dictProviders(), word, 0, false).then(function (entry) {
+    nextDictSource(dictProviders(), word, 0, false, function (entry) {
+      cb(entry, false);
+    }).then(function (entry) {
       if (entry === NOT_FOUND) { onNotFound(); return; }
       /* 先用英文释义立即出结果，中文翻译并发回填 */
       cb(entry, false);
