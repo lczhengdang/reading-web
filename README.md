@@ -40,12 +40,16 @@ npm run update-guardian
 
 ### 1. 启动服务（电脑上）
 
+**推荐：双击项目根目录的 `start.bat`**（自动清理占用端口的旧服务器，启动带 TTS 代理的服务）。
+
+或命令行启动：
+
 ```powershell
 cd D:\桌面\web
 python tools/serve.py 8080
 ```
 
-保持窗口开着即可。关闭后重新启动用上面两条命令。
+保持窗口开着即可。关闭后重新启动用上面方式。
 
 > **注意**：
 > 1. 必须使用 `python tools/serve.py` 启动（而非 `python -m http.server`），代理脚本解决了火山方舟 TTS 接口的跨域问题。
