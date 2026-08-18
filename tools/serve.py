@@ -94,15 +94,29 @@ class TTSProxyHandler(SimpleHTTPRequestHandler):
         self.end_headers()
 
 
+def _port_has_responder(p):
+    """探测端口上是否已有其他服务器在响应
+    （Windows 上 allow_reuse_address 可能让 bind 成功但请求仍被旧进程处理）"""
+    import socket
+    try:
+        with socket.create_connection(('127.0.0.1', p), timeout=0.5):
+            return True
+    except OSError:
+        return False
+
+
 def main():
     port = int(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_PORT
     directory = sys.argv[2] if len(sys.argv) > 2 else DEFAULT_DIR
 
     os.chdir(directory)
 
-    # 端口被占用时自动顺延（常见于旧的 python -m http.server 未关闭）
+    # 端口被占用或已有旧服务器响应时自动顺延（常见于旧的 python -m http.server 未关闭）
     server = None
     for p in range(port, port + 10):
+        if _port_has_responder(p):
+            print(f'端口 {p} 已有服务器在运行（可能是未关闭的旧服务器），改用下一个端口…')
+            continue
         try:
             server = HTTPServer(('0.0.0.0', p), TTSProxyHandler)
             port = p
@@ -116,7 +130,7 @@ def main():
     print(f'考研阅读 Web 版 - 本地服务器（带 TTS 代理）')
     print(f'目录：{directory}')
     print(f'端口：{port}')
-    print(f'访问：http://localhost:{port}')
+    print(f'访问：http://localhost:{port}   ← 请以本端口为准，勿用旧端口')
     print(f'TTS 代理：POST /api/tts -> 火山方舟')
     print(f'按 Ctrl+C 停止')
     print()

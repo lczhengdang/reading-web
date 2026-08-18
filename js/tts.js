@@ -176,6 +176,9 @@
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: buildCloudBody(text)
     }).then(function (resp) {
+      if (resp.status === 501 || resp.status === 404 || resp.status === 405) {
+        throw new Error('当前服务器不支持 TTS 代理：请关闭所有旧的服务器窗口，改用 python tools/serve.py 启动，并访问终端显示的新端口');
+      }
       if (!resp.ok) return resp.text().then(function (t) { throw new Error('TTS 请求失败 HTTP ' + resp.status + '：' + t.slice(0, 120)); });
       return resp.arrayBuffer();
     }).then(function (buf) {
