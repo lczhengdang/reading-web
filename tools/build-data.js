@@ -78,6 +78,7 @@ const hashSrc = crypto.createHash('sha1').update(indexOut + dictOut);
 )).forEach(f => {
   let buf = fs.readFileSync(path.join(root, f), 'utf8');
   if (f === 'sw.js') buf = buf.replace(/var CACHE = '[^']*';/, "var CACHE = '';"); /* 归一化版本行，保证构建幂等 */
+  if (f === path.join('js', 'app.js')) buf = buf.replace(/var APP_VERSION = '[^']*';/, "var APP_VERSION = '';"); /* 同上 */
   hashSrc.update(buf);
 });
 const hash = hashSrc.digest('hex').slice(0, 10);
@@ -91,6 +92,16 @@ if (!CACHE_RE.test(sw)) {
 }
 const updated = sw.replace(CACHE_RE, `var CACHE = '${version}';`);
 fs.writeFileSync(swPath, updated, 'utf8');
+
+/* ---------- 向 js/app.js 注入 APP_VERSION（前端可展示/日志，便于核对客户端是否跑最新版） ---------- */
+const appPath = path.join(root, 'js', 'app.js');
+const appSrc = fs.readFileSync(appPath, 'utf8');
+const APP_RE = /var APP_VERSION = '[^']*';/;
+if (!APP_RE.test(appSrc)) {
+  console.error('js/app.js 中未找到 APP_VERSION 声明（var APP_VERSION = \'...\';），无法注入版本号');
+  process.exit(1);
+}
+fs.writeFileSync(appPath, appSrc.replace(APP_RE, `var APP_VERSION = '${version}';`), 'utf8');
 
 /* ---------- 体积报告 ---------- */
 const kb = n => (n / 1024).toFixed(1) + ' KB';

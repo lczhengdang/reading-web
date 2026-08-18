@@ -2,10 +2,17 @@
 (function () {
   'use strict';
 
+  /* 版本标识：构建时由 tools/build-data.js 注入，勿手改 */
+  var APP_VERSION = 'kaoyan-reader-55e06f1655';
+  console.log('[考研阅读] 版本 ' + (APP_VERSION || 'dev'));
+
   var UIi = window.UI;
   var T = window.TTS;
   var Store = window.Store;
   var Dict = window.Dict;
+
+  /* 首次任意交互即提前解锁音频上下文，避免朗读点击时手势时序边界问题 */
+  document.addEventListener('pointerdown', function () { T.unlock(); }, { capture: true, once: true });
 
   /* ============ 数据准备（索引：仅元信息，正文按需加载） ============ */
   var articles = (window.KAOYAN_INDEX || []).slice().sort(function (a, b) { return a.id < b.id ? -1 : 1; });
@@ -769,7 +776,7 @@
 
     /* --- 朗读引擎 --- */
     var c1 = UIi.el('div', 'set-card');
-    c1.innerHTML = '<h2>朗读引擎</h2><div class="hint">系统语音离线可用；云端高质量语音需联网并配置密钥。</div>' +
+    c1.innerHTML = '<h2>朗读引擎</h2><div class="hint">系统语音离线可用；云端高质量语音需联网并配置密钥。<br>当前版本：' + (APP_VERSION || 'dev') + '（若朗读异常，请核对是否与服务器终端输出的版本一致）</div>' +
       '<div class="seg"><button data-e="system">系统语音</button><button data-e="cloud">云端 · 火山方舟</button></div>';
     var segs = c1.querySelectorAll('.seg button');
     function paintSeg() {

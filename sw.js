@@ -1,6 +1,6 @@
 /* 考研阅读 Web 版 - Service Worker（离线优先 + 后台更新）
    版本号由 tools/build-data.js 在构建时注入，勿手改 CACHE 行 */
-var CACHE = 'kaoyan-reader-e8ef3ab577';
+var CACHE = 'kaoyan-reader-55e06f1655';
 var RUNTIME_CACHE = CACHE + '-runtime';
 var RUNTIME_MAX = 200; /* 运行期缓存条目上限（文章正文按需缓存） */
 
@@ -82,7 +82,28 @@ self.addEventListener('fetch', function (e) {
     return;
   }
 
-  /* 同源静态资源：stale-while-revalidate —— 命中缓存立即返回，后台静默更新供下次使用；
+  /* 前端代码资源（js/css/data 构建产物/页面）：网络优先，确保普通刷新一次即拿到最新版本；离线时退回缓存 */
+  var p = url.pathname;
+  var isCode = p.indexOf('/js/') === 0 || p.indexOf('/css/') === 0 || p.indexOf('/data/') === 0 || p === '/' || p === '/index.html';
+  if (isCode) {
+    e.respondWith(
+      fetch(req).then(function (resp) {
+        if (resp && resp.ok && resp.type === 'basic') {
+          var copy = resp.clone();
+          caches.open(CACHE).then(function (c) { c.put(req, copy); });
+        }
+        return resp;
+      }).catch(function () {
+        return caches.match(req).then(function (cached) {
+          if (cached) return cached;
+          throw new Error('offline and not cached');
+        });
+      })
+    );
+    return;
+  }
+
+  /* 其余同源静态资源（字体/图标等）：stale-while-revalidate —— 命中缓存立即返回，后台静默更新供下次使用；
      强制刷新（Ctrl+F5 / reload）时网络优先，确保能立即拿到新版本 */
   var forceFresh = req.cache === 'no-cache' || req.cache === 'reload' || req.cache === 'no-store';
   e.respondWith(

@@ -27,7 +27,8 @@
     _startAt: 0,
     _offset: 0,
     _paused: false,
-    _playOpts: null
+    _playOpts: null,
+    _ctxBlocked: false
   };
 
   function emit() {
@@ -87,6 +88,8 @@
     return '朗读全文';
   };
   TTS.clearCache = function () { TTS._blobCache.clear(); };
+  /* 供外部在任意首次交互时提前解锁音频上下文 */
+  TTS.unlock = function () { ensureAudioCtx(); };
   TTS.englishVoices = function () {
     return TTS.voices.filter(function (v) { return /^en/i.test(v.lang); });
   };
@@ -241,9 +244,13 @@
       var AC = window.AudioContext || window.webkitAudioContext;
       if (AC) { try { TTS._ctx = new AC(); } catch (e) { TTS._ctx = null; } }
     }
-    if (TTS._ctx && TTS._ctx.state === 'suspended') { TTS._ctx.resume().catch(function () { }); }
+    if (TTS._ctx && TTS._ctx.state === 'suspended') {
+      TTS._ctx.resume().then(function () { TTS._ctxBlocked = false; }).catch(function () { TTS._ctxBlocked = true; });
+    }
     return TTS._ctx;
   }
+
+  var BLOCKED_MSG = '浏览器拒绝解锁音频：请点击地址栏左侧图标 → 网站设置，确认「声音」未被设为阻止，然后刷新页面重试';
 
   function stopCloudPlayback() {
     if (TTS._srcNode) {
@@ -286,7 +293,19 @@
     if (!(ab instanceof ArrayBuffer)) { playAudioFallback(new Uint8Array(0).buffer, opts); return; }
     var ctx = TTS._ctx;
     if (!ctx || !ctx.decodeAudioData) { playAudioFallback(ab, opts); return; }
-    ctx.decodeAudioData(ab.slice(0)).then(function (buf) {
+    if (ctx.state === 'suspended') {
+      /* 手势解锁失败（多为站点声音权限被阻止）：再尝试一次，仍失败则给出明确指引 */
+      ctx.resume().then(function () {
+        if (ctx.state === 'running') { decodeAndPlay(ab, opts); }
+        else if (opts.onError) { opts.onError(BLOCKED_MSG); }
+      }).catch(function () { if (opts.onError) opts.onError(BLOCKED_MSG); });
+      return;
+    }
+    decodeAndPlay(ab, opts);
+  }
+
+  function decodeAndPlay(ab, opts) {
+    TTS._ctx.decodeAudioData(ab.slice(0)).then(function (buf) {
       startBuffer(buf, 0, opts);
     }).catch(function () {
       playAudioFallback(ab, opts);
@@ -301,13 +320,14 @@
     audio.onended = function () { if (opts.onDone) opts.onDone(); };
     audio.onerror = function () { if (opts.onError) opts.onError('音频播放出错'); else if (opts.onDone) opts.onDone(); };
     var p = audio.play();
-    if (p && p.catch) p.catch(function () { if (opts.onError) opts.onError('音频播放被浏览器拦截'); });
+    if (p && p.catch) p.catch(function () { if (opts.onError) opts.onError('音频播放被浏览器拦截：请按 Ctrl+F5 强制刷新后重试；若仍出现，请检查地址栏网站设置中「声音」是否被设为阻止'); });
     setState('playing');
   }
 
   function speakCloud(text, opts) {
     opts = opts || {};
     ensureAudioCtx(); /* 在点击手势内解锁音频 */
+    if (TTS._ctxBlocked) { if (opts.onError) opts.onError(BLOCKED_MSG); return; }
     stopCloudPlayback();
     if (TTS._audio) { try { TTS._audio.pause(); } catch (e) { } TTS._audio = null; }
     setState('loading');
