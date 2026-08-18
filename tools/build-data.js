@@ -70,8 +70,17 @@ const outDir = path.join(root, 'data');
 fs.writeFileSync(path.join(outDir, 'index.js'), indexOut, 'utf8');
 fs.writeFileSync(path.join(outDir, 'dict.js'), dictOut, 'utf8');
 
-/* ---------- 向 sw.js 注入内容哈希版本号 ---------- */
-const hash = crypto.createHash('sha1').update(indexOut + dictOut).digest('hex').slice(0, 10);
+/* ---------- 向 sw.js 注入内容哈希版本号（含前端代码，代码变更即触发客户端缓存更新） ---------- */
+const hashSrc = crypto.createHash('sha1').update(indexOut + dictOut);
+(['index.html', 'sw.js'].concat(
+  fs.readdirSync(path.join(root, 'js')).filter(f => f.endsWith('.js')).map(f => path.join('js', f)),
+  fs.readdirSync(path.join(root, 'css')).filter(f => f.endsWith('.css')).map(f => path.join('css', f))
+)).forEach(f => {
+  let buf = fs.readFileSync(path.join(root, f), 'utf8');
+  if (f === 'sw.js') buf = buf.replace(/var CACHE = '[^']*';/, "var CACHE = '';"); /* 归一化版本行，保证构建幂等 */
+  hashSrc.update(buf);
+});
+const hash = hashSrc.digest('hex').slice(0, 10);
 const version = 'kaoyan-reader-' + hash;
 const swPath = path.join(root, 'sw.js');
 const sw = fs.readFileSync(swPath, 'utf8');
