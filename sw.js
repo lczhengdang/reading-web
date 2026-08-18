@@ -84,7 +84,7 @@ self.addEventListener('fetch', function (e) {
 
   /* 同源静态资源：stale-while-revalidate —— 命中缓存立即返回，后台静默更新供下次使用；
      强制刷新（Ctrl+F5 / reload）时网络优先，确保能立即拿到新版本 */
-  var forceFresh = req.cache === 'no-cache' || req.cache === 'reload';
+  var forceFresh = req.cache === 'no-cache' || req.cache === 'reload' || req.cache === 'no-store';
   e.respondWith(
     caches.match(req).then(function (cached) {
       var refresh = fetch(req).then(function (resp) {

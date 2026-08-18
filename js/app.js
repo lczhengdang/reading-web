@@ -35,6 +35,42 @@
     document.documentElement.style.setProperty('--reading-size', settings.fontSize + 'px');
   }
 
+  /* ============ 深浅色主题（system / light / dark） ============ */
+  function applyTheme() {
+    var t = settings.theme || 'system';
+    if (t === 'system') delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = t;
+  }
+  function effectiveDark() {
+    if (settings.theme === 'dark') return true;
+    if (settings.theme === 'light') return false;
+    return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+  function themeLabel() {
+    return settings.theme === 'system' ? '主题：跟随系统' : (settings.theme === 'light' ? '主题：浅色' : '主题：深色');
+  }
+  function paintThemeBtns() {
+    var iconName = effectiveDark() ? 'sun' : 'moon';
+    var db = document.getElementById('f-theme');
+    if (db) { db.innerHTML = UIi.icon(iconName); db.setAttribute('aria-label', themeLabel()); }
+    var mb = document.querySelector('.bottomnav .theme-nav .navicon');
+    if (mb) mb.innerHTML = UIi.icon(iconName);
+  }
+  function cycleTheme() {
+    var order = ['system', 'light', 'dark'];
+    var i = order.indexOf(settings.theme || 'system');
+    settings.theme = order[(i + 1) % order.length];
+    Store.saveSettings();
+    applyTheme();
+    paintThemeBtns();
+    UIi.toast(themeLabel());
+  }
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').addEventListener) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+      if ((settings.theme || 'system') === 'system') paintThemeBtns();
+    });
+  }
+
   /* ============ 工具 ============ */
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
@@ -67,6 +103,12 @@
       b.addEventListener('click', function () { location.hash = '#/' + item.key; });
       nav.appendChild(b);
     });
+    /* 移动端主题切换入口 */
+    var tb = UIi.el('button', 'navitem theme-nav');
+    tb.setAttribute('aria-label', '切换深浅色');
+    tb.innerHTML = '<span class="navicon">' + UIi.icon(effectiveDark() ? 'sun' : 'moon') + '</span><span>主题</span>';
+    tb.addEventListener('click', cycleTheme);
+    nav.appendChild(tb);
     document.querySelectorAll('.topnav-links a').forEach(function (a) {
       a.classList.toggle('active', a.dataset.nav === active);
     });
@@ -161,11 +203,11 @@
       if (clear) clear.style.display = filterActive() ? '' : 'none';
     }
     function refreshList() {
-      renderLibraryPanel(panel, updateStats);
+      renderLibraryPanel(panel, refreshList);
       updateStats();
     }
 
-    renderLibraryPanel(panel, updateStats);
+    renderLibraryPanel(panel, refreshList);
     updateStats();
   }
 
@@ -208,6 +250,7 @@
 
     function chip(label, on, handler) {
       var c = UIi.el('button', 'chip' + (on ? ' on' : ''));
+      c.setAttribute('aria-pressed', on ? 'true' : 'false');
       c.innerHTML = (on ? UIi.icon('check', 'sm') : '') + esc(label);
       c.addEventListener('click', handler);
       return c;
@@ -980,6 +1023,10 @@
 
   /* ============ 启动 ============ */
   applyTtsSettings();
+  applyTheme();
+  var themeBtn = document.getElementById('f-theme');
+  if (themeBtn) themeBtn.addEventListener('click', cycleTheme);
+  paintThemeBtns();
   if (location.protocol.startsWith('http') && 'serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').catch(function () { });
   }
