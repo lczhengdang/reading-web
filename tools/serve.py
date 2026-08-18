@@ -32,12 +32,24 @@ class TTSProxyHandler(SimpleHTTPRequestHandler):
         content_length = int(self.headers.get('Content-Length', 0))
         body = self.rfile.read(content_length) if content_length > 0 else b''
 
-        # 从请求头获取原始端点和 API Key
-        original_endpoint = self.headers.get('X-Original-Endpoint', '')
-        api_key = self.headers.get('Authorization', '')
+        # 从请求体中提取原始端点和 API Key（同源请求不会发送自定义头，故改用 body 传递）
+        original_endpoint = ''
+        api_key = ''
+        try:
+            payload = json.loads(body.decode('utf-8'))
+            original_endpoint = payload.pop('_endpoint', '')
+            api_key = payload.pop('_apiKey', '')
+            body = json.dumps(payload).encode('utf-8')
+        except (ValueError, KeyError):
+            pass
+        # 兼容请求头方式
+        if not original_endpoint:
+            original_endpoint = self.headers.get('X-Original-Endpoint', '')
+        if not api_key:
+            api_key = self.headers.get('Authorization', '')
 
         if not original_endpoint or not api_key:
-            self.send_error(400, 'Missing X-Original-Endpoint or Authorization header')
+            self.send_error(400, 'Missing _endpoint or _apiKey in request body')
             return
 
         # 转发到火山方舟
@@ -88,7 +100,19 @@ def main():
 
     os.chdir(directory)
 
-    server = HTTPServer(('0.0.0.0', port), TTSProxyHandler)
+    # 端口被占用时自动顺延（常见于旧的 python -m http.server 未关闭）
+    server = None
+    for p in range(port, port + 10):
+        try:
+            server = HTTPServer(('0.0.0.0', p), TTSProxyHandler)
+            port = p
+            break
+        except OSError:
+            print(f'端口 {p} 被占用，尝试下一个…')
+    if server is None:
+        print(f'错误：端口 {port}~{port + 9} 均被占用，请关闭旧服务器后重试')
+        sys.exit(1)
+
     print(f'考研阅读 Web 版 - 本地服务器（带 TTS 代理）')
     print(f'目录：{directory}')
     print(f'端口：{port}')

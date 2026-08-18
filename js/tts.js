@@ -157,6 +157,9 @@
     var isOpenAI = c.endpoint.indexOf('/audio/speech') !== -1 || /\/speech$/.test(c.endpoint);
     var body = { model: c.model, voice: c.voiceId || 'zh_female_cancan_mars_bigtts', speed: TTS.rate, response_format: 'mp3' };
     if (isOpenAI) body.input = text; else body.input = { text: text };
+    /* 本地代理模式：附带原始端点与密钥，由 tools/serve.py 提取并转发 */
+    body._endpoint = c.endpoint;
+    body._apiKey = 'Bearer ' + c.apiKey;
     return JSON.stringify(body);
   }
 
@@ -166,22 +169,11 @@
     var c = TTS.cloud;
     if (!c.apiKey) return Promise.reject(new Error('未配置 API Key，请到设置中填写'));
 
-    // 使用本地代理端点（解决 CORS）
-    var useProxy = true;
-    var endpoint = useProxy ? '/api/tts' : c.endpoint;
-    var headers = {
-      'Content-Type': 'application/json'
-    };
-    if (useProxy) {
-      headers['X-Original-Endpoint'] = c.endpoint;
-      headers['Authorization'] = 'Bearer ' + c.apiKey;
-    } else {
-      headers['Authorization'] = 'Bearer ' + c.apiKey;
-    }
-
-    return fetch(endpoint, {
+    /* 同源请求走本地代理 /api/tts（tools/serve.py），避免浏览器直连云端接口的 CORS 拦截；
+       Content-Type 用 text/plain 避免触发预检请求（代理不依赖该头） */
+    return fetch('/api/tts', {
       method: 'POST',
-      headers: headers,
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: buildCloudBody(text)
     }).then(function (resp) {
       if (!resp.ok) return resp.text().then(function (t) { throw new Error('TTS 请求失败 HTTP ' + resp.status + '：' + t.slice(0, 120)); });

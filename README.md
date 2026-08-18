@@ -47,7 +47,10 @@ python tools/serve.py 8080
 
 保持窗口开着即可。关闭后重新启动用上面两条命令。
 
-> **注意**：必须使用 `python tools/serve.py` 启动（而非 `python -m http.server`），因为代理脚本解决了火山方舟 TTS 接口的跨域问题。
+> **注意**：
+> 1. 必须使用 `python tools/serve.py` 启动（而非 `python -m http.server`），代理脚本解决了火山方舟 TTS 接口的跨域问题。
+> 2. 启动前先关闭旧的服务器窗口；若端口被占用，脚本会自动顺延到下一个可用端口，**以终端输出为准**。
+> 3. 手机访问把 localhost 换成终端显示的端口（如 `http://192.168.x.x:8899`）。
 
 ### 2. 手机访问
 
